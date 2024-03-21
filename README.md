@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Name:
+Names: Jason O Sullivan, Chris Noblett, Jade Thornton, Neil Fitzgerald, Aimee Mcgrane
 
-Student Number: 
+Student Numbers: C22400796, C22454222, C22394466, C22405604, C22393606
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
