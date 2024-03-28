@@ -20,5 +20,36 @@ public class MainVisual extends Visual{
     AudioBandsVisual.java audioBandsVisual;
 
     */
+
+    public float fCounter = 0;
+    public int branchCounter = 0;
+
+    public void settings()
+    {
+        size(1024, 500);
+    }
+
+    public void setup()
+    {
+        startMinim();
+        loadAudio("Song.m4a");
+        // BeatDetect();
+        eRadius = width * 0.5f;
+        colorMode(HSB);
+        // Initialize each visual object
+
+        /*
+
+        aimee = new AimeeVisual(this);
+        neil = new NeilVisual(this);
+        jade = new JadeVisual(this);
+        jason = new JasonVisual(this);
+        chris = new ChrisVisual(this);
+        audioBandsVisual = new AudioBandsVisual(this);
+
+        */
+    }
+
+    
     
 }
