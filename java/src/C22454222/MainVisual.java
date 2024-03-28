@@ -50,6 +50,16 @@ public class MainVisual extends Visual{
         */
     }
 
-    
+    public void keyPressed()
+    {
+        if (key == ' ')
+        {
+            as.stop();
+            as.trigger();
+        }
+
+    }
+
+
     
 }
