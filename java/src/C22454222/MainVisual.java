@@ -23,6 +23,8 @@ public class MainVisual extends Visual{
 
     public float fCounter = 0;
     public int branchCounter = 0;
+    public int chrisOption = 1;
+    public Object[] stars;
 
     public void settings()
     {
@@ -32,8 +34,10 @@ public class MainVisual extends Visual{
     public void setup()
     {
         startMinim();
+
         loadAudio("Song.m4a");
         // BeatDetect();
+        // eclipseMode(RADIUS);
         eRadius = width * 0.5f;
         colorMode(HSB);
         // Initialize each visual object
@@ -45,8 +49,6 @@ public class MainVisual extends Visual{
         jade = new JadeVisual(this);
         jason = new JasonVisual(this);
         chris = new ChrisVisual(this);
-        audioBandsVisual = new AudioBandsVisual(this);
-
         */
     }
 
@@ -56,6 +58,10 @@ public class MainVisual extends Visual{
         {
             as.stop();
             as.trigger();
+        }
+        if (keyCode >= '1' && keyCode <= '3')
+        {
+            chrisOption = keyCode - '0';
         }
 
     }
