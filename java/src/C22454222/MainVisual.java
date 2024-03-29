@@ -39,7 +39,7 @@ public class MainVisual extends Visual{
     {
         startMinim();
 
-        loadAudio("Project.mp3");
+        loadAudio("Project.wav");
         // BeatDetect();
         // eclipseMode(RADIUS);
         eRadius = width * 0.5f;
