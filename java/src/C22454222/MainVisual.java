@@ -29,13 +29,17 @@ public class MainVisual extends Visual{
     public void settings()
     {
         size(1024, 500);
+
+        // fullScreen();
+
+        // fullScreen(P3D,SPAN);
     }
 
     public void setup()
     {
         startMinim();
 
-        loadAudio("Song.m4a");
+        loadAudio("Project.mp3");
         // BeatDetect();
         // eclipseMode(RADIUS);
         eRadius = width * 0.5f;

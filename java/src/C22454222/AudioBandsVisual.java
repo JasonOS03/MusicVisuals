@@ -12,7 +12,11 @@ public class AudioBandsVisual extends Visual{
 
     public void render()
     {
+        mv.beat.detect(mv.as.mix);
+        mv.beat.detectMode(0);
+        mv.background(255);
         
+
     }
 
 }
