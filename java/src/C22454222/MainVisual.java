@@ -70,6 +70,50 @@ public class MainVisual extends Visual{
 
     }
 
+    public void draw()
+    {
+        if (playTune == 1)
+        {
+            as.stop();
+            as.trigger();
+            playTune = 0;
+        }
 
-    
+        try
+        {
+            calculateFFT();
+
+        }
+
+        catch(VisualException e)
+        {
+            e.printStackTrace();
+        }
+
+        calculateFrequencyBands();
+        
+        calculateAverageAmplitude();    
+
+        switch(visualSwap)
+        {
+            case 0:
+                // aimee.render();
+                break;
+            case 1:
+                // neil.render();
+                break;
+            case 2:
+                // jade.render();
+                break;
+            case 3:
+                // jason.render();
+                break;
+            case 4:
+                // chris.render();
+                break;
+            default:
+                background(0);
+                break;
+        }
+    }
 }
