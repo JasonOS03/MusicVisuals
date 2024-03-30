@@ -12,13 +12,13 @@ public MainVisualMenu(MainVisual visualMode)
     this.visualMode = visualMode;
 }
 
-public int options = 5;
+public int options = 6;
 int boxHeight = 100;
 int boxWidth = 200;
 
 public void settings()
 {
-    size(200,600);
+    size(200,700);
 }
 
 public void setup()
@@ -62,7 +62,11 @@ public void draw()
             stroke(110);
         } 
         else if (i == 5) {
-            fill(180, 255, 255); // Purple (adjust hue to fit within spectrum)
+            fill(180, 255, 255); // Purple
+            stroke(110);
+        }
+        else if (i == 6) {
+            fill(0); 
             stroke(110);
         }
 
@@ -97,6 +101,7 @@ public void draw()
     text("Jade", boxWidth / 2, 3 * boxHeight + boxHeight / 2);
     text("Jason", boxWidth / 2, 4 * boxHeight + boxHeight / 2);
     text("Chris", boxWidth / 2, 5 * boxHeight + boxHeight / 2);
+    text("Audiobands", boxWidth / 2, 6 * boxHeight + boxHeight / 2);
 }
 
 
