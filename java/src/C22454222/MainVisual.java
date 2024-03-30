@@ -17,7 +17,6 @@ public class MainVisual extends Visual{
     JadeVisual jade;
     JasonVisual jason;
     ChrisVisual chris;
-    AudioBandsVisual audioBandsVisual;
 
     */
 
@@ -54,7 +53,7 @@ public class MainVisual extends Visual{
         neil = new NeilVisual(this);
         jade = new JadeVisual(this);
         jason = new JasonVisual(this);
-        chris = new ChrisVisual(this);
+        
         */
         audioBandsVisual = new AudioBandsVisual(this);
     }
@@ -66,6 +65,7 @@ public class MainVisual extends Visual{
             as.stop();
             as.trigger();
         }
+        
         if (keyCode >= '1' && keyCode <= '3')
         {
             chrisOption = keyCode - '0';
