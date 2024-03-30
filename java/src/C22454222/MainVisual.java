@@ -17,11 +17,13 @@ public class MainVisual extends Visual{
     JadeVisual jade;
     JasonVisual jason;
     
-    AudioBandsVisual.java audioBandsVisual;
+   
     
 
     */
     ChrisVisual chris;
+    AudioBandsVisual example;
+
     public float fCounter = 0;
     public int branchCounter = 0;
     public int chrisOption = 1;
@@ -40,9 +42,9 @@ public class MainVisual extends Visual{
     {
         startMinim();
 
-        loadAudio("Song.m4a");
-        // BeatDetect();
-        // eclipseMode(RADIUS);
+        loadAudio("Project.wav");
+         BeatDetect();
+        ellipseMode(RADIUS);
         eRadius = width * 0.5f;
         colorMode(HSB);
         // Initialize each visual object
@@ -56,6 +58,7 @@ public class MainVisual extends Visual{
     
         */
         chris = new ChrisVisual(this);
+        example = new AudioBandsVisual(this);
     }
 
     public void keyPressed()
@@ -65,11 +68,6 @@ public class MainVisual extends Visual{
             as.stop();
             as.trigger();
         }
-        if (keyCode >= '1' && keyCode <= '3')
-        {
-            chrisOption = keyCode - '0';
-        }
-
     }
 
     public void draw()
@@ -111,8 +109,13 @@ public class MainVisual extends Visual{
                 // jason.render();
                 break;
             case 4:
-                // chris.render();
+                chris.render();
                 break;
+
+            case 5:
+                example.render();
+                break;
+
             default:
                 background(0);
                 break;
