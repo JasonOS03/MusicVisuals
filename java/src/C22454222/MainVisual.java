@@ -12,15 +12,16 @@ public class MainVisual extends Visual{
 
     /* 
 
-    AimeeVisual.java aimee;
-    NeilVisual.java neil;
-    JadeVisual.java jade;
-    JasonVisual.java jason;
-    ChrisVisual.java chris;
+    AimeeVisual aimee;
+    NeilVisual neil;
+    JadeVisual jade;
+    JasonVisual jason;
+    
     AudioBandsVisual.java audioBandsVisual;
+    
 
     */
-
+    ChrisVisual chris;
     public float fCounter = 0;
     public int branchCounter = 0;
     public int chrisOption = 1;
@@ -35,7 +36,7 @@ public class MainVisual extends Visual{
     {
         startMinim();
 
-        loadAudio("Song.m4a");
+        loadAudio("Project.mp3");
         // BeatDetect();
         // eclipseMode(RADIUS);
         eRadius = width * 0.5f;
@@ -48,8 +49,9 @@ public class MainVisual extends Visual{
         neil = new NeilVisual(this);
         jade = new JadeVisual(this);
         jason = new JasonVisual(this);
-        chris = new ChrisVisual(this);
+    
         */
+        chris = new ChrisVisual(this);
     }
 
     public void keyPressed()
