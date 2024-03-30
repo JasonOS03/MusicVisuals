@@ -12,11 +12,11 @@ public class MainVisual extends Visual{
 
     /* 
 
-    AimeeVisual.java aimee;
-    NeilVisual.java neil;
-    JadeVisual.java jade;
-    JasonVisual.java jason;
-    ChrisVisual.java chris;
+    AimeeVisual aimee;
+    NeilVisual neil;
+    JadeVisual jade;
+    JasonVisual jason;
+    ChrisVisual chris;
     AudioBandsVisual.java audioBandsVisual;
 
     */
