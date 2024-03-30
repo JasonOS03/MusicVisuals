@@ -26,7 +26,52 @@ public void setup()
 
 public void keyPressed()
 {
-    visualMode.visualSwap = (visualMode.visualSwap + 1) % options;
+    if (key == ' ')
+    {
+        visualMode.visualSwap = (visualMode.visualSwap + 1) % options;
+    }
+  
+}
+
+public void draw()
+{
+    background(0);
+
+    for(int i = 0; i < options + 1; i++)
+    {
+        if (i == 0) {
+            fill(0, 100, 100); // Red
+            stroke(110);
+        } 
+        else if (i == 1) {
+            fill(30, 100, 100); // Orange
+            stroke(110);
+        } 
+        else if (i == 2) {
+            fill(210, 100, 100); // Blue
+            stroke(110);
+        } 
+        else if (i == 3) {
+            fill(60, 100, 100); // Yellow
+            stroke(110);
+        } 
+        else if (i == 4) {
+            fill(120, 100, 100); // Green
+            stroke(110);
+        } 
+        else if (i == 5) {
+            fill(270, 100, 100); // Purple
+            stroke(110);
+        }
+
+
+
+
+
+
+
+
+
 }
 
 
