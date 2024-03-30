@@ -17,9 +17,11 @@ public class MainVisual extends Visual{
     JadeVisual jade;
     JasonVisual jason;
     ChrisVisual chris;
-    AudioBandsVisual.java audioBandsVisual;
+    AudioBandsVisual audioBandsVisual;
 
     */
+
+    AudioBandsVisual audioBandsVisual;
 
     public float fCounter = 0;
     public int branchCounter = 0;
@@ -40,8 +42,8 @@ public class MainVisual extends Visual{
         startMinim();
 
         loadAudio("Project.wav");
-        // BeatDetect();
-        // eclipseMode(RADIUS);
+        BeatDetect();
+        ellipseMode(RADIUS);
         eRadius = width * 0.5f;
         colorMode(HSB);
         // Initialize each visual object
@@ -54,6 +56,7 @@ public class MainVisual extends Visual{
         jason = new JasonVisual(this);
         chris = new ChrisVisual(this);
         */
+        audioBandsVisual = new AudioBandsVisual(this);
     }
 
     public void keyPressed()
@@ -111,6 +114,9 @@ public class MainVisual extends Visual{
             case 4:
                 // chris.render();
                 break;
+            case 5:
+                audioBandsVisual.render();
+                break;  
             default:
                 background(0);
                 break;
