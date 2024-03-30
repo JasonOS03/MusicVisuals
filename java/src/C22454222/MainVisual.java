@@ -12,17 +12,14 @@ public class MainVisual extends Visual{
 
     /* 
 
-    AimeeVisual aimee;
-    NeilVisual neil;
-    JadeVisual jade;
-    JasonVisual jason;
-    
-   
-    
+    AimeeVisual.java aimee;
+    NeilVisual.java neil;
+    JadeVisual.java jade;
+    JasonVisual.java jason;
+    ChrisVisual.java chris;
+    AudioBandsVisual.java audioBandsVisual;
 
     */
-    ChrisVisual chris;
-    AudioBandsVisual example;
 
     public float fCounter = 0;
     public int branchCounter = 0;
