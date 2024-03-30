@@ -12,11 +12,11 @@ public class MainVisual extends Visual{
 
     /* 
 
-    AimeeVisual.java aimee;
-    NeilVisual.java neil;
-    JadeVisual.java jade;
-    JasonVisual.java jason;
-    ChrisVisual.java chris;
+    AimeeVisual aimee;
+    NeilVisual neil;
+    JadeVisual jade;
+    JasonVisual jason;
+    ChrisVisual chris;
     AudioBandsVisual.java audioBandsVisual;
 
     */
@@ -29,13 +29,17 @@ public class MainVisual extends Visual{
     public void settings()
     {
         size(1024, 500);
+
+        // fullScreen();
+
+        // fullScreen(P3D,SPAN);
     }
 
     public void setup()
     {
         startMinim();
 
-        loadAudio("Song.m4a");
+        loadAudio("Project.wav");
         // BeatDetect();
         // eclipseMode(RADIUS);
         eRadius = width * 0.5f;
@@ -66,6 +70,50 @@ public class MainVisual extends Visual{
 
     }
 
+    public void draw()
+    {
+        if (playTune == 1)
+        {
+            as.stop();
+            as.trigger();
+            playTune = 0;
+        }
 
-    
+        try
+        {
+            calculateFFT();
+
+        }
+
+        catch(VisualException e)
+        {
+            e.printStackTrace();
+        }
+
+        calculateFrequencyBands();
+        
+        calculateAverageAmplitude();    
+
+        switch(visualSwap)
+        {
+            case 0:
+                // aimee.render();
+                break;
+            case 1:
+                // neil.render();
+                break;
+            case 2:
+                // jade.render();
+                break;
+            case 3:
+                // jason.render();
+                break;
+            case 4:
+                // chris.render();
+                break;
+            default:
+                background(0);
+                break;
+        }
+    }
 }
