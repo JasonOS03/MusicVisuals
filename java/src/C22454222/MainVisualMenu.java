@@ -2,11 +2,13 @@ package C22454222;
 
 import ie.tudublin.*;
 
-public class MainVisualMenu extends Visual{
+public class MainVisualMenu extends Visual
+{
 
     MainVisual visualMode;
 
-public MainVisualMenu(MainVisual visualMode){
+public MainVisualMenu(MainVisual visualMode)
+{
     this.visualMode = visualMode;
 }
 
@@ -64,24 +66,42 @@ public void draw()
             stroke(110);
         }
 
+        rect(0,i*boxHeight,boxWidth,boxHeight);
+        
+        if (mouseY >= i*boxHeight && mouseY <= (i+1)*boxHeight)
+        {
+            fill(255);
+            rect(0,i*boxHeight,boxWidth,boxHeight);
+
+            if (mousePressed)
+            {
+                if(i != 0)
+                {
+                    visualMode.visualSwap = i - 1;
+                }
+
+                else
+                {
+                    visualMode.playTune = 1;
+                }
+           
+            }
+        }
+    }
 
 
+    textSize(50);
 
+    fill(0);
 
+    textAlign(CENTER, CENTER);
 
-
-
-
+    text("Play Tune", boxWidth / 2, boxHeight / 2);
+    text("Aimee", boxWidth / 2, 1*boxHeight + boxHeight / 2);
+    text("Neil", boxWidth / 2, 2*boxHeight + boxHeight / 2);
+    text("Jade", boxWidth / 2, 3*boxHeight + boxHeight / 2);
+    text("Jason", boxWidth / 2, 4*boxHeight + boxHeight / 2);
+    text("Chris", boxWidth / 2, 5*boxHeight + boxHeight / 2);
 }
-
-
-
-
-
-
-
-
-
-
 
 }
