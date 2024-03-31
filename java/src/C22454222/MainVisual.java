@@ -16,10 +16,11 @@ public class MainVisual extends Visual{
     NeilVisual neil;
     JadeVisual jade;
     JasonVisual jason;
-    ChrisVisual chris;
+    
 
     */
 
+    ChrisVisual chris;
     AudioBandsVisual audioBandsVisual;
 
     public float fCounter = 0;
@@ -55,6 +56,7 @@ public class MainVisual extends Visual{
         jason = new JasonVisual(this);
         
         */
+        chris = new ChrisVisual(this);
         audioBandsVisual = new AudioBandsVisual(this);
     }
 
@@ -112,7 +114,7 @@ public class MainVisual extends Visual{
                 // jason.render();
                 break;
             case 4:
-                // chris.render();
+                chris.render();
                 break;
             case 5:
                 audioBandsVisual.render();
