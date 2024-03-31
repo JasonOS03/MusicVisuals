@@ -1,105 +1,90 @@
-package C22454222;
+package C22454222; // Package declaration
+import ie.tudublin.*; // Importing necessary classes from the ie.tudublin package
 
-import ie.tudublin.*;
-
-public class MainVisual extends Visual{
-    int visualSwap = 0;
-    int playTune = 0;
-    int stopPlay = 0;
-    public float eRadius;
-
-    // Initialize each visual object
-
-    /* 
-
+// MainVisual class extending Visual class
+public class MainVisual extends Visual
+{
+    int visualSwap = 0; // Variable to control visual swapping
+    int playTune = 0; // Variable to control playing tune
+    int stopPlay = 0; // Variable to control stopping playback
+    /*
     AimeeVisual aimee;
     NeilVisual neil;
     JadeVisual jade;
     JasonVisual jason;
-    
+    ChrisVisual chris;
 
     */
 
-    ChrisVisual chris;
     AudioBandsVisual audioBandsVisual;
 
-    public float fCounter = 0;
-    public int branchCounter = 0;
-    public int chrisOption = 1;
-    public Object[] stars;
+    public float fCounter = 0; // Variable to store a floating-point counter value
+    public int chrisOption = 1; // Variable to store an option for Chris's visual
 
-    public void settings()
+    // Method to set initial settings
+    public void settings() 
     {
-        size(1024, 500);
-
+        size(1024, 500); // Setting window size
         // fullScreen();
-
         // fullScreen(P3D,SPAN);
     }
 
-    public void setup()
+    // Method to perform initial setup
+    public void setup() 
     {
-        startMinim();
-
-        loadAudio("Project.wav");
-        BeatDetect();
-        ellipseMode(RADIUS);
-        eRadius = width * 0.5f;
-        colorMode(HSB);
-        // Initialize each visual object
-
+        startMinim(); // Starting Minim audio library
+        loadAudio("Project.wav"); // Loading audio file
+        BeatDetect(); // Initializing beat detection
+        colorMode(HSB); // Setting color mode
         /*
-
         aimee = new AimeeVisual(this);
         neil = new NeilVisual(this);
         jade = new JadeVisual(this);
         jason = new JasonVisual(this);
-        
         */
-        chris = new ChrisVisual(this);
         audioBandsVisual = new AudioBandsVisual(this);
     }
 
-    public void keyPressed()
+    // Method to handle key pressed events
+    public void keyPressed() 
     {
-        if (key == ' ')
-        {
-            as.stop();
-            as.trigger();
+        if (key == ' ') 
+        { // If space bar is pressed
+            as.stop(); // Stop audio playback
+            as.trigger(); // Trigger audio playback
         }
         
-        if (keyCode >= '1' && keyCode <= '3')
-        {
-            chrisOption = keyCode - '0';
+        if (keyCode >= '1' && keyCode <= '3') 
+        { // If numeric keys 1 to 3 are pressed
+            chrisOption = keyCode - '0'; // Update chrisOption with the corresponding numeric value
         }
-
     }
 
-    public void draw()
+    // Method to draw visuals
+    public void draw() 
     {
-        if (playTune == 1)
-        {
-            as.stop();
-            as.trigger();
-            playTune = 0;
+        if (playTune == 1) 
+        { // If playTune flag is set
+            as.stop(); // Stop audio playback
+            as.trigger(); // Trigger audio playback
+            playTune = 0; // Reset playTune flag
         }
 
-        try
+        try 
         {
-            calculateFFT();
-
-        }
-
-        catch(VisualException e)
-        {
-            e.printStackTrace();
-        }
-
-        calculateFrequencyBands();
+            calculateFFT(); // Calculate Fast Fourier Transform
+        } 
         
-        calculateAverageAmplitude();    
+        catch(VisualException e) 
+        { // Catch any VisualExceptions
+            e.printStackTrace(); // Print stack trace of the exception
+        }
 
-        switch(visualSwap)
+        calculateFrequencyBands(); // Calculate frequency bands
+        calculateAverageAmplitude(); // Calculate average amplitude    
+
+        // Switch statement to determine which visual to render
+        switch(visualSwap) 
         {
             case 0:
                 // aimee.render();
@@ -114,13 +99,13 @@ public class MainVisual extends Visual{
                 // jason.render();
                 break;
             case 4:
-                chris.render();
+                // chris.render();
                 break;
             case 5:
-                audioBandsVisual.render();
+                audioBandsVisual.render(); // Render AudioBandsVisual
                 break;  
             default:
-                background(0);
+                background(0); // Set background color to black by default
                 break;
         }
     }
