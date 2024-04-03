@@ -13,7 +13,27 @@ Student Numbers: C22400796, C22454222, C22394466, C22405604, C22393606
 
 # Description of the assignment
 
+## Aimee
+
+## Neil
+
+## Jade
+
+## Jason
+
+## Chris
+
 # Instructions
+
+## Main Menu
+
+Once you have ran the program, a separate menu window opens with the following options:
+- Play Tune
+- Aimee
+- Neil
+- Jade
+- Jason
+- Chris
 
 # How it works
 
