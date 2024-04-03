@@ -1,16 +1,25 @@
 package C22454222;
 
 import ie.tudublin.*;
-// import processing.core.PApplet;
+import ddf.minim.*;
+import ddf.minim.AudioBuffer; 
+import ddf.minim.AudioPlayer; 
 
 public class ChrisVisual extends Visual 
 {
     MainVisual mv;
+    Minim minim;
+    AudioPlayer ap;
+    AudioBuffer ab;
 
     public ChrisVisual(MainVisual mv) 
     {
         this.mv = mv;
+        ab = mv.getAudioBuffer();
+        ap = mv.getAudioPlayer();
     }
+
+    int beatCount = 0;
 
     public void render()
     {
@@ -27,8 +36,43 @@ public class ChrisVisual extends Visual
 
         if (mv.chrisOption == 1)
         {
+            mv.fill(0,50);  
+            mv.noStroke();
+            mv.rect(0, 0, width, height);
+            mv.translate(width/2, height/2);
 
+            float n4 = 0;
+            float n6 = 0;
+
+            for (int i = 0; i < ab.size() - 1; i++) 
+            {
+
+            float angle = sin(i+n4)* 10; 
+            float angle2 = sin(i+n6)* 300; 
+
+            float x = sin(radians(i))*(angle2+30); 
+            float y = cos(radians(i))*(angle2+30);
+
+            float x3 = sin(radians(i))*(500/angle); 
+            float y3 = cos(radians(i))*(500/angle);
+
+            mv.fill(255, 255, 0, 90); // Yellow
+            mv.ellipse(x, y, ap.left.get(i) * 10, ap.left.get(i) * 10);
+
+            mv.fill(255, 255, 255, 60); // White
+            mv.rect(x3, y3, ap.left.get(i) * 20, ap.left.get(i) * 10);
+
+            mv.fill(255, 152, 0, 90); // Orange
+            mv.rect(x, y, ap.right.get(i) * 10, ap.left.get(i) * 10);
+
+            mv.fill(255, 255, 255, 70); // White
+            mv.rect(x3, y3, ap.right.get(i) * 10, ap.right.get(i) * 20);
+
+            }
+            n4+=0.008;
+            n6+=0.04;
         }
+    
 
         if (mv.chrisOption == 2)
         {
