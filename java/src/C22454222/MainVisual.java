@@ -51,9 +51,9 @@ public class MainVisual extends Visual
             as.stop(); // Stop audio playback
             as.trigger(); // Trigger audio playback
         }
-        
+        // If numeric keys 1 to 3 are pressed
         if (keyCode >= '1' && keyCode <= '3') 
-        { // If numeric keys 1 to 3 are pressed
+        { 
             chrisOption = keyCode - '0'; // Update chrisOption with the corresponding numeric value
         }
     }
