@@ -10,10 +10,10 @@ public class MainVisual extends Visual
     /*
     AimeeVisual aimee;
     NeilVisual neil;
-    JadeVisual jade;
     JasonVisual jason;
     ChrisVisual chris;
     */
+    JadeVisual jade;
     AudioBandsVisual audioBandsVisual; // Instance of AudioBandsVisual class
 
     public float fCounter = 0; // Variable to store a floating-point counter value
@@ -37,9 +37,10 @@ public class MainVisual extends Visual
         /*
         aimee = new AimeeVisual(this);
         neil = new NeilVisual(this);
-        jade = new JadeVisual(this);
+        
         jason = new JasonVisual(this);
         */
+        jade = new JadeVisual(this);
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
     }
 
@@ -91,7 +92,7 @@ public class MainVisual extends Visual
                 // neil.render();
                 break;
             case 2:
-                // jade.render();
+                jade.render();
                 break;
             case 3:
                 // jason.render();
