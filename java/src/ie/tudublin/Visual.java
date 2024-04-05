@@ -1,12 +1,12 @@
 package ie.tudublin;
-
 import processing.core.PApplet;
 import ddf.minim.*;
+import ddf.minim.analysis.BeatDetect;
 import ddf.minim.analysis.FFT;
 
 public abstract class Visual extends PApplet
 {
-	private int frameSize = 512;
+	private int frameSize = 1024;
 	private int sampleRate = 44100;
 
 	private float[] bands;
@@ -14,12 +14,14 @@ public abstract class Visual extends PApplet
 
 	private Minim minim;
 	private AudioInput ai;
+	public AudioSample as;
 	private AudioPlayer ap;
 	private AudioBuffer ab;
+	public BeatDetect beat;
 	private FFT fft;
 
 	private float amplitude  = 0;
-	private float smothedAmplitude = 0;
+	private float smoothedAmplitude = 0;
 
 	public void settings()
 	{
@@ -73,7 +75,7 @@ public abstract class Visual extends PApplet
 			total += abs(ab.get(i));
 		}
 		amplitude = total / ab.size();
-		smothedAmplitude = PApplet.lerp(smothedAmplitude, amplitude, 0.1f);
+		smoothedAmplitude = PApplet.lerp(smoothedAmplitude, amplitude, 0.1f);
 	}
 
 
@@ -100,8 +102,8 @@ public abstract class Visual extends PApplet
 
 	public void loadAudio(String filename)
 	{
-		ap = minim.loadFile(filename, frameSize);
-		ab = ap.mix;
+		as = minim.loadSample(filename, frameSize);
+		ab = as.left;
 	}
 
 	public int getFrameSize() {
@@ -146,7 +148,7 @@ public abstract class Visual extends PApplet
 	}
 
 	public float getSmoothedAmplitude() {
-		return smothedAmplitude;
+		return smoothedAmplitude;
 	}
 
 	public AudioPlayer getAudioPlayer() {
@@ -155,5 +157,11 @@ public abstract class Visual extends PApplet
 
 	public FFT getFFT() {
 		return fft;
+	}
+
+	public BeatDetect BeatDetect()
+	{
+		beat = new BeatDetect();
+		return beat;
 	}
 }
