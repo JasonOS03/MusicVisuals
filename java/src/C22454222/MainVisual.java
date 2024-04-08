@@ -13,8 +13,8 @@ public class MainVisual extends Visual {
     NeilVisual neil;
     JadeVisual jade;
     JasonVisual jason;
-    ChrisVisual chris;
     */
+    ChrisVisual chris;
     AudioBandsVisual audioBandsVisual; // Instance of AudioBandsVisual class
 
     public float fCounter = 0; // Variable to store a floating-point counter value
@@ -39,6 +39,7 @@ public class MainVisual extends Visual {
         jade = new JadeVisual(this);
         jason = new JasonVisual(this);
         */
+        chris = new ChrisVisual(this); // Initializing ChrisVisual instance
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
     }
 
