@@ -11,7 +11,7 @@ public class Main {
     {
         MainVisual visualizer = new MainVisual();
         String[] a = { "MAIN" };
-        processing.core.PApplet.runSketch(a, new MyVisual());
+        processing.core.PApplet.runSketch(a, new JasonVisual());
     }
 
     // The main method creates an instance of the Main class and calls the startUI method
