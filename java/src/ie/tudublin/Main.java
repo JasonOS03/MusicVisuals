@@ -2,7 +2,10 @@
 
 package ie.tudublin;
 
+import C22400796.JasonVisual;
 import C22454222.*;
+
+import processing.core.PApplet;
 
 public class Main {
 
