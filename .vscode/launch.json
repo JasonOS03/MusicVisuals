@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "JasonVisual",
+            "request": "launch",
+            "mainClass": "C22400796.JasonVisual",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
+            "name": "Project",
+            "request": "launch",
+            "mainClass": "ie.tudublin.Project",
+            "projectName": "MusicVisuals_ddc52319"
+        },
+        {
+            "type": "java",
             "name": "Project",
             "request": "launch",
             "mainClass": "ie.tudublin.Project",

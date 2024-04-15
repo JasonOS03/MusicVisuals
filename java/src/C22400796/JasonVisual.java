@@ -14,6 +14,27 @@ public class JasonVisual extends PApplet
     Minim minim;
     AudioPlayer newplayer;
 
+    int mode = 0;
+
+    float[] lerpedBuffer;
+    float y = 0;
+    float smoothedY = 0;
+    float smoothedAmplitude = 0;
+
+    public void keyPressed() {
+		if (key >= '0' && key <= '9') {
+			mode = key - '0';
+		}
+		if (keyCode == ' ') {
+            if (newplayer.isPlaying()) {
+                newplayer.pause();
+            } else {
+                newplayer.rewind();
+                newplayer .play();
+            }
+        }
+	}
+
     
 
     public void settings()
@@ -32,11 +53,45 @@ public class JasonVisual extends PApplet
         newplayer.play();
 
         ab = newplayer.mix;
+        y = height / 2;
+        smoothedY = y;
+
+        lerpedBuffer = new float[width];
     }
 
     public void draw()
     {
+        background(0);
 
+    
+    float sum = 0;
+    for (int i = 0; i < ab.size(); i++) {
+        sum += abs(ab.get(i));
+    }
+    float average = sum / (float) ab.size();
+    float amplitude = average * 100; 
+
+    
+    int num_diagonals = (int) map(amplitude, 0, 1, 1, 4);
+
+    
+    for (int i = 0; i < num_diagonals; i++) {
+        float hue = map(i, 0, num_diagonals - 1, 50, 122);
+        float y_axis = map(i, 0, num_diagonals - 1, 0, height);
+        stroke(hue, 100, 100);
+        line(0, y_axis, width, height - y_axis);
+    }
+             
+
+
+
+
+}
+               
+        
+            
+    public static void main(String[] args) {
+        PApplet.main("C22400796.JasonVisual");
     }
     
 }
