@@ -3,7 +3,8 @@ package C22454222; // Package declaration
 import ie.tudublin.*; // Importing necessary classes from the ie.tudublin package
 import ddf.minim.AudioPlayer;
 // MainVisual class extending Visual class
-public class MainVisual extends Visual {
+public class MainVisual extends Visual 
+{
     AudioPlayer ap; // Reference to AudioPlayer class
     int visualSwap = 0; // Variable to control visual swapping
     int playTune = 0; // Variable to control playing tune
@@ -21,14 +22,16 @@ public class MainVisual extends Visual {
     public int chrisOption = 1; // Variable to store an option for Chris's visual
 
     // Method to set initial settings
-    public void settings() {
+    public void settings() 
+    {
         size(1024, 500); // Setting window size
         // fullScreen();
         // fullScreen(P3D,SPAN);
     }
 
     // Method to perform initial setup
-    public void setup() {
+    public void setup() 
+    {
         startMinim(); // Starting Minim audio library
         loadAudio("Project.wav"); // Loading audio file
         BeatDetect(); // Initializing beat detection
@@ -47,41 +50,33 @@ public class MainVisual extends Visual {
     {
         if (key == ' ') 
         { // If space bar is pressed
-            if (playTune == 1)  
-            { // If music and visual are playing
-                ap.pause(); // Pause audio playback
-                playTune = 0; // Set the playTune flag to stop playing
-                noLoop(); // Pause visual rendering
-                // Method to pause audio playback
-            }
-            else
-            {
-                if (ap.position() == ap.length()) 
-                { // If audio playback has reached the end
-                    ap.rewind(); // Rewind audio playback
-                }
-                ap.play(); // Play audio
-            }
+            as.stop();
+            as.trigger();
         }
         // If numeric keys 1 to 3 are pressed
-        if (keyCode >= '1' && keyCode <= '3') {
+        if (keyCode >= '1' && keyCode <= '3') 
+        {
             chrisOption = keyCode - '0'; // Update chrisOption with the corresponding numeric value
         }
     }
 
     // Method to draw visuals
-    public void draw() {
-        if (playTune == 1) { // If playTune flag is set
+    public void draw() 
+    {
+        if (playTune == 1) 
+        { // If playTune flag is set
             as.stop(); // Stop audio playback
             as.trigger(); // Trigger audio playback
             playTune = 0; // Reset playTune flag
         }
 
-        try {
+        try 
+        {
             calculateFFT(); // Calculate Fast Fourier Transform
         }
 
-        catch (VisualException e) { // Catch any VisualExceptions
+        catch (VisualException e) 
+        { // Catch any VisualExceptions
             e.printStackTrace(); // Print stack trace of the exception
         }
 
@@ -89,7 +84,8 @@ public class MainVisual extends Visual {
         calculateAverageAmplitude(); // Calculate average amplitude
 
         // Switch statement to determine which visual to render
-        switch (visualSwap) {
+        switch (visualSwap) 
+        {
             case 0:
                 // aimee.render();
                 break;
