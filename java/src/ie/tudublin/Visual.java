@@ -142,7 +142,7 @@ public abstract class Visual extends PApplet
 	{
 		return ab;
 	}
-
+	
 	public AudioSample getAudioSample() 
 	{
 		return as;
