@@ -36,7 +36,8 @@ public abstract class Visual extends PApplet
 
 	}
 
-	float log2(float f) {
+	float log2(float f) 
+	{
 		return log(f) / log(2.0f);
 	}
 
@@ -66,13 +67,16 @@ public abstract class Visual extends PApplet
 	}
 
 
-	protected void calculateFrequencyBands() {
-		for (int i = 0; i < bands.length; i++) {
+	protected void calculateFrequencyBands() 
+	{
+		for (int i = 0; i < bands.length; i++) 
+		{
 			int start = (int) pow(2, i) - 1;
 			int w = (int) pow(2, i);
 			int end = start + w;
 			float average = 0;
-			for (int j = start; j < end; j++) {
+			for (int j = start; j < end; j++) 
+			{
 				average += fft.getBand(j) * (j + 1);
 			}
 			average /= (float) w;
@@ -93,56 +97,69 @@ public abstract class Visual extends PApplet
 		ab = as.left;
 	}
 
-	public int getFrameSize() {
+	public int getFrameSize() 
+	{
 		return frameSize;
 	}
 
-	public void setFrameSize(int frameSize) {
+	public void setFrameSize(int frameSize) 
+	{
 		this.frameSize = frameSize;
 	}
 
-	public int getSampleRate() {
+	public int getSampleRate() 
+	{
 		return sampleRate;
 	}
 
-	public void setSampleRate(int sampleRate) {
+	public void setSampleRate(int sampleRate) 
+	{
 		this.sampleRate = sampleRate;
 	}
 
-	public float[] getBands() {
+	public float[] getBands() 
+	{
 		return bands;
 	}
 
-	public float[] getSmoothedBands() {
+	public float[] getSmoothedBands() 
+	{
 		return smoothedBands;
 	}
 
-	public Minim getMinim() {
+	public Minim getMinim() 
+	{
 		return minim;
 	}
 
-	public AudioInput getAudioInput() {
+	public AudioInput getAudioInput() 
+	{
 		return ai;
 	}
 
 
-	public AudioBuffer getAudioBuffer() {
+	public AudioBuffer getAudioBuffer() 
+	{
 		return ab;
 	}
 
-	public float getAmplitude() {
+	public float getAmplitude() 
+	{
 		return amplitude;
 	}
 
-	public float getSmoothedAmplitude() {
+	public float getSmoothedAmplitude() 
+	{
 		return smoothedAmplitude;
 	}
 
-	public AudioPlayer getAudioPlayer() {
+	public AudioPlayer getAudioPlayer() 
+	{
 		return ap;
 	}
 
-	public FFT getFFT() {
+	public FFT getFFT() 
+	{
 		return fft;
 	}
 
