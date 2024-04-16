@@ -28,7 +28,6 @@ public class ChrisVisual extends Visual
         mv.beat.detectMode(0);
         mv.background(0);
         mv.textSize(25);
-        mv.fill(255);
         mv.textAlign(CENTER,CENTER);
 
         mv.fCounter++;
@@ -120,7 +119,7 @@ public class ChrisVisual extends Visual
 
             // Draw Venn diagram
 
-                mv.noFill();
+                mv.fill(0);
                 mv.stroke(255);
                 float overlap = circles[0].radius + circles[1].radius;
                 mv.ellipseMode(RADIUS);
