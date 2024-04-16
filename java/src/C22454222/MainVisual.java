@@ -1,19 +1,21 @@
 package C22454222; // Package declaration
-import ie.tudublin.*; // Importing necessary classes from the ie.tudublin package
 
+import ie.tudublin.*; // Importing necessary classes from the ie.tudublin package
+import ddf.minim.AudioPlayer;
 // MainVisual class extending Visual class
-public class MainVisual extends Visual
+public class MainVisual extends Visual 
 {
+    AudioPlayer ap; // Reference to AudioPlayer class
     int visualSwap = 0; // Variable to control visual swapping
     int playTune = 0; // Variable to control playing tune
     int stopPlay = 0; // Variable to control stopping playback
     /*
     AimeeVisual aimee;
     NeilVisual neil;
+    JadeVisual jade;
     JasonVisual jason;
     ChrisVisual chris;
     */
-    JadeVisual jade;
     AudioBandsVisual audioBandsVisual; // Instance of AudioBandsVisual class
 
     public float fCounter = 0; // Variable to store a floating-point counter value
@@ -37,10 +39,9 @@ public class MainVisual extends Visual
         /*
         aimee = new AimeeVisual(this);
         neil = new NeilVisual(this);
-        
+        jade = new JadeVisual(this);
         jason = new JasonVisual(this);
         */
-        jade = new JadeVisual(this);
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
     }
 
@@ -49,12 +50,12 @@ public class MainVisual extends Visual
     {
         if (key == ' ') 
         { // If space bar is pressed
-            as.stop(); // Stop audio playback
-            as.trigger(); // Trigger audio playback
+            as.stop();
+            as.trigger();
         }
-        
+        // If numeric keys 1 to 3 are pressed
         if (keyCode >= '1' && keyCode <= '3') 
-        { // If numeric keys 1 to 3 are pressed
+        {
             chrisOption = keyCode - '0'; // Update chrisOption with the corresponding numeric value
         }
     }
@@ -72,18 +73,18 @@ public class MainVisual extends Visual
         try 
         {
             calculateFFT(); // Calculate Fast Fourier Transform
-        } 
-        
-        catch(VisualException e) 
+        }
+
+        catch (VisualException e) 
         { // Catch any VisualExceptions
             e.printStackTrace(); // Print stack trace of the exception
         }
 
         calculateFrequencyBands(); // Calculate frequency bands
-        calculateAverageAmplitude(); // Calculate average amplitude    
+        calculateAverageAmplitude(); // Calculate average amplitude
 
         // Switch statement to determine which visual to render
-        switch(visualSwap) 
+        switch (visualSwap) 
         {
             case 0:
                 // aimee.render();
@@ -102,7 +103,7 @@ public class MainVisual extends Visual
                 break;
             case 5:
                 audioBandsVisual.render(); // Render AudioBandsVisual
-                break;  
+                break;
             default:
                 background(0); // Set background color to black by default
                 break;

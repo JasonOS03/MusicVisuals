@@ -81,7 +81,7 @@ public class MainVisualMenu extends Visual
             
             if (mouseY >= i * boxHeight && mouseY <= (i + 1) * boxHeight)
             {
-                fill(255); // Set text color to white
+                fill(0); // Set text color to white
                 rect(0, i * boxHeight, boxWidth, boxHeight);
 
                 if (mousePressed)
@@ -97,7 +97,7 @@ public class MainVisualMenu extends Visual
                 }
             }
         }
-        textSize(50);
+        textSize(30);
         fill(255); // Set text color to white
         textAlign(CENTER, CENTER);
 
