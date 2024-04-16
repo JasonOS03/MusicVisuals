@@ -70,10 +70,9 @@ public class JasonVisual extends PApplet
     }
     float average = sum / (float) ab.size();
     float amplitude = average * 500;
-    float smoothrotation = lerp(0,radians(amplitude),0.3f);
+    float smoothrotation = lerp(0,radians(amplitude),0.1f);
 
     translate(width/2,height/2);
-
     
     int num_diagonals = (int) map(amplitude, 0, 1, 1, 5);
 
@@ -82,9 +81,13 @@ public class JasonVisual extends PApplet
     for (int i = 0; i < num_diagonals; i++) {
         float hue = map(i, 0, num_diagonals - 1, 255, 122);
         float y_axis = map(i, 0, num_diagonals - 1, 0, height);
+
         rotate(smoothrotation);
+
         stroke(hue, 100, 100);
-        line(0, y_axis, width, height - y_axis);
+        strokeWeight(5);
+
+        line(0, y_axis, width, height - y_axis); 
     }
              
 
