@@ -36,7 +36,7 @@ Once you have ran the program, a separate menu window opens with the following o
 - Chris
 
 ## Chris's Visual Option
-Adam's visual has further visual change options based on keypress.
+Chris's visual has further visual change options based on keypress.
 Press a corresponding number on your keyboard to change the visual.
 
 | Keycode | Visual |
