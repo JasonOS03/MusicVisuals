@@ -85,8 +85,9 @@ public class JasonVisual extends PApplet
         rotate(smoothrotation);
 
         stroke(hue, 100, 100);
-        strokeWeight(5);
 
+        strokeWeight(2);
+        
         line(0, y_axis, width, height - y_axis); 
     }
              
