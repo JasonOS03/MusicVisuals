@@ -30,6 +30,9 @@ class Branch{
 
         }
     }
+    void branch (int branchAmt){
+        
+    }
 
 }
 
