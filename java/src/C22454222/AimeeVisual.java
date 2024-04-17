@@ -18,12 +18,21 @@ class Branch{
 
         branch(branches);
     }
+    void show(){
+
+    }
 
 }
 
 
 public class AimeeVisual extends Visual{
     MainVisual mainVisual;
+    boolean clockwise =true;
+
+    Branch branch1;
+    Branch branch2;
+    Branch branch3;
+
 
     public AimeeVisual(MainVisual mainVisual){
         this.mainVisual=mainVisual;
@@ -32,6 +41,15 @@ public class AimeeVisual extends Visual{
 
 
     public void render(){
+
+
+
+
+        float amplitude= mainVisual.getSmoothedAmplitude();
+        branch1= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/10f,-mainVisual.height/4f),0,14);
+        branch2= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/30f,-mainVisual.height/4f),0,18);
+        branch3= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/15f,-mainVisual.height/4f),0,5);
+
 
     }
 }
