@@ -45,6 +45,7 @@ public class MainVisual extends Visual
          */
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
         neil = new NeilVisual(this);
+        
     }
 
     // Method to handle key pressed events
