@@ -19,7 +19,16 @@ class Branch{
         branch(branches);
     }
     void show(){
+        mainVisual.rotate(this.angle);
+        mainVisual.line(0,0,0,amplitude);
+        if(branches != null){
+            mainVisual.translate(0, amplitude);
+            mainVisual.pushMatrix();
+            branches[0].show();
+            mainVisual.popMatrix();
+            branches[1].show();
 
+        }
     }
 
 }
