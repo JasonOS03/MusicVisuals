@@ -15,10 +15,16 @@ public class MainVisual extends Visual {
      * JasonVisual jason;
      * ChrisVisual chris;
      */
-    AudioBandsVisual audioBandsVisual; // Instance of AudioBandsVisual class
+
+     
+    AimeeVisual aimee;
+    AudioBandsVisual audioBandsVisual;
+
 
     public float fCounter = 0; // Variable to store a floating-point counter value
-    public int chrisOption = 1; // Variable to store an option for Chris's visual
+    public int branchCounter=0;
+    public int chrisOption=1;
+    public int smoothedAmplitude=1;
 
     // Method to set initial settings
     public void settings() {
@@ -39,7 +45,10 @@ public class MainVisual extends Visual {
          * jade = new JadeVisual(this);
          * jason = new JasonVisual(this);
          */
-        audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
+        aimee = new AimeeVisual(this);
+        
+        audioBandsVisual = new AudioBandsVisual(this);
+         // Initializing AudioBandsVisual instance
     }
 
     // Method to handle key pressed events
@@ -91,7 +100,7 @@ public class MainVisual extends Visual {
         // Switch statement to determine which visual to render
         switch (visualSwap) {
             case 0:
-                // aimee.render();
+                aimee.render();
                 break;
             case 1:
                 // neil.render();
