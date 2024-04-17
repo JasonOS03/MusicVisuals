@@ -11,6 +11,15 @@ public class NeilVisual extends Visual {
         this.mv = mv;
     }
 
+    float radius = 50;
+    int beatCount = 0;
+
     public void render() {
+        mv.background(0, 0, 0);
+        float space = mv.getSmoothedAmplitude();
+        radius= 5 * beatCount;
+        mv.beat.detect(mv.as.mix);
+        mv.beat.detectMode(0); // Setting beat detection mode
+        mv.ellipse(0,0,radius,radius);
     }
 }
