@@ -16,6 +16,8 @@ public class NeilVisual extends Visual {
 
     public void render() {
         mv.background(0, 0, 0);
+        mv.fCounter++;
+        mv.translate(mv.width/2, mv.height/2);
         float space = mv.getSmoothedAmplitude();
         radius= 5 * beatCount;
         mv.beat.detect(mv.as.mix);
