@@ -30,7 +30,18 @@ class Branch{
 
         }
     }
+
+    // Create branch method to populate branches array
     void branch (int branchAmt){
+
+        if (branchAmt > 0 ){
+
+
+            branches = new Branch[2];
+            mainVisual.branchCounter++;
+            mainVisual.branchCounter++;
+
+        }
 
     }
 
