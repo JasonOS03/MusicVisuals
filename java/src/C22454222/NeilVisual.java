@@ -21,6 +21,8 @@ public class NeilVisual extends Visual {
     float[] starX = new float[NUM_STARS];
     float[] starY = new float[NUM_STARS];
 
+    float[] colourArray = new float[] { random(0, 255), random(0, 255), random(0, 255) };
+
     float radius = 50;
     int beatCount = 0;
 
@@ -36,6 +38,9 @@ public class NeilVisual extends Visual {
         {
             beatCount++;
         }
+        //fill shapes with colour 
+        mv.fill(colourArray[0], colourArray[1], colourArray[2], 40);
+         // increase radius of shape with beatCount
         radius= 5 * beatCount;
         mv.ellipse(0,0,radius,radius);
 
