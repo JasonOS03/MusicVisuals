@@ -10,6 +10,11 @@ public class NeilVisual extends Visual {
     public NeilVisual(MainVisual mv) {
         this.mv = mv;
     }
+    // Number of stars
+    final int NUM_STARS = 100;
+
+    float[] starX = new float[NUM_STARS];
+    float[] starY = new float[NUM_STARS];
 
     float radius = 50;
     int beatCount = 0;
@@ -19,9 +24,21 @@ public class NeilVisual extends Visual {
         mv.fCounter++;
         mv.translate(mv.width/2, mv.height/2);
         float space = mv.getSmoothedAmplitude();
-        radius= 5 * beatCount;
         mv.beat.detect(mv.as.mix);
         mv.beat.detectMode(0); // Setting beat detection mode
+
+        if (mv.beat.isKick())
+        {
+            beatCount++;
+        }
+        radius= 5 * beatCount;
         mv.ellipse(0,0,radius,radius);
+
+        for (int i = 0; i < NUM_STARS; i++) {
+            // Set the size of the stars based on music's amplitude
+            float starSize = random(5, 20) * space; // Increase the size range for bigger stars
+            mv.fill(255); // Set star color to white
+            mv.ellipse(starX[i], starY[i], starSize, starSize); // Draw the star
+        }
     }
 }
