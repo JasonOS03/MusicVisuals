@@ -41,6 +41,14 @@ class Branch{
             mainVisual.branchCounter++;
             mainVisual.branchCounter++;
 
+            float angle = MainVisual.map(mainVisual.smoothedAmplitude,0,1,3.14f/10f,3.14f/2f);
+
+            branches[0]= new Branch(mainVisual,start-amplitude,amplitude/1.5f,angle,branchAmt-2 );
+            branches[1]= new Branch(mainVisual,start-amplitude,amplitude/1.5f,angle,branchAmt-2 );
+        
+
+
+
         }
 
     }
