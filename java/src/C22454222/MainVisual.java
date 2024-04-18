@@ -17,7 +17,7 @@ public class MainVisual extends Visual
     ChrisVisual chris;
     */
     AudioBandsVisual audioBandsVisual; // Instance of AudioBandsVisual class
-
+    JadeVisual jade;
     public float fCounter = 0; // Variable to store a floating-point counter value
     public int chrisOption = 1; // Variable to store an option for Chris's visual
 
