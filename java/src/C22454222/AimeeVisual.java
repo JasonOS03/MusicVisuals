@@ -71,6 +71,10 @@ public class AimeeVisual extends Visual{
         branch2= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/30f,-mainVisual.height/4f),0,18);
         branch3= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/15f,-mainVisual.height/4f),0,5);
 
+        mainVisual.fill((mainVisual.fCounter/10)%255);
+        mainVisual.stroke((mainVisual.fCounter/10)%255,255,255);
+        branch1.show();
+
 
     }
 }
