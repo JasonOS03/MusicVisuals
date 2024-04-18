@@ -31,7 +31,7 @@ class Branch{
         }
     }
     void branch (int branchAmt){
-        
+
     }
 
 }
@@ -53,6 +53,15 @@ public class AimeeVisual extends Visual{
 
 
     public void render(){
+        mainVisual.colorMode(MainVisual.HSB);//setting colour mode
+        mainVisual.strokeWeight(1);
+        mainVisual.fill(0,40);
+
+        mainVisual.rect(-1, -1, mainVisual.width + 1, mainVisual.height + 1);
+
+        mainVisual.fill(255);
+        mainVisual.stroke(255);
+
 
 
 
