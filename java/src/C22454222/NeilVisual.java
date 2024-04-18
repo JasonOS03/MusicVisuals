@@ -9,6 +9,11 @@ public class NeilVisual extends Visual {
 
     public NeilVisual(MainVisual mv) {
         this.mv = mv;
+        // Generate the positions of the stars only once
+        for (int i = 0; i < NUM_STARS; i++) {
+            starX[i] = random(-mv.width / 2, mv.width / 2);
+            starY[i] = random(-mv.height / 2, mv.height / 2);
+        }
     }
     // Number of stars
     final int NUM_STARS = 100;
