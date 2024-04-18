@@ -81,19 +81,34 @@ public class AimeeVisual extends Visual{
         mainVisual.fill(255);
         mainVisual.stroke(255);
 
+        mainVisual.fCounter++;
+
+        for (int i = 0; i < 6; i++) {
+
+            // Replace current matrix with identity matrix
+            mainVisual.resetMatrix();
+
+            // Set the visual display window size
+            mainVisual.translate(mainVisual.width / 2, mainVisual.height / 2);
+
+            // Set branch counter to 0
+            mainVisual.branchCounter = 0;
+        
 
 
 
 
-        float amplitude= mainVisual.getSmoothedAmplitude();
-        branch1= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/10f,-mainVisual.height/4f),0,14);
-        branch2= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/30f,-mainVisual.height/4f),0,18);
-        branch3= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/15f,-mainVisual.height/4f),0,5);
+
+
+            float amplitude= mainVisual.getSmoothedAmplitude();
+            branch1= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/10f,-mainVisual.height/4f),0,14);
+            branch2= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/30f,-mainVisual.height/4f),0,18);
+            branch3= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/15f,-mainVisual.height/4f),0,5);
 
         mainVisual.fill((mainVisual.fCounter/10)%255);
         mainVisual.stroke((mainVisual.fCounter/10)%255,255,255);
         branch1.show();
 
-
+        }
     }
 }
