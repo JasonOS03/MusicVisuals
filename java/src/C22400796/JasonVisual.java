@@ -20,22 +20,7 @@ public class JasonVisual extends PApplet
     float y = 0;
     float smoothedY = 0;
     float smoothedAmplitude = 0;
-
-    public void keyPressed() {
-		if (key >= '0' && key <= '9') {
-			mode = key - '0';
-		}
-		if (keyCode == ' ') {
-            if (newplayer.isPlaying()) {
-                newplayer.pause();
-            } else {
-                newplayer.rewind();
-                newplayer .play();
-            }
-        }
-	}
-
-    
+  
 
     public void settings()
     {
@@ -76,13 +61,12 @@ public class JasonVisual extends PApplet
 
     translate(width/2,height/2);
     
-    int num_diagonals = (int) map(amplitude, 0, 1, 1,6);
+    int num_diagonals = (int) map(amplitude, 0, 1, 1,4);
     int num_circles = 4;
     
-
-    
+   
     for (int i = 0; i < num_diagonals; i++) {
-        float hue = map(i, 0, num_diagonals - 1, 255, 112);
+        float hue = map(i, 0, num_diagonals - 1, 80, 150);
 
         float y_axis = map(i, 0, num_diagonals, CenterY, CenterY);
         rotate(smoothrotation);
@@ -96,19 +80,19 @@ public class JasonVisual extends PApplet
     }
     for(int i = 0;i<num_circles;i++)
     {
-        stroke(122,100,100);
+        float hue = map(i, 0, num_diagonals - 1, 80, 150);
+        stroke(hue,100,100);
         noFill();
         rotate(smoothrotation);
+
         strokeWeight(4);
         ellipse(0,0,CenterX/2,amplitude);
+
+        
     }
     
     
     
-             
-
-
-
 
 }
                
