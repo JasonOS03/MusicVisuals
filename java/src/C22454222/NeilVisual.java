@@ -11,8 +11,8 @@ public class NeilVisual extends Visual {
         this.mv = mv;
         // Generate the positions of the stars only once
         for (int i = 0; i < NUM_STARS; i++) {
-            starX[i] = random(-mv.width / 2, mv.width / 2);
-            starY[i] = random(-mv.height / 2, mv.height / 2);
+            starX[i] = random(-mv.width / 2, mv.width);
+            starY[i] = random(-mv.height, mv.height);
         }
     }
     // Number of stars
@@ -63,6 +63,9 @@ public class NeilVisual extends Visual {
             beatCount = 0;
             radius = 20;
         }
+
+        mv.rotate(MainVisual.map(mv.fCounter % 360, 0, 360, 0, MainVisual.PI * 2));
+        mv.rect(-radius / 2, -radius / 2, radius, radius);
 
         for (int i = 0; i < NUM_STARS; i++) {
             // Set the size of the stars based on music's amplitude
