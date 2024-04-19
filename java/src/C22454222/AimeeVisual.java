@@ -59,6 +59,7 @@ class Branch{
 public class AimeeVisual extends Visual{
     MainVisual mainVisual;
     boolean clockwise =true;
+    float rotationSpeedFactor=3;
 
     Branch branch1;
     Branch branch2;
@@ -93,6 +94,18 @@ public class AimeeVisual extends Visual{
 
             // Set branch counter to 0
             mainVisual.branchCounter = 0;
+
+            //set rotation direction
+            float rotationDirection = clockwise ? 1:-1;
+
+            //set rotation speed of entire visual
+            float rotationSpeed=rotationDirection * rotationSpeedFactor * MainVisual.map(mainVisual.fCounter% 360,0,360,0, MainVisual.PI * 2);
+
+
+            mainVisual.rotate(rotationSpeed);
+            mainVisual.rotate(MainVisual.map((float) i, 0f, 6f, 0f, MainVisual.PI * 2));
+
+            
         
 
 
