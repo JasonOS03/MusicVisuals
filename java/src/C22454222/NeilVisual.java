@@ -57,6 +57,9 @@ public class NeilVisual extends Visual {
         mv.fill(prevColours[0], prevColours[1], prevColours[2], 25);
         mv.rect(-radius / 2, -radius / 2, radius, radius);
 
+        mv.stroke(150, 200, 255); 
+
+
 
         if (radius > ((float) mv.width) / 2) 
         {
