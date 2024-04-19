@@ -65,6 +65,7 @@ public class NeilVisual extends Visual {
         }
 
         mv.rotate(MainVisual.map(mv.fCounter % 360, 0, 360, 0, MainVisual.PI * 2));
+        mv.fill(prevColours[0], prevColours[1], prevColours[2], 25);
         mv.rect(-radius / 2, -radius / 2, radius, radius);
 
         for (int i = 0; i < NUM_STARS; i++) {
