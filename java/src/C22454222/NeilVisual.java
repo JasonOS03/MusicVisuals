@@ -22,6 +22,7 @@ public class NeilVisual extends Visual {
     float[] starY = new float[NUM_STARS];
 
     float[] colourArray = new float[] { random(0, 255), random(0, 255), random(0, 255) };
+    float[] prevColours = new float[] { 0, 0, 0 };
 
     float radius = 50;
     int beatCount = 0;
@@ -54,8 +55,13 @@ public class NeilVisual extends Visual {
 
         if (radius > ((float) mv.width) / 2) 
         {
+            for (int i = 0; i < 3; i++) {
+                prevColours[i] = colourArray[i];
+            }
+
             reassignColours(colourArray);
             beatCount = 0;
+            radius = 20;
         }
 
         for (int i = 0; i < NUM_STARS; i++) {
