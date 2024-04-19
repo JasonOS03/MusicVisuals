@@ -53,7 +53,7 @@ public class NeilVisual extends Visual {
         radius= 5 * beatCount;
         mv.ellipse(0,0,radius,radius);
 
-        mv.rotate(MainVisual.map(mv.fCounter % 360, 0, 360, 0, 360));
+        mv.rotate(MainVisual.map(mv.fCounter % 360, 0, 360, 0, MainVisual.PI * 2));
         mv.fill(prevColours[0], prevColours[1], prevColours[2], 25);
         mv.rect(-radius / 2, -radius / 2, radius, radius);
 
@@ -68,6 +68,11 @@ public class NeilVisual extends Visual {
             reassignColours(colourArray);
             beatCount = 0;
             radius = 20;
+        }
+        for (float i = 0; i < mv.width; i += 900) {
+            float y = mv.height* i; // Center Y-coordinate
+            float x = mv.width * i;
+            mv.point(x, y); // Draw a point at each X-coordinate
         }
         
         for (int i = 0; i < NUM_STARS; i++) {
