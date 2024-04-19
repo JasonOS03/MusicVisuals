@@ -26,6 +26,14 @@ public class NeilVisual extends Visual {
     float radius = 50;
     int beatCount = 0;
 
+    public float[] reassignColours(float[] colourArray) {
+        float[] colours = new float[] { random(0, 255), random(0, 255), random(0, 255) };
+        for (int i = 0; i < 3; i++) {
+            colourArray[i] = colours[i];
+        }
+        return colourArray;
+    }
+
     public void render() {
         mv.background(0, 0, 0);
         mv.fCounter++;
@@ -46,6 +54,7 @@ public class NeilVisual extends Visual {
 
         if (radius > ((float) mv.width) / 2) 
         {
+            reassignColours(colourArray);
             beatCount = 0;
         }
 
