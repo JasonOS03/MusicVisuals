@@ -24,7 +24,7 @@ public class NeilVisual extends Visual {
     float[] colourArray = new float[] { random(0, 255), random(0, 255), random(0, 255) };
     float[] prevColours = new float[] { 0, 0, 0 };
 
-    float radius = 50;
+    float radius = 20;
     int beatCount = 0;
 
     public float[] reassignColours(float[] colourArray) {
@@ -53,6 +53,11 @@ public class NeilVisual extends Visual {
         radius= 5 * beatCount;
         mv.ellipse(0,0,radius,radius);
 
+        mv.rotate(MainVisual.map(mv.fCounter % 360, 0, 360, 0, MainVisual.PI * 2));
+        mv.fill(prevColours[0], prevColours[1], prevColours[2], 25);
+        mv.rect(-radius / 2, -radius / 2, radius, radius);
+
+
         if (radius > ((float) mv.width) / 2) 
         {
             for (int i = 0; i < 3; i++) {
@@ -63,10 +68,6 @@ public class NeilVisual extends Visual {
             beatCount = 0;
             radius = 20;
         }
-
-        mv.rotate(MainVisual.map(mv.fCounter % 360, 0, 360, 0, MainVisual.PI * 2));
-        mv.fill(prevColours[0], prevColours[1], prevColours[2], 25);
-        mv.rect(-radius / 2, -radius / 2, radius, radius);
 
         for (int i = 0; i < NUM_STARS; i++) {
             // Set the size of the stars based on music's amplitude
