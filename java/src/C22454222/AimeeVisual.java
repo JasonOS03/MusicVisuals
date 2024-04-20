@@ -84,6 +84,11 @@ public class AimeeVisual extends Visual{
 
         mainVisual.fCounter++;
 
+        if (mainVisual.fCounter % (mainVisual.frameRate * 2) == 0) {
+            clockwise = !clockwise; // Toggle rotation direction
+        }
+
+
         for (int i = 0; i < 6; i++) {
 
             // Replace current matrix with identity matrix
