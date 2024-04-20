@@ -43,6 +43,7 @@ public class MainVisual extends Visual
         jason = new JasonVisual(this);
         */
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
+        jade = new JadeVisual(this);
     }
 
     // Method to handle key pressed events
