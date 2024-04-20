@@ -38,13 +38,14 @@ class Branch{
 
 
             branches = new Branch[2];
-            mainVisual.branchCounter++;
-            mainVisual.branchCounter++;
+        
+            mainVisual.branchCounter+=2;
+            
 
             float angle = MainVisual.map(mainVisual.smoothedAmplitude,0,1,3.14f/10f,3.14f/2f);
 
             branches[0]= new Branch(mainVisual,start-amplitude,amplitude/1.5f,angle,branchAmt-2 );
-            branches[1]= new Branch(mainVisual,start-amplitude,amplitude/1.5f,angle,branchAmt-2 );
+            branches[1]= new Branch(mainVisual,start-amplitude,amplitude/1.5f,-angle,branchAmt-2 );
         
 
 
@@ -59,11 +60,11 @@ class Branch{
 public class AimeeVisual extends Visual{
     MainVisual mainVisual;
     boolean clockwise =true;
-    float rotationSpeedFactor=3;
+    float rotationSpeedFactor=4;
 
     Branch branch1;
     Branch branch2;
-    Branch branch3;
+    
 
 
     public AimeeVisual(MainVisual mainVisual){
@@ -74,7 +75,7 @@ public class AimeeVisual extends Visual{
 
     public void render(){
         mainVisual.colorMode(MainVisual.HSB);//setting colour mode
-        mainVisual.strokeWeight(1);
+        mainVisual.strokeWeight(2);
         mainVisual.fill(0,40);
 
         mainVisual.rect(-1, -1, mainVisual.width + 1, mainVisual.height + 1);
@@ -84,17 +85,13 @@ public class AimeeVisual extends Visual{
 
         mainVisual.fCounter++;
 
-        if (mainVisual.fCounter % (mainVisual.frameRate * 2) == 0) {
-            clockwise = !clockwise; // Toggle rotation direction
-        }
-
 
         for (int i = 0; i < 6; i++) {
 
             // Replace current matrix with identity matrix
             mainVisual.resetMatrix();
 
-            // Set the visual display window size
+            // Set the visual display window size. centers the visual
             mainVisual.translate(mainVisual.width / 2, mainVisual.height / 2);
 
             // Set branch counter to 0
@@ -104,7 +101,7 @@ public class AimeeVisual extends Visual{
             float rotationDirection = clockwise ? 1:-1;
 
             //set rotation speed of entire visual
-            float rotationSpeed=rotationDirection * rotationSpeedFactor * MainVisual.map(mainVisual.fCounter% 360,0,360,0, MainVisual.PI * 2);
+            float rotationSpeed=rotationDirection * rotationSpeedFactor * MainVisual.map(mainVisual.fCounter % 360,0,360,0, MainVisual.PI * 2);
 
 
             mainVisual.rotate(rotationSpeed);
@@ -112,10 +109,10 @@ public class AimeeVisual extends Visual{
 
             
         
-            float amplitude= mainVisual.getSmoothedAmplitude();
-            branch1= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/10f,-mainVisual.height/4f),0,14);
-            branch2= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/30f,-mainVisual.height/4f),0,18);
-            branch3= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/15f,-mainVisual.height/4f),0,5);
+            float amplitude = mainVisual.getSmoothedAmplitude();
+            branch1= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/10f,-mainVisual.height/4f),0,6);
+            branch2= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/50f,-mainVisual.height/4f),0,5);
+            
 
         mainVisual.fill((mainVisual.fCounter/10)%255);
         mainVisual.stroke((mainVisual.fCounter/10)%255,255,255);
@@ -123,9 +120,6 @@ public class AimeeVisual extends Visual{
         mainVisual.fill((mainVisual.fCounter/1)%255);
         mainVisual.stroke((mainVisual.fCounter/1)%255,255,255);
         branch2.show();
-        mainVisual.fill((mainVisual.fCounter/2)%255);
-        mainVisual.stroke((mainVisual.fCounter/2)%255,255,255);
-        branch3.show();
 
         }
     }
