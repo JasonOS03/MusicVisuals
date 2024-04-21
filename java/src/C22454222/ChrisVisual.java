@@ -23,6 +23,19 @@ public class ChrisVisual extends Visual
         as = mv.getAudioSample();
     }
 
+    float[] currentColours = new float[]{random(0,255),random(0,255),random(0,255)};
+    float[] previousColours = new float[]{0,0,0};
+
+    public float[] replacingColours(float[] currentColours)
+    {
+        float[] colours = new float[]{random(0,255),random(0,255),random(0,255)};
+        for(int i = 0; i < 3; i++)
+        {
+            currentColours[i] = colours[i];
+        }
+        return currentColours;
+    }
+
     public void settings()
     {
         mv.fullScreen();;
