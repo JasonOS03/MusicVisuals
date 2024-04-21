@@ -12,6 +12,9 @@ public class ChrisVisual extends Visual
     AudioBuffer ab;
     AudioSample as;
 
+    float[] lerpedBuffer[];
+    float y = 0;
+    float smoothedAmplitude = 0;
 
     public ChrisVisual(MainVisual mv) 
     {
@@ -22,34 +25,34 @@ public class ChrisVisual extends Visual
 
     public void setup()
     {
-        fullScreen(P3D);
         noCursor();
         smooth();
-
-        mv.background(0);
-        mv.beat.detect(mv.as.mix);
-        mv.beat.detectMode(0);
-        mv.fCounter++;
-
-        mv.translate(mv.width/2, mv.height/2);
-
         colorMode(HSB);
+
+        y = height / 2;
+        lerpedBuffer = new float[ab.size()][];
+        
+        for (int i = 0; i < ab.size(); i++)
+        {
+            lerpedBuffer[i] = new float[]{ab.get(i)};
+        }
     }
 
     public void render()
     {
-        float smoothedAmplitude = 0;
         float lerpedAmplitude = 0;
         lerpedAmplitude = lerp(lerpedAmplitude, smoothedAmplitude,0.1f);
-
-
 
         if (mv.chrisOption == 1)
         {
             mv.fill(0,50);  
             mv.noStroke();
-            mv.rect(0, 0, width, height);
-            mv.translate(width/2, height/2);
+            
+            mv.background(0);
+            mv.beat.detect(mv.as.mix);
+            mv.beat.detectMode(0);
+            mv.fCounter++;
+            mv.translate(mv.width/2, mv.height/2);
 
             float n4 = 0;
             float n6 = 0;
@@ -69,7 +72,7 @@ public class ChrisVisual extends Visual
             mv.ellipse(x, y, lerpedAmplitude * 10, lerpedAmplitude * 10);
 
             mv.fill(255, 255, 255, 60); // White
-            mv.rect(x3, y3, as.left.get(i) * 20, as.left.get(i) * 10);
+            mv.rect(x3, y3, lerpedAmplitude * 20, lerpedAmplitude * 10);
 
             mv.fill(255, 152, 0, 90); // Orange
             mv.rect(x, y, as.right.get(i) * 10, as.left.get(i) * 10);
