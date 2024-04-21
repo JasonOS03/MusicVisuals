@@ -12,6 +12,7 @@ public class ChrisVisual extends Visual
     AudioBuffer ab;
     AudioSample as;
 
+
     public ChrisVisual(MainVisual mv) 
     {
         this.mv = mv;
@@ -19,19 +20,29 @@ public class ChrisVisual extends Visual
         as = mv.getAudioSample();
     }
 
-    int beatCount = 0;
-
-    public void render()
+    public void setup()
     {
+        fullScreen(P3D);
+        noCursor();
+        smooth();
+
+        mv.background(0);
         mv.beat.detect(mv.as.mix);
         mv.beat.detectMode(0);
-        mv.background(0);
-        mv.textSize(25);
-        mv.textAlign(CENTER,CENTER);
-
         mv.fCounter++;
 
         mv.translate(mv.width/2, mv.height/2);
+
+        colorMode(HSB);
+    }
+
+    public void render()
+    {
+        float smoothedAmplitude = 0;
+        float lerpedAmplitude = 0;
+        lerpedAmplitude = lerp(lerpedAmplitude, smoothedAmplitude,0.1f);
+
+
 
         if (mv.chrisOption == 1)
         {
@@ -51,12 +62,11 @@ public class ChrisVisual extends Visual
 
             float x = sin(radians(i))*(angle2+30); 
             float y = cos(radians(i))*(angle2+30);
-
             float x3 = sin(radians(i))*(500/angle); 
             float y3 = cos(radians(i))*(500/angle);
 
             mv.fill(255, 255, 0, 90); // Yellow
-            mv.ellipse(x, y, as.left.get(i) * 10, as.left.get(i) * 10);
+            mv.ellipse(x, y, lerpedAmplitude * 10, lerpedAmplitude * 10);
 
             mv.fill(255, 255, 255, 60); // White
             mv.rect(x3, y3, as.left.get(i) * 20, as.left.get(i) * 10);
@@ -77,11 +87,5 @@ public class ChrisVisual extends Visual
         {
 
         }
-
-        if (mv.chrisOption == 3)
-        {
-            
-        }
-
     }
 }
