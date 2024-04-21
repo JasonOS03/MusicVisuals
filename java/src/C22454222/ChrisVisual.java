@@ -15,6 +15,7 @@ public class ChrisVisual extends Visual
     float[] lerpedBuffer[];
     float y = 0;
     float smoothedAmplitude = 0;
+    int beatCounter = 0;
 
     public ChrisVisual(MainVisual mv) 
     {
@@ -43,11 +44,6 @@ public class ChrisVisual extends Visual
 
     public void setup()
     {
-        noCursor();
-        smooth();
-        mv.colorMode(HSB);
-        frameRate(24);
-
         y = mv.height / 2;
         lerpedBuffer = new float[ab.size()][];
         
@@ -59,8 +55,19 @@ public class ChrisVisual extends Visual
 
     public void render()
     {
+        mv.background(0);
+        mv.beat.detect(mv.as.mix);
+        mv.beat.detectMode(0);
+        mv.fCounter++;
+        mv.translate(mv.width/2, mv.height/2);
+
         float lerpedAmplitude = 0;
         lerpedAmplitude = lerp(lerpedAmplitude,smoothedAmplitude,0.1f);
+
+        if (mv.beat.isKick())
+        {
+            beatCounter++;
+        }
 
         if (mv.chrisOption == 1)
         {   
@@ -106,7 +113,8 @@ public class ChrisVisual extends Visual
 
         if (mv.chrisOption == 2)
         {
-
+            mv.fill(0, 0, 255); 
+            mv.triangle(-50, 50, 0, -50, 50, 50); 
         }
     }
 }
