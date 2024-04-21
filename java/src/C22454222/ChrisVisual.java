@@ -1,7 +1,6 @@
 package C22454222;
 
 import ie.tudublin.*;
-import processing.core.PApplet;
 import ddf.minim.*;
 import ddf.minim.AudioBuffer; 
 import ddf.minim.AudioSample; 
@@ -76,63 +75,7 @@ public class ChrisVisual extends Visual
 
         if (mv.chrisOption == 2)
         {
-            class Circle 
-            {
-                float x, y;
-                float radius;
 
-                Circle(float x, float y, float radius) 
-                {
-                    this.x = x;
-                    this.y = y;
-                    this.radius = radius;
-                }
-
-                void display() 
-                {
-                    mv.noFill();
-                    mv.stroke(255);
-                    mv.ellipseMode(RADIUS);
-                    mv.ellipse(x, y, radius, radius);
-                }
-            }
-            
-            Circle[] circles;
-            int numCircles = 3;
-            float minRadius = 50;
-            float maxRadius = 200;
-
-            circles = new Circle[numCircles];
-            for (int i = 0; i < numCircles; i++) 
-            {
-                float radius = mv.random(minRadius, maxRadius);
-                float x = mv.random(radius, mv.width - radius);
-                float y = mv.random(radius, mv.height - radius);
-                circles[i] = new Circle(x, y, radius);
-            }
-
-            // Draw circles
-            for (int i = 0; i < numCircles; i++) 
-            {
-                circles[i].display();
-            }
-
-            // Draw Venn diagram
-
-                mv.fill(0);
-                mv.stroke(255);
-                float overlap = circles[0].radius + circles[1].radius;
-                mv.ellipseMode(RADIUS);
-
-                // Circle 1
-                mv.ellipse(circles[0].x, circles[0].y, circles[0].radius, circles[0].radius);
-
-                // Circle 2
-                mv.ellipse(circles[1].x - overlap / 2, circles[1].y, circles[1].radius, circles[1].radius);
-
-                // Intersection
-                float intersectRadius = PApplet.sqrt(PApplet.sq(circles[0].radius) + PApplet.sq(circles[1].radius));
-                mv.ellipse(circles[0].x - overlap / 4, circles[0].y, intersectRadius, intersectRadius);
         }
 
         if (mv.chrisOption == 3)
