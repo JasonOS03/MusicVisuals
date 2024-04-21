@@ -18,8 +18,6 @@ public class JadeVisual {
     
     float[] starX = new float[NUM_STARS];
     float[] starY = new float[NUM_STARS];
-    
-
 
     void render(){
         //initialisation
@@ -72,6 +70,13 @@ public class JadeVisual {
             // draw the second triangle
             mv.triangle(x1, y1, x2, y2, x3, y3);
         }//end for loop
+
+        for (int i = 0; i < NUM_STARS; i++) {
+            // Set the size of the stars based on music's amplitude
+            float starSize = random(5, 20) * createSpace; // Increase the size range for bigger stars
+            mv.fill(255); // Set star color to white
+            mv.ellipse(starX[i], starY[i], starSize, starSize); // Draw the star
+        }
     }
     
 }
