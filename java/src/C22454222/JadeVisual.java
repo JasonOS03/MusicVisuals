@@ -8,7 +8,17 @@ public class JadeVisual {
     public JadeVisual(MainVisual mv) 
     {
         this.mv = mv;
+        for (int i = 0; i < NUM_STARS; i++) {
+            starX[i] = random(0, mv.width); // Random x position within the width of the screen
+            starY[i] = random(0, mv.height); // Random y position within the height of the screen
+        }
     }
+    
+    final int NUM_STARS = 100;
+    
+    float[] starX = new float[NUM_STARS];
+    float[] starY = new float[NUM_STARS];
+    
 
 
     void render(){
