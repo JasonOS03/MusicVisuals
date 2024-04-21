@@ -35,21 +35,13 @@ class Branch{
     void branch (int branchAmt){
 
         if (branchAmt > 0 ){
-
-
             branches = new Branch[2];
         
-            mainVisual.branchCounter+=2;
-            
-
             float angle = MainVisual.map(mainVisual.smoothedAmplitude,0,1,3.14f/10f,3.14f/2f);
 
             branches[0]= new Branch(mainVisual,start-amplitude,amplitude/1.5f,angle,branchAmt-2 );
             branches[1]= new Branch(mainVisual,start-amplitude,amplitude/1.5f,-angle,branchAmt-2 );
         
-
-
-
         }
 
     }
@@ -64,21 +56,17 @@ public class AimeeVisual extends Visual{
 
     Branch branch1;
     Branch branch2;
-    
-
 
     public AimeeVisual(MainVisual mainVisual){
         this.mainVisual=mainVisual;
     }
 
-
-
     public void render(){
         mainVisual.colorMode(MainVisual.HSB);//setting colour mode
         mainVisual.strokeWeight(2);
         mainVisual.fill(0,40);
-
-        mainVisual.rect(-1, -1, mainVisual.width + 1, mainVisual.height + 1);
+        //creates the border
+        mainVisual.rect(-2, -5, mainVisual.width + 5, mainVisual.height + 2);
 
         mainVisual.fill(255);
         mainVisual.stroke(255);
@@ -114,12 +102,16 @@ public class AimeeVisual extends Visual{
             branch2= new Branch (mainVisual,0f,MainVisual.map(amplitude,0,.4f,-mainVisual.height/50f,-mainVisual.height/4f),0,5);
             
 
-        mainVisual.fill((mainVisual.fCounter/10)%255);
-        mainVisual.stroke((mainVisual.fCounter/10)%255,255,255);
-        branch1.show();
-        mainVisual.fill((mainVisual.fCounter/1)%255);
-        mainVisual.stroke((mainVisual.fCounter/1)%255,255,255);
-        branch2.show();
+            float hue1 = (mainVisual.fCounter / 10) % 255;
+            float hue2 = (mainVisual.fCounter / 2) % 255;
+
+            mainVisual.fill(hue1, 255, 255);
+            mainVisual.stroke(hue1, 255, 255);
+            branch1.show();
+
+            mainVisual.fill(hue2, 255, 255);
+            mainVisual.stroke(hue2, 255, 255);
+            branch2.show();
 
         }
     }
