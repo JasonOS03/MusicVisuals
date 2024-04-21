@@ -23,13 +23,19 @@ public class ChrisVisual extends Visual
         as = mv.getAudioSample();
     }
 
+    public void settings()
+    {
+        mv.fullScreen();;
+    }
+
     public void setup()
     {
         noCursor();
         smooth();
-        colorMode(HSB);
+        mv.colorMode(HSB);
+        frameRate(24);
 
-        y = height / 2;
+        y = mv.height / 2;
         lerpedBuffer = new float[ab.size()][];
         
         for (int i = 0; i < ab.size(); i++)
@@ -41,13 +47,10 @@ public class ChrisVisual extends Visual
     public void render()
     {
         float lerpedAmplitude = 0;
-        lerpedAmplitude = lerp(lerpedAmplitude, smoothedAmplitude,0.1f);
+        lerpedAmplitude = lerp(lerpedAmplitude,smoothedAmplitude,0.1f);
 
         if (mv.chrisOption == 1)
-        {
-            mv.fill(0,50);  
-            mv.noStroke();
-            
+        {   
             mv.background(0);
             mv.beat.detect(mv.as.mix);
             mv.beat.detectMode(0);
@@ -68,21 +71,23 @@ public class ChrisVisual extends Visual
             float x3 = sin(radians(i))*(500/angle); 
             float y3 = cos(radians(i))*(500/angle);
 
-            mv.fill(255, 255, 0, 90); // Yellow
-            mv.ellipse(x, y, lerpedAmplitude * 10, lerpedAmplitude * 10);
+            float scaledAmplitude = lerpedAmplitude * 10;
 
-            mv.fill(255, 255, 255, 60); // White
-            mv.rect(x3, y3, lerpedAmplitude * 20, lerpedAmplitude * 10);
+            mv.fill(lerpedAmplitude * 255, 255, 255, 90);
+            mv.ellipse(x, y, scaledAmplitude, scaledAmplitude);
 
-            mv.fill(255, 152, 0, 90); // Orange
-            mv.rect(x, y, as.right.get(i) * 10, as.left.get(i) * 10);
+            mv.fill(lerpedAmplitude * 255, 255, 255, 60); 
+            mv.ellipse(x3, y3, scaledAmplitude * 2, scaledAmplitude);
 
-            mv.fill(255, 255, 255, 70); // White
-            mv.rect(x3, y3, as.right.get(i) * 10, as.right.get(i) * 20);
+            mv.fill(lerpedAmplitude * 255, 255, 255, 90); 
+            mv.ellipse(x, y, as.right.get(i) * 10, as.left.get(i) * 10);
+
+            mv.fill(lerpedAmplitude * 255, 255, 255, 70); 
+            mv.ellipse(x3, y3, as.right.get(i) * 10, as.right.get(i) * 20);
 
             }
-            n4+=0.008;
-            n6+=0.04;
+            n4+=1;
+            n6+=1;
         }
     
 

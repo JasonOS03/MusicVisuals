@@ -24,8 +24,8 @@ public class MainVisual extends Visual
     // Method to set initial settings
     public void settings() 
     {
-        size(1024, 500); // Setting window size
-        // fullScreen();
+        // Setting window size
+        fullScreen();
         // fullScreen(P3D,SPAN);
     }
 
