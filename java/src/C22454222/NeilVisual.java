@@ -15,6 +15,7 @@ public class NeilVisual extends Visual {
             starY[i] = random(-mv.height, mv.height);
         }
     }
+
     // Number of stars
     final int NUM_STARS = 100;
 
@@ -47,17 +48,17 @@ public class NeilVisual extends Visual {
         {
             beatCount++;
         }
-        //fill shapes with colour 
+        //fill shapes with colour
         mv.fill(colourArray[0], colourArray[1], colourArray[2], 40);
-         // increase radius of shape with beatCount
-        radius= 5 * beatCount;
+        //increase radius of shape with beatCount
+        radius = 5 * beatCount;
         mv.ellipse(0,0,radius,radius);
 
         mv.rotate(MainVisual.map(mv.fCounter % 360, 0, 360, 0, MainVisual.PI * 2));
         mv.fill(prevColours[0], prevColours[1], prevColours[2], 25);
         mv.rect(-radius / 2, -radius / 2, radius, radius);
 
-        mv.stroke(150, 200, 255); 
+        mv.stroke(150, 200, 255);
 
         if (radius > ((float) mv.width) / 2) 
         {
@@ -70,11 +71,11 @@ public class NeilVisual extends Visual {
             radius = 20;
         }
         for (float i = 0; i < mv.width; i += 10) {
-            float x = (space * i);
-            float y = (space * i);
+            float x = (PApplet.cos(i) * space * i);
+            float y = (PApplet.sin(i) * space * i);
             mv.point(x, y);
         }
-        
+
         for (int i = 0; i < NUM_STARS; i++) {
             // Set the size of the stars based on music's amplitude
             float starSize = random(5, 20) * space; // Increase the size range for bigger stars
