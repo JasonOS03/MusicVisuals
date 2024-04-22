@@ -79,7 +79,10 @@ public class JadeVisual extends Visual {
         }//end for loop
 
         //fill to make the bigger triangle transparent
-        mv.fill(10, (float) 0.5);  
+        mv.fill(10, (float) 0.5);
+        mv.triangle(0,0,0,0,0,0);//unsure why this line works but it was the only way i could make the middle triangles blue
+        //without this line there is an extra floating triangle
+            
         //this is to make sure the triangle does not get overly big, so the max radius is 400
         if(mainTri1 > 400)
         {
