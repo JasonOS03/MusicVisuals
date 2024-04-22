@@ -36,7 +36,7 @@ public class ChrisVisual extends Visual
 
     public void render()
     {
-        float radius = 10;
+        float radius = 20;
         mv.background(0,0,0);
         mv.beat.detect(mv.as.mix);
         mv.beat.detectMode(0);
@@ -52,29 +52,29 @@ public class ChrisVisual extends Visual
 
         mv.fill(currentColours[0],currentColours[1],currentColours[2], 50);
 
-        radius = 5*kickCounter;
+        radius = 40*kickCounter;
         mv.ellipse(0,0,radius,radius);
 
         mv.fill(previousColours[0],previousColours[1],previousColours[2], 25);
         
         mv.stroke(map(mv.getAmplitude(), 0, 1, 0,255),255,255);   
         
-            radius = 5*kickCounter;
-            mv.triangle(0, -100, 60+(float)0.6*radius, radius, (-60-(float)0.6*radius), radius); 
+            radius = 15*kickCounter;
+
             mv.triangle(-200, -100, -140+(float)0.6*radius, radius, (-260-(float)0.6*radius), radius); 
             mv.triangle(200, -100, 260+(float)0.6*radius, radius, (140-(float)0.6*radius), radius);
             mv.triangle(-400, -100, -340+(float)0.6*radius, radius, (-460-(float)0.6*radius), radius); 
             mv.triangle(400, -100, 460+(float)0.6*radius, radius, (340-(float)0.6*radius), radius);
             mv.triangle(-600, -100, -540+(float)0.6*radius, radius, (-660-(float)0.6*radius), radius); 
             mv.triangle(600, -100, 660+(float)0.6*radius, radius, (540-(float)0.6*radius), radius);
-            mv.triangle(0, 100, 60+(float)0.6*radius, -radius, (-60-(float)0.6*radius), -radius); 
+            
             mv.triangle(-200, 100, -140+(float)0.6*radius, -radius, (-260-(float)0.6*radius), -radius); 
             mv.triangle(200, 100, 260+(float)0.6*radius, -radius, (140-(float)0.6*radius), -radius);
             mv.triangle(-400, 100, -340+(float)0.6*radius, -radius, (-460-(float)0.6*radius), -radius); 
             mv.triangle(400, 100, 460+(float)0.6*radius, -radius, (340-(float)0.6*radius), -radius);
             mv.triangle(-600, 100, -540+(float)0.6*radius, -radius, (-660-(float)0.6*radius), -radius); 
             mv.triangle(600, 100, 660+(float)0.6*radius, -radius, (540-(float)0.6*radius), -radius);
-            
+
             if (radius > (float)mv.width / 2)
             {
                 for (int i = 0; i < 3; i++)
@@ -86,11 +86,33 @@ public class ChrisVisual extends Visual
                 radius = 20;
             }
 
-            for (float i = 0; i < mv.width; i += 0.5)
+            for (float i = 0; i < mv.width; i += 0.3)
             {
                 float x1 = (PApplet.cos(i) * smooth * i);
                 float y1 = (PApplet.sin(i) * smooth * i);
-                mv.point(x1,y1);
+                mv.point(x1, y1);
+            }
+
+
+
+            for (float i = 0; i < mv.width; i += 0.3)
+            {
+                float centerX = -400; // Specify the x-coordinate of the center
+                float centerY = 0; // Specify the y-coordinate of the center
+                float x2 = centerX + (PApplet.cos(i) * smooth * i);
+                float y2 = centerY + (PApplet.sin(i) * smooth * i);
+                mv.point(x2, y2);
+            }
+
+            for (float i = 0; i < mv.width; i += 0.3)
+            {
+                float centerX2 = +400; // Specify the x-coordinate of the center
+                float centerY2 = 0; // Specify the y-coordinate of the center
+                float x3 = centerX2 + (PApplet.cos(i) * smooth * i);
+                float y3 = centerY2 + (PApplet.sin(i) * smooth * i);
+                mv.point(x3, y3);
             }
     }
 }
+
+
