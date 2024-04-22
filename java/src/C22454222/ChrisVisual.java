@@ -47,13 +47,6 @@ public class ChrisVisual extends Visual
         mv.fCounter++;
         mv.translate(mv.width/2, mv.height/2);
 
-        for(int i = 0; i < ab.size(); i ++)
-        {
-
-        float c = map(i,0,ab.size(), mouseX / 2, mouseY /2);
-        mv.stroke(c, 255, 255);
-        }
-
         float smooth = mv.getSmoothedAmplitude();
 
         if (mv.beat.isKick())
@@ -71,7 +64,6 @@ public class ChrisVisual extends Visual
         mv.stroke(map(mv.getAmplitude(), 0, 1, 0,255),255,255);   
         
             radius = 15*kickCounter;
-
             mv.triangle(-200, -100, -140+(float)0.6*radius, radius, (-260-(float)0.6*radius), radius); 
             mv.triangle(200, -100, 260+(float)0.6*radius, radius, (140-(float)0.6*radius), radius);
             mv.triangle(-400, -100, -340+(float)0.6*radius, radius, (-460-(float)0.6*radius), radius); 
@@ -107,19 +99,19 @@ public class ChrisVisual extends Visual
 
             for (float i = 0; i < mv.width; i += 0.3)
             {
-                float centerX = -400; 
-                float centerY = 0; 
-                float x2 = centerX + (PApplet.cos(i) * smooth * i);
-                float y2 = centerY + (PApplet.sin(i) * smooth * i);
+                float centerX2 = -400; 
+                float centerY2 = 0; 
+                float x2 = centerX2 + (PApplet.cos(i) * smooth * i);
+                float y2 = centerY2 + (PApplet.sin(i) * smooth * i);
                 mv.point(x2, y2);
             }
 
             for (float i = 0; i < mv.width; i += 0.3)
             {
-                float centerX2 = +400; 
-                float centerY2 = 0; 
-                float x3 = centerX2 + (PApplet.cos(i) * smooth * i);
-                float y3 = centerY2 + (PApplet.sin(i) * smooth * i);
+                float centerX3 = +400; 
+                float centerY3 = 0; 
+                float x3 = centerX3 + (PApplet.cos(i) * smooth * i);
+                float y3 = centerY3 + (PApplet.sin(i) * smooth * i);
                 mv.point(x3, y3);
             }
     }
