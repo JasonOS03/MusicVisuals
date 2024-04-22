@@ -3,12 +3,14 @@ import ddf.minim.AudioInput;
 import ddf.minim.Minim;
 import processing.core.PApplet; 
 import ie.tudublin.*;
+import ddf.minim.AudioBuffer;
 
 public class ChrisVisual extends Visual 
 {
     MainVisual mv;
     Minim minim;
     AudioInput ai;
+    AudioBuffer ab;
 
     float[] lerpedBuffer;
     float y = 0;
@@ -18,6 +20,8 @@ public class ChrisVisual extends Visual
     public ChrisVisual(MainVisual mv) 
     {
         this.mv = mv;
+        this.ab = mv.getAudioBuffer();
+        this.ai = mv.getAudioInput();
     }
 
     float[] currentColours = new float[]{random(0,255),random(0,255),random(0,255)};
@@ -42,6 +46,13 @@ public class ChrisVisual extends Visual
         mv.beat.detectMode(0);
         mv.fCounter++;
         mv.translate(mv.width/2, mv.height/2);
+
+        for(int i = 0; i < ab.size(); i ++)
+        {
+
+        float c = map(i,0,ab.size(), mouseX / 2, mouseY /2);
+        mv.stroke(c, 255, 255);
+        }
 
         float smooth = mv.getSmoothedAmplitude();
 
@@ -94,11 +105,10 @@ public class ChrisVisual extends Visual
             }
 
 
-
             for (float i = 0; i < mv.width; i += 0.3)
             {
-                float centerX = -400; // Specify the x-coordinate of the center
-                float centerY = 0; // Specify the y-coordinate of the center
+                float centerX = -400; 
+                float centerY = 0; 
                 float x2 = centerX + (PApplet.cos(i) * smooth * i);
                 float y2 = centerY + (PApplet.sin(i) * smooth * i);
                 mv.point(x2, y2);
@@ -106,8 +116,8 @@ public class ChrisVisual extends Visual
 
             for (float i = 0; i < mv.width; i += 0.3)
             {
-                float centerX2 = +400; // Specify the x-coordinate of the center
-                float centerY2 = 0; // Specify the y-coordinate of the center
+                float centerX2 = +400; 
+                float centerY2 = 0; 
                 float x3 = centerX2 + (PApplet.cos(i) * smooth * i);
                 float y3 = centerY2 + (PApplet.sin(i) * smooth * i);
                 mv.point(x3, y3);
