@@ -1,5 +1,6 @@
 package ie.tudublin;
 import processing.core.PApplet;
+import processing.core.PGraphics;
 import ddf.minim.*;
 import ddf.minim.analysis.BeatDetect;
 import ddf.minim.analysis.FFT;
@@ -19,7 +20,7 @@ public abstract class Visual extends PApplet
 	private AudioBuffer ab;
 	public BeatDetect beat;
 	private FFT fft;
-
+	
 	private float amplitude  = 0;
 	private float smoothedAmplitude = 0;
 

@@ -9,6 +9,7 @@ public class MainVisual extends Visual
     int visualSwap = 0; // Variable to control visual swapping
     int playTune = 0; // Variable to control playing tune
     int stopPlay = 0; // Variable to control stopping playback
+    public float eRadius = 20;
     /*
     AimeeVisual aimee;
     NeilVisual neil;
@@ -42,7 +43,7 @@ public class MainVisual extends Visual
         jade = new JadeVisual(this);
         jason = new JasonVisual(this);
         */
-        chris = new ChrisVisual(this); // Initializing ChrisVisual instance
+        chris = new ChrisVisual(this); // Initializing ChrisVisual instance with appropriate constructor
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
     }
 
