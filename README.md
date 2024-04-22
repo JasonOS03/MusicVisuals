@@ -35,16 +35,6 @@ Once you have ran the program, a separate menu window opens with the following o
 - Jason
 - Chris
 
-## Chris's Visual Option
-Chris's visual has further visual change options based on keypress.
-Press a corresponding number on your keyboard to change the visual.
-
-| Keycode | Visual |
-|---------|-----------|
-| '1' | |
-| '2' | |
-| '3' | |
-
 # How it works
 
 # What I am most proud of in the assignment
