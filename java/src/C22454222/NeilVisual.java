@@ -70,7 +70,7 @@ public class NeilVisual extends Visual {
             beatCount = 0;
             radius = 20;
         }
-        for (float i = 0; i < mv.width; i += 10) {
+        for (float i = 0; i < mv.width; i += 0.1) {
             float x = (PApplet.cos(i) * space * i);
             float y = (PApplet.sin(i) * space * i);
             mv.point(x, y);
