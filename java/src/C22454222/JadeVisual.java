@@ -2,38 +2,45 @@ package C22454222;
 
 import ie.tudublin.*;
 
-public class JadeVisual {
+//this files main class
+public class JadeVisual extends Visual {
 
-    MainVisual mv;
-    public JadeVisual(MainVisual mv) 
-    {
-        this.mv = mv;
-        for (int i = 0; i < NUM_STARS; i++) {
-            starX[i] = random(0, mv.width); // Random x position within the width of the screen
-            starY[i] = random(0, mv.height); // Random y position within the height of the screen
-        }
+   //MainVisual shortcut
+   MainVisual mv;
+    
+
+   public JadeVisual(MainVisual mv) {
+       this.mv = mv;
+       for (int i = 0; i < NUM_STARS; i++) {
+        starX[i] = random(0, mv.width); // Random x position within the width of the screen
+        starY[i] = random(0, mv.height); // Random y position within the height of the screen
     }
-    
-    final int NUM_STARS = 100;
-    
-    float[] starX = new float[NUM_STARS];
-    float[] starY = new float[NUM_STARS];
+   }
 
-    void render(){
-        //initialisation
+   final int NUM_STARS = 100;
+
+   float[] starX = new float[NUM_STARS];
+   float[] starY = new float[NUM_STARS];
+
+   //the function where we render all of the goodness we want on the screen
+   public void render() 
+   {  
+       //initialisation
         float[] sb = mv.getSmoothedBands();
+        float createSpace = mv.getSmoothedAmplitude();
         float r = mv.getSmoothedAmplitude();//getting the amplitude
         float r2 = map(r, 0, 1 , 0, 40);
         float ba = map(sb[0], 0, 50, 0, 200);//bass frequencies
         float lm = map(sb[1], 0, 400, 0, 400 ); //low-mid frequencies
         float hh = sb[4]; //high high frequencies
-        //basics
+
+       //basics
        int midX = mv.width/2; 
        int midY = mv.height/2;
        //have a normal background when the mapped bass frequencies are below 300Hz
        if(ba < 300)
        {
-           //dark grey background
+           //pink background
            mv.background(255,92,205); 
        }
 
@@ -73,7 +80,6 @@ public class JadeVisual {
 
         //fill to make the bigger triangle transparent
         mv.fill(10, (float) 0.5); 
-        mv.stroke(153);
             
         //this is to make sure the triangle does not get overly big, so the max radius is 400
         if(mainTri1 > 400)
@@ -89,6 +95,9 @@ public class JadeVisual {
         {
            mainTri2 = 300;
         }
+        
+        //this is triangle 2
+        mv.triangle(midX, midY - mainTri2, midX - mainTri2, midY + mainTri2, midX + mainTri2, midY + mainTri2);
 
         for (int i = 0; i < NUM_STARS; i++) {
             // Set the size of the stars based on music's amplitude
@@ -96,6 +105,5 @@ public class JadeVisual {
             mv.fill(255); // Set star color to white
             mv.ellipse(starX[i], starY[i], starSize, starSize); // Draw the star
         }
-    }
-    
-}
+    }//end render
+}//end main
