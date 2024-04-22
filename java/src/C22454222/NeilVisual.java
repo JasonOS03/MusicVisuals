@@ -69,10 +69,10 @@ public class NeilVisual extends Visual {
             beatCount = 0;
             radius = 20;
         }
-        for (float i = 0; i < mv.width; i += 900) {
-            float y = mv.height* i; // Center Y-coordinate
-            float x = mv.width * i;
-            mv.point(x, y); // Draw a point at each X-coordinate
+        for (float i = 0; i < mv.width; i += 10) {
+            float x = (space * i);
+            float y = (space * i);
+            mv.point(x, y);
         }
         
         for (int i = 0; i < NUM_STARS; i++) {
