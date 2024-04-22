@@ -79,8 +79,7 @@ public class JadeVisual extends Visual {
         }//end for loop
 
         //fill to make the bigger triangle transparent
-        mv.fill(10, (float) 0.5); 
-            
+        mv.fill(10, (float) 0.5);  
         //this is to make sure the triangle does not get overly big, so the max radius is 400
         if(mainTri1 > 400)
         {
@@ -98,6 +97,7 @@ public class JadeVisual extends Visual {
         
         //this is triangle 2
         mv.triangle(midX, midY - mainTri2, midX - mainTri2, midY + mainTri2, midX + mainTri2, midY + mainTri2);
+        mv.stroke(150, 200, 255);
 
         for (int i = 0; i < NUM_STARS; i++) {
             // Set the size of the stars based on music's amplitude
