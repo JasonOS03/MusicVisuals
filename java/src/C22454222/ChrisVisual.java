@@ -1,7 +1,7 @@
 package C22454222;
 import ddf.minim.AudioInput;
 import ddf.minim.Minim;
-import processing.core.PApplet;
+import processing.core.PApplet; 
 import ie.tudublin.*;
 
 public class ChrisVisual extends Visual 
@@ -36,7 +36,7 @@ public class ChrisVisual extends Visual
 
     public void render()
     {
-        float radius = 20;
+        float radius = 10;
         mv.background(0,0,0);
         mv.beat.detect(mv.as.mix);
         mv.beat.detectMode(0);
@@ -59,9 +59,22 @@ public class ChrisVisual extends Visual
         
         mv.stroke(map(mv.getAmplitude(), 0, 1, 0,255),255,255);   
         
-            mv.eRadius = 5*kickCounter;
-            mv.triangle(0, -100, 60+(float)0.6*radius,radius, (-60-(float)0.6*radius), radius); 
-
+            radius = 5*kickCounter;
+            mv.triangle(0, -100, 60+(float)0.6*radius, radius, (-60-(float)0.6*radius), radius); 
+            mv.triangle(-200, -100, -140+(float)0.6*radius, radius, (-260-(float)0.6*radius), radius); 
+            mv.triangle(200, -100, 260+(float)0.6*radius, radius, (140-(float)0.6*radius), radius);
+            mv.triangle(-400, -100, -340+(float)0.6*radius, radius, (-460-(float)0.6*radius), radius); 
+            mv.triangle(400, -100, 460+(float)0.6*radius, radius, (340-(float)0.6*radius), radius);
+            mv.triangle(-600, -100, -540+(float)0.6*radius, radius, (-660-(float)0.6*radius), radius); 
+            mv.triangle(600, -100, 660+(float)0.6*radius, radius, (540-(float)0.6*radius), radius);
+            mv.triangle(0, 100, 60+(float)0.6*radius, -radius, (-60-(float)0.6*radius), -radius); 
+            mv.triangle(-200, 100, -140+(float)0.6*radius, -radius, (-260-(float)0.6*radius), -radius); 
+            mv.triangle(200, 100, 260+(float)0.6*radius, -radius, (140-(float)0.6*radius), -radius);
+            mv.triangle(-400, 100, -340+(float)0.6*radius, -radius, (-460-(float)0.6*radius), -radius); 
+            mv.triangle(400, 100, 460+(float)0.6*radius, -radius, (340-(float)0.6*radius), -radius);
+            mv.triangle(-600, 100, -540+(float)0.6*radius, -radius, (-660-(float)0.6*radius), -radius); 
+            mv.triangle(600, 100, 660+(float)0.6*radius, -radius, (540-(float)0.6*radius), -radius);
+            
             if (radius > (float)mv.width / 2)
             {
                 for (int i = 0; i < 3; i++)
@@ -70,7 +83,14 @@ public class ChrisVisual extends Visual
                 }
                 replacingColours(currentColours);
                 kickCounter = 0;
-                mv.eRadius = 20;
+                radius = 20;
+            }
+
+            for (float i = 0; i < mv.width; i += 0.5)
+            {
+                float x1 = (PApplet.cos(i) * smooth * i);
+                float y1 = (PApplet.sin(i) * smooth * i);
+                mv.point(x1,y1);
             }
     }
 }
