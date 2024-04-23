@@ -20,7 +20,7 @@ Student Numbers: C22393606, C22405604, C22394466, C22400796, C22454222
 ## Jade
 
 ## Jason
-
+My first role in this project was to set up the GitHub repository. I created the repository and then sent invitations to the rest of the group to join. It was my job to ensure that the repository was secure and maintainable. My next role was the creation of my visual. This visual has been coordinated to work with the visuals created by the others.While creating this visual , I made sure to make constant commits to show my work.The visual went through many changes over time, and eventually led to the final version. This final version is what I would describe as a vortex. The visual includes rotating lines which create the vortex shape , rotating circles around the center and circles in the center.
 ## Chris
 
 # Instructions
@@ -46,6 +46,7 @@ Once you have ran the program, a separate menu window opens with the following o
 ## Jade
 
 ## Jason
+In this assignment I am most proud of my creative thinking to come up with an interesting visual. This creative thinking continued throughout the whole project , leading to the visual constantly evolving and changing over time. I was able to constantly think of new ideas which I am very proud of.
 
 ## Chris
 
