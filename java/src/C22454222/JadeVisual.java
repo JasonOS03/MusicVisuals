@@ -11,14 +11,15 @@ public class JadeVisual extends Visual {
 
    public JadeVisual(MainVisual mv) {
        this.mv = mv;
+       //initialise the stars
        for (int i = 0; i < NUM_STARS; i++) {
-        starX[i] = random(0, mv.width); // Random x position within the width of the screen
-        starY[i] = random(0, mv.height); // Random y position within the height of the screen
+        starX[i] = random(0, mv.width); //random x position within the width of the screen
+        starY[i] = random(0, mv.height); //random y position within the height of the screen
     }
    }
-
+   //number of stars
    final int NUM_STARS = 100;
-
+   //arrays to store the x and y positions of the stars
    float[] starX = new float[NUM_STARS];
    float[] starY = new float[NUM_STARS];
 
@@ -26,24 +27,24 @@ public class JadeVisual extends Visual {
    public void render() 
    {  
        //initialisation
-        float[] sb = mv.getSmoothedBands();
-        float createSpace = mv.getSmoothedAmplitude();
+        float[] sb = mv.getSmoothedBands();//a method that returns an array of smoothed audio frequency bands
+        float createSpace = mv.getSmoothedAmplitude();//this method is expected to return a smoothed amplitude value
         float r = mv.getSmoothedAmplitude();//getting the amplitude
         float r2 = map(r, 0, 1 , 0, 40);
         float ba = map(sb[0], 0, 50, 0, 200);//bass frequencies
         float lm = map(sb[1], 0, 400, 0, 400 ); //low-mid frequencies
         float hh = sb[4]; //high high frequencies
 
-       //basics
-       int midX = mv.width/2; 
+       //calculations for the middle of the screen later used for the triangles
+       int midX = mv.width/2;
        int midY = mv.height/2;
+
        //have a normal background when the mapped bass frequencies are below 300Hz
        if(ba < 300)
        {
            //pink background
            mv.background(255,92,205); 
        }
-
        else
        {   
            //this makes the background turn into different dark colours based on the low-mids, bass, and high highs of the music
@@ -54,10 +55,9 @@ public class JadeVisual extends Visual {
        float mainTri1 = lerp(map(ba, 0, 300, 0, 300), 100, (float) 0.5); //triangle 1 - the bigger triangle
        float mainTri2 = r2 * 6; //triangle 2 - the smaller triangle
 
-       float gap = mv.width / (float) mv.getBands().length; //to get he gaps that are needed by equally dividing the number of bands (11 bands) by the width of the application
-       //mv.noStroke();
-       
-        // a loop that loops all the way to the length of the amount of bands which is 11  
+       float gap = mv.width / (float) mv.getBands().length; //to get the gaps that are needed by equally dividing the number of bands (11 bands) by the width of the application
+    
+        // a loop that loops the amount of bands which is 11  
         for(int i = 0 ; i < (mv.getBands().length) ; i++)
         {   
             mv.fill(120, 20);//fill the triangles with white and a bit of transparency
@@ -71,10 +71,7 @@ public class JadeVisual extends Visual {
             float x3 = x1 + (gap / 2);
             float y3 = mv.height - mv.getSmoothedBands()[i] * 0.1f; // multiplied by a float of 0.1
             
-            // calculate the new y-coordinate for the second triangle
-            y3 = mv.height - mv.getSmoothedBands()[i] * 0.2f; // multiplied by a float of 0.2
-            
-            // draw the second triangle
+            // draw the triangles
             mv.triangle(x1, y1, x2, y2, x3, y3);
         }//end for loop
 
@@ -100,8 +97,9 @@ public class JadeVisual extends Visual {
         
         //this is triangle 2
         mv.triangle(midX, midY - mainTri2, midX - mainTri2, midY + mainTri2, midX + mainTri2, midY + mainTri2);
-        mv.stroke(150, 200, 255);
+        mv.stroke(150, 200, 255); //set the stroke color to a light blue
 
+        //for loop to draw the stars
         for (int i = 0; i < NUM_STARS; i++) {
             // Set the size of the stars based on music's amplitude
             float starSize = random(5, 20) * createSpace; // Increase the size range for bigger stars
