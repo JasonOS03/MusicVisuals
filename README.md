@@ -23,7 +23,6 @@ When showing the viusal of the bracnches, my code utilizes methods like show() t
 Additionally, my code responds to audio input, i did this by adjusting the branches based on sound levels. This adds an extra layer of motion to the visuals, making them react to changes in sound.
 Over the course of this project i made sure to commit every change I made to doccument my codes development and evolvement throughout the creating process.
 
-
 ## Neil
 
 Constructor:
@@ -52,14 +51,17 @@ My first role in this project was to set up the GitHub repository. I created the
 The visual I created was what I would describe as a vortex. The first part of the visual I created was the the vortex itself , spanning around the sides of the screen. This vortex contains the colors from green all the way to red , and I did this using the map function.The vortex reacts to the audio by swirling around in a circular motion and pulsating. The vortex was created using lines, and these lines represent the gusts of wind.
 
 The next part of the visual I created was the inner rings , which are a bright pink color. these circles rotates by the amplitude value in radians and also pulsate by the amplitude amount.The inner rings are supposed to represent the center of the vortex. The color also changes sporadically as the beat tempo / amplitude increases. The final part of the visual I created was a ring of circles rotating around the inner circle. These circles are also a bright pink color , and the colors also change at peak amplitude. This ring of circles is essentially pulled around the inside of the vortex.
+
 ## Chris
-So I was in charge of designing the software first and foremost. I setup all the necessary main files and dictated how many branches we'd need. I also made the visual menu and was responsible for the UI and UX. I wanted to make the visuals interactive.
+So I was in charge of designing the software first and foremost. I setup all the necessary main files and dictated how many branches we'd need. I also made the visual menu and was responsible for the UI and UX. I wanted to make the visuals interactive. I was also just a glorified project manager.
 
-In my own visual ChrisVisual.java, I brainstormed many ideas such as an idea for a visual that resembled a black hole with atoms surrounding. I implemented this and then decided to take my visual another direction.
+In my own visual ChrisVisual.java, I brainstormed many ideas such as an idea for a visual that resembled a black hole with atoms surrounding it. I implemented this and then decided to take my visual another direction.
 
-The java class responds dynamically to audio input, implementing beat detection and manipulating shapes and colors based on amplitude and beat presence. Through the utilization of spiral patterns (using simple cos and sin Papplet functions) and various shapes like triangles and ellipses, the visualization generates captivating visual effects that synchronize seamlessly with the audio. The code  emphasizes creativity, technical proficiency, and user experience, requiring a cohesive and well-structured implementation with a focus on responsiveness and aesthetic appeal.
+The java class responds dynamically to audio input, implementing beat detection and manipulating shapes and colors based on amplitude and beat presence. Through the utilization of spiral patterns (using simple cos and sin Papplet functions) and various shapes like triangles and ellipses, the visualization generates captivating visual effects that synchronize seamlessly with the audio. The code emphasizes creativity, technical proficiency, and user experience, requiring a cohesive and well-structured implementation with a focus on responsiveness and aesthetic appeal.
 
-In terms of resources, I used Github Copilot for any minor syntax errors, formatting and some formal commenting on code. I initially used  this video as inspiration for a start on my visual https://www.youtube.com/watch?v=283rmgvFDE0. Used processing for learning how to utilize cos and sin functions, growing shapes based on amplitude and beats and colour shifting based on time. https://processing.org/
+The end result of my visual shows growing triangles facing each other and growing in a loop that resets once the triangles hit the border of the screen. I used mirrored triangles to form other shapes over time such as diamonds. This same logic is used for a drawn circle in the centre of the screen. I also run for loops that create interesting sin and cos spirals that grow and shrink with the beat.
+
+In terms of resources, I used Github Copilot for any minor syntax errors, formatting and some formal commenting on code. I initially used this video as inspiration for a start on my visual https://www.youtube.com/watch?v=283rmgvFDE0. Used processing for learning how to utilize cos and sin functions, growing shapes based on amplitude and beats and colour shifting based on time. https://processing.org/.
 
 # Instructions
 
@@ -72,8 +74,25 @@ Once you have ran the program, a separate menu window opens with the following o
 - Jade
 - Jason
 - Chris
+- AudioBands
+
+1. To start the visual, press the Play Tune button.
+2. Neil's visual will start, synchronized with the song.
+3. You can then click on other name's to see their visuals.
+4. You can click back on previously seen visuals that are running in the background.
+
 
 # How it works
+
+## Aimee
+
+## Neil
+
+## Jade
+
+## Jason
+
+## Chris
 
 # What I am most proud of in the assignment
 
@@ -104,39 +123,25 @@ The part of the assignment I found the most challenging was trying to coordinate
 
 ## Chris
 
-# Markdown Tutorial
-
-This is *emphasis*
-
-This is a bulleted list
-
-- Item
-- Item
-
-This is a numbered list
-
-1. Item
-1. Item
-
-This is a [hyperlink]
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
 
 ```Java
+        // Drawing triangles
+        radius = 15*kickCounter; // Adjusting radius based on kick counter
+        mv.triangle(-200, -100, -140+(float)0.6*radius, radius, (-260-(float)0.6*radius), radius); 
+        mv.triangle(200, -100, 260+(float)0.6*radius, radius, (140-(float)0.6*radius), radius);
+        mv.triangle(-400, -100, -340+(float)0.6*radius, radius, (-460-(float)0.6*radius), radius); 
+        mv.triangle(400, -100, 460+(float)0.6*radius, radius, (340-(float)0.6*radius), radius);
+        mv.triangle(-600, -100, -540+(float)0.6*radius, radius, (-660-(float)0.6*radius), radius); 
+        mv.triangle(600, -100, 660+(float)0.6*radius, radius, (540-(float)0.6*radius), radius);
+        
+        // Drawing mirrored triangles
+        mv.triangle(-200, 100, -140+(float)0.6*radius, -radius, (-260-(float)0.6*radius), -radius); 
+        mv.triangle(200, 100, 260+(float)0.6*radius, -radius, (140-(float)0.6*radius), -radius);
+        mv.triangle(-400, 100, -340+(float)0.6*radius, -radius, (-460-(float)0.6*radius), -radius); 
+        mv.triangle(400, 100, 460+(float)0.6*radius, -radius, (340-(float)0.6*radius), -radius);
+        mv.triangle(-600, 100, -540+(float)0.6*radius, -radius, (-660-(float)0.6*radius), -radius); 
+        mv.triangle(600, 100, 660+(float)0.6*radius, -radius, (540-(float)0.6*radius), -radius);
 ```
-
-This is an image using a relative URL:
-
-![An image]
-
-This is an image using an absolute URL:
-
-![A different image]
 
 This is a youtube video:
 
