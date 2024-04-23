@@ -4,6 +4,7 @@ import ddf.minim.AudioBuffer;
 import ddf.minim.AudioPlayer;
 import ie.tudublin.*;
 
+
 public class JasonVisual extends Visual 
 {
     AudioBuffer ab; // Initialize the buffer
@@ -15,11 +16,6 @@ public class JasonVisual extends Visual
         this.ab = mv.getAudioBuffer();
     }
 
-    public void settings()
-    {
-        // Window size
-        mv.size(800, 800);
-    }
 
     public void setup()
     {
@@ -41,12 +37,13 @@ public class JasonVisual extends Visual
         }
         float average = sum / (float) ab.size(); // Calculate the average buffer value 
         float amplitude = average * 800; // Amplitude is average times a certain number, in this case it's 800   
-        float smoothrotation = mv.lerp(0, mv.radians(amplitude), 0.1f); // Interpolate from 0 to the amplitude in radians at an amount of 0.1
-        float circlerotation = mv.lerp(0, mv.radians(360), 0.01f); // Interpolates from 0 to 360 degrees in radians, allowing the circles to move around in a circle 
+        float smoothrotation = mv.lerp(0, mv.radians(amplitude), 0.1f); // Interpolate from 0 to the amplitude in radians at an amount of 0.05
+        float circlerotation = mv.lerp(0, mv.radians(360), 0.1f); // Interpolates from 0 to 360 degrees in radians, allowing the circles to move around in a circle 
         float CenterY = mv.height / 2; // Center of screen Y value
         float CenterX = mv.width / 2; // Center of screen X value
         float CircleX = 200; // Circle x axis position
-        float CircleY = 200; // Circle y axis position
+        float CircleY = 200;
+         // Circle y axis position
 
         mv.translate(CenterX, CenterY); // Move (0,0) to the center
 
@@ -56,7 +53,7 @@ public class JasonVisual extends Visual
         for (int i = 0; i < num_lines; i++) {
             float hue = mv.map(i, 0, num_lines - 1, 0, 255); // Map the lines to the color spectrum for the hue
 
-            float y_axis = mv.map(i, 0, num_lines, -CenterY, CenterY);
+            float y_axis = mv.map(i, 0, num_lines, -CenterY/2, CenterY/2);// y_axis variable mapped from 0 to the number of lines to - height/4 to the height/4 
             mv.rotate(smoothrotation); // Rotate the lines 
 
             mv.stroke(hue, 100, 100); // Set the color of the stroke
@@ -72,15 +69,14 @@ public class JasonVisual extends Visual
             mv.rotate(smoothrotation); // rotate the circles
 
             mv.strokeWeight(4);
-            mv.ellipse(0, 0, CenterX, amplitude); // Create circles starting at the origin, with a diameter of CenterX and the height being the amplitude 
+            mv.ellipse(0, 0, CenterX/2, amplitude); // Create circles starting at the origin, with a diameter of CenterX and the height being the amplitude 
 
             mv.stroke(hue, 255, 255);
             mv.noFill();
             mv.rotate(circlerotation); // Rotate in a circular motion
 
             mv.strokeWeight(4);
-            mv.ambient(num_circles);
-            mv.ellipse(CircleX - CenterX, CircleY - CenterY, CenterX, CenterY); // create smaller circles rotating around the center
+            mv.ellipse(CircleX - CenterX/2, CircleY - CenterY/2, CenterX/2, CenterY/2); // create smaller  circles rotating around the center
         }
     }
 }
