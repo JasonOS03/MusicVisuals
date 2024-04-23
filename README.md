@@ -40,7 +40,7 @@ My first role in this project was to set up the GitHub repository. I created the
 
 The visual I created was what I would describe as a vortex. The first part of the visual I created was the the vortex itself , spanning around the sides of the screen. This vortex contains the colors from green all the way to red , and I did this using the map function.The vortex reacts to the audio by swirling around in a circular motion and pulsating. The vortex was created using lines, and these lines represent the gusts of wind.
 
-The next part of the visual I created was the inner ring , which is a bright pink color. this circle rotates by the amplitude value in radians and also pulsates by the amplitude amount. The color also changes sporadically as the beat tempo / amplitude increases. The final part of the visual I created was a ring of circles rotating around the inner circle. These circles are also a bright pink color , and the colors also change at peak amplitude. This ring of circles is essentially pulled around the inside of the vortex.
+The next part of the visual I created was the inner rings , which are a bright pink color. these circles rotates by the amplitude value in radians and also pulsate by the amplitude amount.The inner rings are supposed to represent the center of the vortex. The color also changes sporadically as the beat tempo / amplitude increases. The final part of the visual I created was a ring of circles rotating around the inner circle. These circles are also a bright pink color , and the colors also change at peak amplitude. This ring of circles is essentially pulled around the inside of the vortex.
 ## Chris
 
 # Instructions
@@ -79,6 +79,8 @@ In this assignment I am most proud of my creative thinking to come up with an in
 I really felt that I learned a lot during the creation of this visual. One thing I really got a good understanding of is how to make the objects rotate and respond well to the audio buffer. I gained a better understanding of how the parameters and coordinates work in the PApplet functions , such as the circle and the rotate function. This project really helped to enhance my skills in using PApplet and also further improved my Java coding skills and my understanding of the Java language
 
 This project also helped to enhance my group working skills and communication as we had to spend a lot of time co-ordinating our visuals and grouping them together. This co-ordination required constant communication the full way through the project. I also learned the importance of working bit by bit instead of trying to tackle the entire project in a very short amount of time.
+
+The part of the assignment I found the most challenging was trying to coordinate each part of the visual to not interfere with each other and trying to get the visuals to move around and pulsate smoothly. Trying to ensure that the visuals were not jumpy proved to be quite challenging, and unfortunately the jumpiness of the inner circles could not be fully fixed. 
 
 ## Chris
 
