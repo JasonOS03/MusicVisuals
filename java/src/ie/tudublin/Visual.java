@@ -1,6 +1,5 @@
 package ie.tudublin;
 import processing.core.PApplet;
-import processing.core.PGraphics;
 import ddf.minim.*;
 import ddf.minim.analysis.BeatDetect;
 import ddf.minim.analysis.FFT;
