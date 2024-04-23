@@ -14,6 +14,15 @@ Student Numbers: C22393606, C22405604, C22394466, C22400796, C22454222
 # Description of the assignment
 
 ## Aimee
+my code creates animations by generating branching structures. I used recursion and visualization principles to achieve the cool visual effects. 
+At the core of the code are branches, which represent the basic building blocks of the branching structures. Each branch has properties like where it starts, how far it extends (amplitude), and its angle. It also has smaller branches growing from it, creating a tree-like effect.
+My code uses a recursive approach to create these branches. The branch() method keeps generating smaller branches until it reaches a specified limit.
+In the AimeeVisual Class  the color mode, stroke weight, and background color for the visual display is set up.
+I created a loop to iterate through a range of values to create multiple instances of branching visuals.The orientation and movement of branches are influenced by variables like rotationSpeedFactor, clockwise, and audio input, which affect the rotation, translation, and amplitude of the branches.
+When showing the viusal of the bracnches, my code utilizes methods like show() to draw them on the screen. It uses rotation to position the branches, drawing lines to represent each segment of the branch, and calling itself recursively to draw smaller branches.
+Additionally, my code responds to audio input, i did this by adjusting the branches based on sound levels. This adds an extra layer of motion to the visuals, making them react to changes in sound.
+Over the course of this project i made sure to commit every change I made to doccument my codes development and evolvement throughout the creating process.
+
 
 ## Neil
 
@@ -40,6 +49,13 @@ Once you have ran the program, a separate menu window opens with the following o
 # What I am most proud of in the assignment
 
 ## Aimee
+I'm proud to share my visual project, which makes cool animations. It creates colourful, tree-like shapes that grow and change over time. What's intersting about my code is that it reacts to sound, so when the music gets louder, the animations change too.
+What makes me proud about my code  is that it's easy to understand. I made sure to keep the code simple and clear, so anyone can see how it works. It's not just about the visuals; it's also about making coding understandable and accessible to everyone.
+I am happy about how my viusal turned out,As my code produces visually appealing animations with vibrant colors and smooth movements. The rendering of branching structures adds an artistic touch to the visual display, making it visually captivating and aesthetically pleasing.
+For this project to gain ideas I used online resources such as youtube to gain ideas for my code. here is a youtbe video i used to get ideas off https://youtu.be/l7PetueD1_c?si=fWYtMLATU_C666GU. I am proud how i was able to take ideas from online sources but implement my own creative version.
+Overall, I'm really proud of what I've created. It's a blend of art and technology, showing how coding can be both creative and interesting to implement.
+
+
 
 ## Neil
 
