@@ -49,8 +49,8 @@ The next part of the visual I created was the inner rings , which are a bright p
 
 Once you have ran the program, a separate menu window opens with the following options:
 - Play Tune
-- Aimee
 - Neil
+- Aimee
 - Jade
 - Jason
 - Chris
