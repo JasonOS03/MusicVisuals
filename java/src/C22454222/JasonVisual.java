@@ -56,13 +56,13 @@ public class JasonVisual extends Visual
         for (int i = 0; i < num_lines; i++) {
             float hue = map(i, 0, num_lines - 1, 0, 255); // Map the lines to the color spectrum for the hue
 
-            float y_axis = map(i, 0, num_lines, CenterY, CenterY);
+            float y_axis = map(i, 0, num_lines, -CenterY, CenterY);
             mv.rotate(smoothrotation); // Rotate the lines 
 
             mv.stroke(hue, 100, 100); // Set the color of the stroke
             mv.strokeWeight(4); // Thickness of the lines
             mv.noFill();
-            mv.line(0, y_axis, width, CenterY - y_axis); // Create the lines starting from 0 on the X axis and the Y axis value, spanning to the width of the screen on the X axis and height/2 - the y axis on the y axis
+            mv.line(-CenterX, y_axis, CenterX, - y_axis); // Create the lines starting from 0 on the X axis and the Y axis value, spanning to the width of the screen on the X axis and height/2 - the y axis on the y axis
         }
 
         for (int i = 0; i < num_circles; i++) {
