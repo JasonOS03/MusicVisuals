@@ -59,7 +59,7 @@ In my own visual ChrisVisual.java, I brainstormed many ideas such as an idea for
 
 The java class responds dynamically to audio input, implementing beat detection and manipulating shapes and colors based on amplitude and beat presence. Through the utilization of spiral patterns (using simple cos and sin Papplet functions) and various shapes like triangles and ellipses, the visualization generates captivating visual effects that synchronize seamlessly with the audio. The code emphasizes creativity, technical proficiency, and user experience, requiring a cohesive and well-structured implementation with a focus on responsiveness and aesthetic appeal.
 
-The end result of my visual shows growing triangles facing each other and growing in a loop that resets once the triangles hit the border of the screen. I used mirrored triangles to form other shapes over time such as diamonds. This same logic is used for a drawn circle in the centre of the screen. I also run for loops that create interesting sin and cos spirals that grow and shrink with the beat.
+The end result of my visual shows growing triangles facing each other and growing in a loop that resets once the triangles hit the border of the screen. I used mirrored triangles to form other shapes over time such as diamonds and abstract looking hour glasses. This same logic is used for a drawn circle in the centre of the screen. I also run for loops that create interesting sin and cos spirals that grow and shrink with the beat.
 
 In terms of resources, I used Github Copilot for any minor syntax errors, formatting and some formal commenting on code. I initially used this video as inspiration for a start on my visual https://www.youtube.com/watch?v=283rmgvFDE0. Used processing for learning how to utilize cos and sin functions, growing shapes based on amplitude and beats and colour shifting based on time. https://processing.org/.
 
@@ -94,8 +94,31 @@ Once you have ran the program, a separate menu window opens with the following o
 
 ## Chris
 
-This is the code for drawing the sets of mirrored triangles.
+This is the code for the basic logic of changing shape colours.
 ```Java
+    float[] currentColours = new float[]{random(0,255),random(0,255),random(0,255)}; // Array to store current colors
+    float[] previousColours = new float[]{0,0,0}; // Array to store previous colors
+
+    // Method to generate random colors and replace current colors
+    public float[] replacingColours(float[] currentColours)
+    {
+        float[] colours = new float[]{random(0,255),random(0,255),random(0,255)}; // Generating random colors
+        for(int i = 0; i < 3; i++) // Looping through color channels
+        {
+            currentColours[i] = colours[i]; // Replacing current colors with new random colors
+        }
+        return currentColours; // Returning the updated colors
+    }
+```
+This is the code for drawing the centre circle and for increasing the size of it.
+```Java
+        radius = 40*kickCounter; // Adjusting radius based on kick counter
+        mv.ellipse(0,0,radius,radius); // Drawing ellipse at the center
+```
+
+This is the code for drawing the sets of mirrored triangles and for increasing the size of them.
+```Java
+        radius = 15*kickCounter; // Adjusting radius based on kick counter
         // Drawing triangles
         radius = 15*kickCounter; // Adjusting radius based on kick counter
         mv.triangle(-200, -100, -140+(float)0.6*radius, radius, (-260-(float)0.6*radius), radius); 
@@ -112,6 +135,37 @@ This is the code for drawing the sets of mirrored triangles.
         mv.triangle(400, 100, 460+(float)0.6*radius, -radius, (340-(float)0.6*radius), -radius);
         mv.triangle(-600, 100, -540+(float)0.6*radius, -radius, (-660-(float)0.6*radius), -radius); 
         mv.triangle(600, 100, 660+(float)0.6*radius, -radius, (540-(float)0.6*radius), -radius);
+```
+
+This is the code for drawing the spirals.
+```Java
+        // Drawing points in a spiral pattern
+        for (float i = 0; i < mv.width; i += 0.3)
+        {
+            float x1 = (PApplet.cos(i) * smooth * i);
+            float y1 = (PApplet.sin(i) * smooth * i);
+            mv.point(x1, y1);
+        }
+
+        // Drawing points in a spiral pattern with center at (-400, 0)
+        for (float i = 0; i < mv.width; i += 0.3)
+        {
+            float centerX2 = -400; 
+            float centerY2 = 0; 
+            float x2 = centerX2 + (PApplet.cos(i) * smooth * i);
+            float y2 = centerY2 + (PApplet.sin(i) * smooth * i);
+            mv.point(x2, y2);
+        }
+
+        // Drawing points in a spiral pattern with center at (400, 0)
+        for (float i = 0; i < mv.width; i += 0.3)
+        {
+            float centerX3 = +400; 
+            float centerY3 = 0; 
+            float x3 = centerX3 + (PApplet.cos(i) * smooth * i);
+            float y3 = centerY3 + (PApplet.sin(i) * smooth * i);
+            mv.point(x3, y3);
+        }
 ```
 
 # What I am most proud of in the assignment

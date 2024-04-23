@@ -13,9 +13,10 @@ public class ChrisVisual extends Visual
         this.mv = mv; // Assigning the reference to the main visual class
     }
 
+    int kickCounter = 0; // Counter for kick detection
+    
     float[] currentColours = new float[]{random(0,255),random(0,255),random(0,255)}; // Array to store current colors
     float[] previousColours = new float[]{0,0,0}; // Array to store previous colors
-    int kickCounter = 0; // Counter for kick detection
 
     // Method to generate random colors and replace current colors
     public float[] replacingColours(float[] currentColours)
