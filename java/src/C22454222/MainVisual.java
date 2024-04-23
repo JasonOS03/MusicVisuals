@@ -18,7 +18,6 @@ public class MainVisual extends Visual
 
     public float fCounter = 0; // Variable to store a floating-point counter value
     public int branchCounter=0;
-    public int chrisOption=1;
     public int smoothedAmplitude=1;
 
     // Method to set initial settings
@@ -41,6 +40,7 @@ public class MainVisual extends Visual
         // neil = new NeilVisual(this);
         jade = new JadeVisual(this);
         // jason = new JasonVisual(this);
+        chris = new ChrisVisual(this);
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
     }
 
@@ -51,11 +51,6 @@ public class MainVisual extends Visual
         { // If space bar is pressed
             as.stop();
             as.trigger();
-        }
-        // If numeric keys 1 to 3 are pressed
-        if (keyCode >= '1' && keyCode <= '3') 
-        {
-            chrisOption = keyCode - '0'; // Update chrisOption with the corresponding numeric value
         }
     }
 
