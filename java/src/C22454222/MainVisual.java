@@ -11,11 +11,11 @@ public class MainVisual extends Visual
     int playTune = 0; // Variable to control playing tune
     int stopPlay = 0; // Variable to control stopping playback
     
-     //AimeeVisual aimee;
-      //NeilVisual neil;
-     // JadeVisual jade;
+     // AimeeVisual aimee;
+     // NeilVisual neil;
+      //JadeVisual jade;
       JasonVisual jason;
-     // ChrisVisual chris;
+      //ChrisVisual chris;
      
     AudioBandsVisual audioBandsVisual; // Instance of AudioBandsVisual class
 
@@ -97,7 +97,7 @@ public class MainVisual extends Visual
                 // jade.render();
                 break;
             case 3:
-                 jason.render(); 
+                 //jason.render(); 
                 break;
             case 4:
                 // chris.render();

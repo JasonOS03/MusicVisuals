@@ -67,10 +67,10 @@ public class JasonVisual extends Visual
         }
 
         for (int i = 0; i < num_circles; i++) {
-            float hue = map(i, 0, num_lines - 1, 150, 255);
+            float hue = map(i, 0, num_lines - 1, 150, 255);// map the circles to the color spectrum
             stroke(hue, 255, 255);
             noFill();
-            rotate(smoothrotation);
+            rotate(smoothrotation);// rotate the circles
 
             strokeWeight(4);
             ellipse(0, 0, CenterX / 2, amplitude); // Create circles starting at the origin, with a length of CenterX/2 and the height being the amplitude 
@@ -80,7 +80,7 @@ public class JasonVisual extends Visual
             rotate(circlerotation); // Rotate in a circular motion
 
             strokeWeight(4);
-            ellipse(CircleX, CircleY, CenterX / 4, CenterY / 4);
+            ellipse(CircleX, CircleY, CenterX / 4, CenterY / 4); // create smaller circles rotating around the inside circle
         }
     }
 }
