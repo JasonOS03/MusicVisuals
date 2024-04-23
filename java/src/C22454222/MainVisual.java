@@ -97,7 +97,7 @@ public class MainVisual extends Visual
                 // jade.render();
                 break;
             case 3:
-                 //jason.render(); 
+                 jason.render(); 
                 break;
             case 4:
                 // chris.render();
