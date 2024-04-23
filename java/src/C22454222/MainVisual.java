@@ -10,15 +10,14 @@ public class MainVisual extends Visual
     int visualSwap = 0; // Variable to control visual swapping
     int playTune = 0; // Variable to control playing tune
     int stopPlay = 0; // Variable to control stopping playback
-    /*
-     * AimeeVisual aimee;
-     * NeilVisual neil;
-     * JadeVisual jade;
-     * JasonVisual jason;
-     * ChrisVisual chris;
-     */
-    AudioBandsVisual audioBandsVisual; // Instance of AudioBandsVisual class
+    
+    AimeeVisual aimee;
     NeilVisual neil;
+    JadeVisual jade;
+    JasonVisual jason;
+    ChrisVisual chris;
+     
+    AudioBandsVisual audioBandsVisual; // Instance of AudioBandsVisual class
 
     public float fCounter = 0; // Variable to store a floating-point counter value
     public int branchCounter=0;
@@ -39,12 +38,12 @@ public class MainVisual extends Visual
         loadAudio("Project.wav"); // Loading audio file
         BeatDetect(); // Initializing beat detection
         colorMode(HSB); // Setting color mode
-        /*
-         * aimee = new AimeeVisual(this);
-         * neil = new NeilVisual(this);
-         * jade = new JadeVisual(this);
-         * jason = new JasonVisual(this);
-         */
+        
+        aimee = new AimeeVisual(this);
+        neil = new NeilVisual(this);
+        jade = new JadeVisual(this);
+        jason = new JasonVisual(this);
+        
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
         neil = new NeilVisual(this);
         
