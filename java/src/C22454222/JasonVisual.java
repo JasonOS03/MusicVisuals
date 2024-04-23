@@ -12,6 +12,7 @@ public class JasonVisual extends Visual
 
     public JasonVisual(MainVisual mv) {
         this.mv = mv;
+        this.ab = mv.getAudioBuffer();
     }
 
     public void settings()
@@ -23,14 +24,14 @@ public class JasonVisual extends Visual
     public void setup()
     {
         colorMode(HSB);
-        background(0); // Black background
+        mv.background(0); // Black background
 
         ab = newplayer.mix;
     }
 
     public void render()
     {
-        background(0); // Black background
+        mv.background(0); // Black background
 
         float sum = 0;
 
@@ -47,7 +48,7 @@ public class JasonVisual extends Visual
         float CircleX = 200; // Circle x axis position
         float CircleY = 200; // Circle y axis position
 
-        translate(width / 2, height / 2); // Move (0,0) to the center
+        mv.translate(width / 2, height / 2); // Move (0,0) to the center
 
         int num_lines = (int) map(amplitude, 0, 1, 0, 4); // Ensures that if the amplitude is 1, there are 4 lines
         int num_circles = (int) map(amplitude, 0, 1, 0, 3); // If the amplitude is 1, there will be 3 circles
@@ -56,29 +57,30 @@ public class JasonVisual extends Visual
             float hue = map(i, 0, num_lines - 1, 0, 255); // Map the lines to the color spectrum for the hue
 
             float y_axis = map(i, 0, num_lines, CenterY, CenterY);
-            rotate(smoothrotation); // Rotate the lines 
+            mv.rotate(smoothrotation); // Rotate the lines 
 
-            stroke(hue, 100, 100); // Set the color of the stroke
-            strokeWeight(4); // Thickness of the lines
-            noFill();
-            line(0, y_axis, width, CenterY - y_axis); // Create the lines starting from 0 on the X axis and the Y axis value, spanning to the width of the screen on the X axis and height/2 - the y axis on the y axis
+            mv.stroke(hue, 100, 100); // Set the color of the stroke
+            mv.strokeWeight(4); // Thickness of the lines
+            mv.noFill();
+            mv.line(0, y_axis, width, CenterY - y_axis); // Create the lines starting from 0 on the X axis and the Y axis value, spanning to the width of the screen on the X axis and height/2 - the y axis on the y axis
         }
 
         for (int i = 0; i < num_circles; i++) {
             float hue = map(i, 0, num_lines - 1, 150, 255);// map the circles to the color spectrum
-            stroke(hue, 255, 255);
-            noFill();
-            rotate(smoothrotation);// rotate the circles
+            mv.stroke(hue, 255, 255);
+            mv.noFill();
+            mv.rotate(smoothrotation);// rotate the circles
 
-            strokeWeight(4);
-            ellipse(0, 0, CenterX / 2, amplitude); // Create circles starting at the origin, with a length of CenterX/2 and the height being the amplitude 
+            mv.strokeWeight(4);
+            mv.ellipse(0, 0, CenterX / 2, amplitude); // Create circles starting at the origin, with a length of CenterX/2 and the height being the amplitude 
 
-            stroke(hue, 255, 255);
-            noFill();
-            rotate(circlerotation); // Rotate in a circular motion
+            mv.stroke(hue, 255, 255);
+            mv.noFill();
+            mv.rotate(circlerotation); // Rotate in a circular motion
 
-            strokeWeight(4);
-            ellipse(CircleX, CircleY, CenterX / 4, CenterY / 4); // create smaller circles rotating around the inside circle
+            mv.strokeWeight(4);
+            mv.ambient(num_circles);
+            mv.ellipse(CircleX, CircleY, CenterX / 4, CenterY / 4); // create smaller circles rotating around the inside circle
         }
     }
 }

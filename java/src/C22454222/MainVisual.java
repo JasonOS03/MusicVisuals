@@ -43,9 +43,9 @@ public class MainVisual extends Visual
         neil = new NeilVisual(this);
         jade = new JadeVisual(this);
         jason = new JasonVisual(this);
+        chris = new ChrisVisual(this);
         
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
-        neil = new NeilVisual(this);
         
     }
 
