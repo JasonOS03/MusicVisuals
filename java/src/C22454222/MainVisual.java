@@ -2,6 +2,7 @@ package C22454222; // Package declaration
 
 import ie.tudublin.*; // Importing necessary classes from the ie.tudublin package
 import ddf.minim.AudioPlayer;
+
 // MainVisual class extending Visual class
 public class MainVisual extends Visual 
 {
@@ -9,16 +10,17 @@ public class MainVisual extends Visual
     int visualSwap = 0; // Variable to control visual swapping
     int playTune = 0; // Variable to control playing tune
     int stopPlay = 0; // Variable to control stopping playback
+    
     AimeeVisual aimee;
     NeilVisual neil;
     JadeVisual jade;
-    //JasonVisual jason;
+    JasonVisual jason;
     ChrisVisual chris;
+     
     AudioBandsVisual audioBandsVisual; // Instance of AudioBandsVisual class
 
     public float fCounter = 0; // Variable to store a floating-point counter value
     public int branchCounter=0;
-    public int chrisOption=1;
     public int smoothedAmplitude=1;
 
     // Method to set initial settings
@@ -40,7 +42,9 @@ public class MainVisual extends Visual
         aimee = new AimeeVisual(this);
         neil = new NeilVisual(this);
         jade = new JadeVisual(this);
-        // jason = new JasonVisual(this);
+        jason = new JasonVisual(this);
+        chris = new ChrisVisual(this);
+        
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
         
     }
@@ -52,11 +56,6 @@ public class MainVisual extends Visual
         { // If space bar is pressed
             as.stop();
             as.trigger();
-        }
-        // If numeric keys 1 to 3 are pressed
-        if (keyCode >= '1' && keyCode <= '3') 
-        {
-            chrisOption = keyCode - '0'; // Update chrisOption with the corresponding numeric value
         }
     }
 
@@ -87,16 +86,16 @@ public class MainVisual extends Visual
         switch (visualSwap) 
         {
             case 0:
-                aimee.render();
+                neil.render();
                 break;
             case 1:
-                neil.render();
+                aimee.render();
                 break;
             case 2:
                 jade.render();
                 break;
             case 3:
-                // jason.render();
+                 jason.render(); 
                 break;
             case 4:
                 chris.render();

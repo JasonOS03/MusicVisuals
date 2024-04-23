@@ -1,6 +1,7 @@
 package example;
 
 import ie.tudublin.*;
+import processing.core.PApplet;
 
 public class MyVisual extends Visual {
     WaveForm wf;

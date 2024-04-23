@@ -8,7 +8,7 @@ class Branch{
     float angle=0;
     Branch[] branches;//branch array 
 
-    Branch (MainVisual mainVisual,float start, float amplitude,float angle ,int branches  ){
+    Branch (MainVisual mainVisual,float start, float amplitude,float angle ,int branches){
         //constructor for branch class 
         this.mainVisual=mainVisual;
         this.start = start;
@@ -64,29 +64,28 @@ public class AimeeVisual extends Visual{
         mainVisual.fill(0,40);//sets background
         //creates the border
         mainVisual.rect(-2, -5, mainVisual.width + 5, mainVisual.height + 2);
-
+    
         mainVisual.fill(255);//set fill colour to white 
         mainVisual.stroke(255);//set stroke colour to white 
-
-        mainVisual.fCounter++;//increment frame counter 
-
+        mainVisual.fCounter++;
+    
         for (int i = 0; i < 6; i++) {
-
+    
             // Replace current matrix with identity matrix
             mainVisual.resetMatrix();
-
+    
             // Set the visual display window size, centers the visual
             mainVisual.translate(mainVisual.width / 2, mainVisual.height / 2);
-
+    
             // Set branch counter to 0
             mainVisual.branchCounter = 0;
-
+    
             //set rotation direction
             float rotationDirection = clockwise ? 1:-1;
-
+    
             //set rotation speed of entire visual
             float rotationSpeed=rotationDirection * rotationSpeedFactor * MainVisual.map(mainVisual.fCounter % 360,0,360,0, MainVisual.PI * 2);
-
+    
             mainVisual.rotate(rotationSpeed);
             //Maps the current iteration index i to a rotation angle and rotates the visual accordingly.
             mainVisual.rotate(MainVisual.map((float) i, 0f, 6f, 0f, MainVisual.PI * 2));
@@ -99,15 +98,15 @@ public class AimeeVisual extends Visual{
             //makes the braches different colours
             float hue1 = (mainVisual.fCounter / 10) % 255;
             float hue2 = (mainVisual.fCounter / 2) % 255;
-
+    
             mainVisual.fill(hue1, 255, 255);// Calculating hue for branch 1
             mainVisual.stroke(hue1, 255, 255);
             branch1.show();//displays branch 1
-
+    
             mainVisual.fill(hue2, 255, 255);
             mainVisual.stroke(hue2, 255, 255);//sets stroke colour for branc 2
             branch2.show();//displays branch 2
-
+    
         }
     }
 }
