@@ -15,6 +15,7 @@ public class MainVisual extends Visual
     //JasonVisual jason;
     ChrisVisual chris;
     AudioBandsVisual audioBandsVisual; // Instance of AudioBandsVisual class
+    NeilVisual neil;
 
     public float fCounter = 0; // Variable to store a floating-point counter value
     public int branchCounter=0;
@@ -42,6 +43,8 @@ public class MainVisual extends Visual
         // jason = new JasonVisual(this);
         chris = new ChrisVisual(this);
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
+        neil = new NeilVisual(this);
+        
     }
 
     // Method to handle key pressed events
@@ -84,7 +87,7 @@ public class MainVisual extends Visual
                 aimee.render();
                 break;
             case 1:
-                // neil.render();
+                neil.render();
                 break;
             case 2:
                 jade.render();
