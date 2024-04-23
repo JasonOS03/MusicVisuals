@@ -14,7 +14,7 @@ Student Numbers: C22393606, C22405604, C22394466, C22400796, C22454222
 # Description of the assignment
 
 ## Aimee
-my code creates animations by generating branching structures. I used recursion and visualization principles to achieve the cool visual effects. 
+My code creates animations by generating branching structures. I used recursion and visualization principles to achieve the cool visual effects. 
 At the core of the code are branches, which represent the basic building blocks of the branching structures. Each branch has properties like where it starts, how far it extends (amplitude), and its angle. It also has smaller branches growing from it, creating a tree-like effect.
 My code uses a recursive approach to create these branches. The branch() method keeps generating smaller branches until it reaches a specified limit.
 In the AimeeVisual Class  the color mode, stroke weight, and background color for the visual display is set up.
@@ -53,6 +53,13 @@ The visual I created was what I would describe as a vortex. The first part of th
 
 The next part of the visual I created was the inner rings , which are a bright pink color. these circles rotates by the amplitude value in radians and also pulsate by the amplitude amount.The inner rings are supposed to represent the center of the vortex. The color also changes sporadically as the beat tempo / amplitude increases. The final part of the visual I created was a ring of circles rotating around the inner circle. These circles are also a bright pink color , and the colors also change at peak amplitude. This ring of circles is essentially pulled around the inside of the vortex.
 ## Chris
+So I was in charge of designing the software first and foremost. I setup all the necessary main files and dictated how many branches we'd need. I also made the visual menu and was responsible for the UI and UX. I wanted to make the visuals interactive.
+
+In my own visual ChrisVisual.java, I brainstormed many ideas such as an idea for a visual that resembled a black hole with atoms surrounding. I implemented this and then decided to take my visual another direction.
+
+The java class responds dynamically to audio input, implementing beat detection and manipulating shapes and colors based on amplitude and beat presence. Through the utilization of spiral patterns (using simple cos and sin Papplet functions) and various shapes like triangles and ellipses, the visualization generates captivating visual effects that synchronize seamlessly with the audio. The code  emphasizes creativity, technical proficiency, and user experience, requiring a cohesive and well-structured implementation with a focus on responsiveness and aesthetic appeal.
+
+In terms of resources, I used Github Copilot for any minor syntax errors, formatting and some formal commenting on code. I initially used  this video as inspiration for a start on my visual https://www.youtube.com/watch?v=283rmgvFDE0. Used processing for learning how to utilize cos and sin functions, growing shapes based on amplitude and beats and colour shifting based on time. https://processing.org/
 
 # Instructions
 
