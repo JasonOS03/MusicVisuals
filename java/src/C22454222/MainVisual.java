@@ -84,10 +84,10 @@ public class MainVisual extends Visual
         switch (visualSwap) 
         {
             case 0:
-                aimee.render();
+                neil.render();
                 break;
             case 1:
-                neil.render();
+                aimee.render();
                 break;
             case 2:
                 jade.render();

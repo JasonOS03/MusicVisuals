@@ -67,6 +67,7 @@ public class AimeeVisual extends Visual{
     
         mainVisual.fill(255);//set fill colour to white 
         mainVisual.stroke(255);//set stroke colour to white 
+        mainVisual.fCounter++;
     
         for (int i = 0; i < 6; i++) {
     
