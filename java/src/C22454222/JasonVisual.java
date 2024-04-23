@@ -2,9 +2,7 @@ package C22454222;
 
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioPlayer;
-import ddf.minim.Minim;
 import ie.tudublin.*;
-import processing.core.PApplet;
 
 public class JasonVisual extends Visual 
 {
