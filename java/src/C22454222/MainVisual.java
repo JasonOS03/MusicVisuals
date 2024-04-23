@@ -10,23 +10,25 @@ public class MainVisual extends Visual
     int visualSwap = 0; // Variable to control visual swapping
     int playTune = 0; // Variable to control playing tune
     int stopPlay = 0; // Variable to control stopping playback
-    
-     // AimeeVisual aimee;
-     // NeilVisual neil;
-      //JadeVisual jade;
-      JasonVisual jason;
-      //ChrisVisual chris;
-     
+    /*
+     * AimeeVisual aimee;
+     * NeilVisual neil;
+     * JadeVisual jade;
+     * JasonVisual jason;
+     * ChrisVisual chris;
+     */
     AudioBandsVisual audioBandsVisual; // Instance of AudioBandsVisual class
+    NeilVisual neil;
 
     public float fCounter = 0; // Variable to store a floating-point counter value
-    public int chrisOption = 1; // Variable to store an option for Chris's visual
+    public int branchCounter=0;
+    public int smoothedAmplitude=1;
 
     // Method to set initial settings
     public void settings() 
     {
-        size(1024, 500); // Setting window size
-        // fullScreen();
+        // Setting window size
+        fullScreen();
         // fullScreen(P3D,SPAN);
     }
 
@@ -37,13 +39,15 @@ public class MainVisual extends Visual
         loadAudio("Project.wav"); // Loading audio file
         BeatDetect(); // Initializing beat detection
         colorMode(HSB); // Setting color mode
-        
-          //aimee = new AimeeVisual(this);
-          //neil = new NeilVisual(this);
-          //jade = new JadeVisual(this);
-          jason = new JasonVisual(this);
-         
+        /*
+         * aimee = new AimeeVisual(this);
+         * neil = new NeilVisual(this);
+         * jade = new JadeVisual(this);
+         * jason = new JasonVisual(this);
+         */
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
+        neil = new NeilVisual(this);
+        
     }
 
     // Method to handle key pressed events
@@ -53,11 +57,6 @@ public class MainVisual extends Visual
         { // If space bar is pressed
             as.stop();
             as.trigger();
-        }
-        // If numeric keys 1 to 3 are pressed
-        if (keyCode >= '1' && keyCode <= '3') 
-        {
-            chrisOption = keyCode - '0'; // Update chrisOption with the corresponding numeric value
         }
     }
 
@@ -88,19 +87,19 @@ public class MainVisual extends Visual
         switch (visualSwap) 
         {
             case 0:
-                // aimee.render();
+                neil.render();
                 break;
             case 1:
-                // neil.render();
+                aimee.render();
                 break;
             case 2:
-                // jade.render();
+                jade.render();
                 break;
             case 3:
                  jason.render(); 
                 break;
             case 4:
-                // chris.render();
+                chris.render();
                 break;
             case 5:
                 audioBandsVisual.render(); // Render AudioBandsVisual

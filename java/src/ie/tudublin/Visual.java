@@ -19,7 +19,7 @@ public abstract class Visual extends PApplet
 	private AudioBuffer ab;
 	public BeatDetect beat;
 	private FFT fft;
-
+	
 	private float amplitude  = 0;
 	private float smoothedAmplitude = 0;
 
@@ -155,7 +155,7 @@ public abstract class Visual extends PApplet
 	{
 		return ab;
 	}
-
+	
 	public AudioSample getAudioSample() 
 	{
 		return as;
