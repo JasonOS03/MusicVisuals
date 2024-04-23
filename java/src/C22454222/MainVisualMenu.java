@@ -102,8 +102,8 @@ public class MainVisualMenu extends Visual
         textAlign(CENTER, CENTER);
 
         text("Play Tune", boxWidth / 2, boxHeight / 2);
-        text("Aimee", boxWidth / 2, 1 * boxHeight + boxHeight / 2);
-        text("Neil", boxWidth / 2, 2 * boxHeight + boxHeight / 2);
+        text("Neil", boxWidth / 2, 1 * boxHeight + boxHeight / 2);
+        text("Aimee", boxWidth / 2, 2 * boxHeight + boxHeight / 2);
         text("Jade", boxWidth / 2, 3 * boxHeight + boxHeight / 2);
         text("Jason", boxWidth / 2, 4 * boxHeight + boxHeight / 2);
         text("Chris", boxWidth / 2, 5 * boxHeight + boxHeight / 2);
