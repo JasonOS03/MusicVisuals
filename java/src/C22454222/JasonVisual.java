@@ -30,6 +30,7 @@ public class JasonVisual extends Visual
         mv.background(0); // Black background
 
         float sum = 0;
+        float smooth = getSmoothedAmplitude();// function to make the amplitude smoother
 
         // Iterate until the audio buffer size is reached
         for (int i = 0; i < ab.size(); i++) {
@@ -37,8 +38,8 @@ public class JasonVisual extends Visual
         }
         float average = sum / (float) ab.size(); // Calculate the average buffer value 
         float amplitude = average * 800; // Amplitude is average times a certain number, in this case it's 800   
-        float smoothrotation = lerp(0, radians(amplitude), 0.1f); // Interpolate from 0 to the amplitude in radians at an amount of 0.05
-        float circlerotation = lerp(0, radians(360), 0.1f); // Interpolates from 0 to 360 degrees in radians, allowing the circles to move around in a circle 
+        float smoothrotation = lerp(0, radians(amplitude), 0.05f); // Interpolate from 0 to the amplitude in radians at an amount of 0.05
+        float circlerotation = lerp(0, radians(360), 0.05f); // Interpolates from 0 to 360 degrees in radians, allowing the circles to move around in a circle 
         float CenterY = mv.height / 2; // Center of screen Y value
         float CenterX = mv.width / 2; // Center of screen X value
         float CircleX = 200; // Circle x axis position
@@ -54,7 +55,7 @@ public class JasonVisual extends Visual
             float hue = map(i, 0, num_lines - 1, 0, 255); // Map the lines to the color spectrum for the hue
 
             float y_axis = map(i, 0, num_lines, -CenterY/2, CenterY/2);// y_axis variable mapped from 0 to the number of lines to - height/4 to the height/4 
-            mv.rotate(smoothrotation); // Rotate the lines 
+            mv.rotate(smooth + smoothrotation); // Rotate the lines 
 
             mv.stroke(hue, 100, 100); // Set the color of the stroke
             mv.strokeWeight(4); // Thickness of the lines
@@ -66,14 +67,14 @@ public class JasonVisual extends Visual
             float hue = map(i, 0, num_lines - 1, 150, 255); // map the circles to the color spectrum
             mv.stroke(hue, 255, 255);
             mv.noFill();
-            mv.rotate(smoothrotation); // rotate the circles
+            mv.rotate(smooth + smoothrotation); // rotate the circles
 
             mv.strokeWeight(4);
-            mv.ellipse(0, 0, CenterX/2, amplitude); // Create circles starting at the origin, with a diameter of CenterX and the height being the amplitude 
+            mv.ellipse(0, 0, CenterX/2, smooth + smoothrotation); // Create circles starting at the origin, with a diameter of CenterX and the height being the amplitude 
 
             mv.stroke(hue, 255, 255);
             mv.noFill();
-            mv.rotate(circlerotation); // Rotate in a circular motion
+            mv.rotate(smooth + circlerotation); // Rotate in a circular motion
 
             mv.strokeWeight(4);
             mv.ellipse(CircleX - CenterX/2, CircleY - CenterY/2, CenterX/2, CenterY/2); // create smaller  circles rotating around the center
