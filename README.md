@@ -215,7 +215,7 @@ This project also helped to enhance my group working skills and communication as
 The part of the assignment I found the most challenging was trying to coordinate each part of the visual to not interfere with each other and trying to get the visuals to move around and pulsate smoothly. Trying to ensure that the visuals were not jumpy proved to be quite challenging, and unfortunately the jumpiness of the inner circles could not be fully fixed. 
 
 ## Chris
-I'm most proud of a lot of things. I took the initiative with this project and designed and implemented a lot of fundamental elements of the software such as the menu, main file structures, branches and was in charge of solving merge conflicts and fixing any common bugs amongst other members of the team.
+I'm most proud of a lot of things. I took the initiative with this project and designed and implemented a lot of fundamental elements of the software such as the menu, main file structures, branches and was in charge of solving merge conflicts and fixing any common bugs amongst other members of the team. I also ensured all members of the group made contributions, tracking them by looking at commits.
 
 I wouldn't call myself a creative person but I enjoyed making my simple visual. I enjoyed managing a team more and maintaining good code standards, structure and organising meet ups with my group. Working with a team gave me great experience as well as collaborating on an industry used platform (Github). I'm proud that everything fell into place because of good organisation and teamwork. 
 
