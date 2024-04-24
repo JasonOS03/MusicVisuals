@@ -69,6 +69,7 @@ public class NeilVisual extends Visual {
         //increase radius of shape with beatCount
         radius = 5 * beatCount;
         mv.ellipse(0,0,radius,radius);
+        mv.rect(-(mv.width/2), -mv.height/2, mv.width-1, mv.height-1);
 
         // Rotate and fill shapes with previous colors
         mv.rotate(MainVisual.map(mv.fCounter % 360, 0, 360, 0, MainVisual.PI * 2));

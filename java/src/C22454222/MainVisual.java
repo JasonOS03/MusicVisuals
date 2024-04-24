@@ -91,7 +91,7 @@ public class MainVisual extends Visual
                 chris.render();
                 break;
             case 5:
-                audioBandsVisual.render(); // Render AudioBandsVisual
+                audioBandsVisual.render(); 
                 break;
             default:
                 background(0); // Set background color to black by default

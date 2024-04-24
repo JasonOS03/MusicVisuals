@@ -1,7 +1,5 @@
 # Music Visualiser Project
-
 Names: Aimee Mcgrane, Neil Fitzgerald, Jade Thornton, Jason O Sullivan, Chris Noblett 
-
 Student Numbers: C22393606, C22405604, C22394466, C22400796, C22454222
 
 ## Instructions
@@ -14,7 +12,7 @@ Student Numbers: C22393606, C22405604, C22394466, C22400796, C22454222
 # Description of the assignment
 
 ## Aimee
-my code creates animations by generating branching structures. I used recursion and visualization principles to achieve the cool visual effects. 
+My code creates animations by generating branching structures. I used recursion and visualization principles to achieve the cool visual effects. 
 At the core of the code are branches, which represent the basic building blocks of the branching structures. Each branch has properties like where it starts, how far it extends (amplitude), and its angle. It also has smaller branches growing from it, creating a tree-like effect.
 My code uses a recursive approach to create these branches. The branch() method keeps generating smaller branches until it reaches a specified limit.
 In the AimeeVisual Class  the color mode, stroke weight, and background color for the visual display is set up.
@@ -23,9 +21,7 @@ When showing the viusal of the bracnches, my code utilizes methods like show() t
 Additionally, my code responds to audio input, i did this by adjusting the branches based on sound levels. This adds an extra layer of motion to the visuals, making them react to changes in sound.
 Over the course of this project i made sure to commit every change I made to doccument my codes development and evolvement throughout the creating process.
 
-
 ## Neil
-
 Constructor:
 The NeilVisual class has a constructor that takes a MainVisual object mv as a parameter. This constructor initializes the mv field, which allows NeilVisual to interact with the main visual component of the system.
 Fields:
@@ -52,7 +48,17 @@ My first role in this project was to set up the GitHub repository. I created the
 The visual I created was what I would describe as a vortex. The first part of the visual I created was the the vortex itself , spanning around the sides of the screen. This vortex contains the colors from green all the way to red , and I did this using the map function.The vortex reacts to the audio by swirling around in a circular motion and pulsating. The vortex was created using lines, and these lines represent the gusts of wind.
 
 The next part of the visual I created was the inner rings , which are a bright pink color. these circles rotates by the amplitude value in radians and also pulsate by the amplitude amount.The inner rings are supposed to represent the center of the vortex. The color also changes sporadically as the beat tempo / amplitude increases. The final part of the visual I created was a ring of circles rotating around the inner circle. These circles are also a bright pink color , and the colors also change at peak amplitude. This ring of circles is essentially pulled around the inside of the vortex.
+
 ## Chris
+So I was in charge of designing the software first and foremost. I setup all the necessary main files and dictated how many branches we'd need. I also made the visual menu and was responsible for the UI and UX. I wanted to make the visuals interactive. I was also just a glorified project manager.
+
+In my own visual ChrisVisual.java, I brainstormed many ideas such as an idea for a visual that resembled a black hole with atoms surrounding it. I implemented this and then decided to take my visual another direction.
+
+The java class responds dynamically to audio input, implementing beat detection and manipulating shapes and colors based on amplitude and beat presence. Through the utilization of spiral patterns (using simple cos and sin Papplet functions) and various shapes like triangles and ellipses, the visualization generates captivating visual effects that synchronize seamlessly with the audio. The code emphasizes creativity, technical proficiency, and user experience, requiring a cohesive and well-structured implementation with a focus on responsiveness and aesthetic appeal.
+
+The end result of my visual shows growing triangles facing each other and growing in a loop that resets once the triangles hit the border of the screen. I used mirrored triangles to form other shapes over time such as diamonds, prisms and abstract looking hour glasses. This same logic is used for a drawn circle in the centre of the screen. I also run for loops that create interesting sin and cos spirals that grow and shrink with the beat.
+
+In terms of resources, I used Github Copilot for any minor syntax errors, formatting and some formal commenting on code. I initially used this video as inspiration for a start on my visual https://www.youtube.com/watch?v=283rmgvFDE0. Used processing for learning how to utilize cos and sin functions, growing shapes based on amplitude and beats and colour shifting based on time. https://processing.org/.
 
 # Instructions
 
@@ -65,8 +71,123 @@ Once you have ran the program, a separate menu window opens with the following o
 - Jade
 - Jason
 - Chris
+- AudioBands
+
+1. To start the visual, press the Play Tune button.
+2. Neil's visual will start, synchronized with the song.
+3. You can then click on other name's to see their visuals.
+4. You can click back on previously seen visuals that are running in the background.
+5. Click the play tune button again at any time. Don't worry, the visuals will all stay in sync.
 
 # How it works
+
+## Aimee
+
+## Neil
+
+## Jade
+
+## Jason
+
+## Chris
+
+This is the code for detecting beats
+```Java
+
+        if (mv.beat.isKick()) // Checking if there's a kick in the audio
+        {
+            kickCounter++; // Incrementing kick counter
+        }
+```
+This is the code for the basic logic of changing shape colours.
+```Java
+    float[] currentColours = new float[]{random(0,255),random(0,255),random(0,255)}; // Array to store current colors
+    float[] previousColours = new float[]{0,0,0}; // Array to store previous colors
+
+    // Method to generate random colors and replace current colors
+    public float[] replacingColours(float[] currentColours)
+    {
+        float[] colours = new float[]{random(0,255),random(0,255),random(0,255)}; // Generating random colors
+        for(int i = 0; i < 3; i++) // Looping through color channels
+        {
+            currentColours[i] = colours[i]; // Replacing current colors with new random colors
+        }
+        return currentColours; // Returning the updated colors
+    }
+```
+This is the code for the basic logic of resetting the size of the triangles and circle as well as changing colours.
+```Java
+        // Resetting values if radius exceeds half of the screen width
+        if (radius > (float)mv.width / 2)
+        {
+            // Storing current colors as previous colors
+            for (int i = 0; i < 3; i++)
+            {
+                previousColours[i] = currentColours[i];
+            }
+            // Generating and replacing new colors
+            replacingColours(currentColours);
+            kickCounter = 0; // Resetting kick counter
+            radius = 20; // Resetting radius
+        }
+```
+This is the code for drawing the centre circle and for increasing the size of it.
+```Java
+        radius = 40*kickCounter; // Adjusting radius based on kick counter
+        mv.ellipse(0,0,radius,radius); // Drawing ellipse at the center
+```
+
+This is the code for drawing the sets of mirrored triangles and for increasing the size of them.
+```Java
+        radius = 15*kickCounter; // Adjusting radius based on kick counter
+        // Drawing triangles
+        radius = 15*kickCounter; // Adjusting radius based on kick counter
+        mv.triangle(-200, -100, -140+(float)0.6*radius, radius, (-260-(float)0.6*radius), radius); 
+        mv.triangle(200, -100, 260+(float)0.6*radius, radius, (140-(float)0.6*radius), radius);
+        mv.triangle(-400, -100, -340+(float)0.6*radius, radius, (-460-(float)0.6*radius), radius); 
+        mv.triangle(400, -100, 460+(float)0.6*radius, radius, (340-(float)0.6*radius), radius);
+        mv.triangle(-600, -100, -540+(float)0.6*radius, radius, (-660-(float)0.6*radius), radius); 
+        mv.triangle(600, -100, 660+(float)0.6*radius, radius, (540-(float)0.6*radius), radius);
+        
+        // Drawing mirrored triangles
+        mv.triangle(-200, 100, -140+(float)0.6*radius, -radius, (-260-(float)0.6*radius), -radius); 
+        mv.triangle(200, 100, 260+(float)0.6*radius, -radius, (140-(float)0.6*radius), -radius);
+        mv.triangle(-400, 100, -340+(float)0.6*radius, -radius, (-460-(float)0.6*radius), -radius); 
+        mv.triangle(400, 100, 460+(float)0.6*radius, -radius, (340-(float)0.6*radius), -radius);
+        mv.triangle(-600, 100, -540+(float)0.6*radius, -radius, (-660-(float)0.6*radius), -radius); 
+        mv.triangle(600, 100, 660+(float)0.6*radius, -radius, (540-(float)0.6*radius), -radius);
+```
+
+This is the code for drawing the spirals.
+```Java
+        // Drawing points in a spiral pattern
+        for (float i = 0; i < mv.width; i += 0.3)
+        {
+            float x1 = (PApplet.cos(i) * smooth * i);
+            float y1 = (PApplet.sin(i) * smooth * i);
+            mv.point(x1, y1);
+        }
+
+        // Drawing points in a spiral pattern with center at (-400, 0)
+        for (float i = 0; i < mv.width; i += 0.3)
+        {
+            float centerX2 = -400; 
+            float centerY2 = 0; 
+            float x2 = centerX2 + (PApplet.cos(i) * smooth * i);
+            float y2 = centerY2 + (PApplet.sin(i) * smooth * i);
+            mv.point(x2, y2);
+        }
+
+        // Drawing points in a spiral pattern with center at (400, 0)
+        for (float i = 0; i < mv.width; i += 0.3)
+        {
+            float centerX3 = +400; 
+            float centerY3 = 0; 
+            float x3 = centerX3 + (PApplet.cos(i) * smooth * i);
+            float y3 = centerY3 + (PApplet.sin(i) * smooth * i);
+            mv.point(x3, y3);
+        }
+```
 
 # What I am most proud of in the assignment
 
@@ -77,15 +198,13 @@ I am happy about how my viusal turned out,As my code produces visually appealing
 For this project to gain ideas I used online resources such as youtube to gain ideas for my code. here is a youtbe video i used to get ideas off https://youtu.be/l7PetueD1_c?si=fWYtMLATU_C666GU. I am proud how i was able to take ideas from online sources but implement my own creative version.
 Overall, I'm really proud of what I've created. It's a blend of art and technology, showing how coding can be both creative and interesting to implement.
 
-
-
 ## Neil
 Personally my favourite thing i made was the stars as i love space and i think it fits the theme very well as well as adding some layers to the visual while being relativly simple to implement. The spiral however is what i am most proud of as it was hard to figure out. It was hard in general to come up with what to put in the center but after messing about and using AI for ideas it created a center line that rotated around like a radar. I then messed around with the code and while in class sin and cos was mentioned and so i got an idea to create a visual with that. This was challanging to get working but eventually i figured it out after messing around with the code. The maths aspect was definatly the hardest aspect getting the rotating working. I used some tutorials online (https://www.youtube.com/watch?v=OqQE3Z87uuU) and searched some websites (such as https://stackoverflow.com/questions/17596003/something-like-collections-rotate-for-map) to try learn the bascis on how to rotate. While I didnt completly copy their code i did use github copilot which was recomended in class to help assist on this which i found very useful. For the circle and square I got the idea from the labs as we had used these functions before. Another suprisingly hard part was starting the code as I had to spend a bit of time looking over the main visual and the funciton to understand them. However once i had momemtum I found myself enjoying the project alot and being proud of the visual i made as it may not be the most flashy or impressive but i personally think it turned out very well.
-
 
 ## Jade
 I was most proud of how far I had came from the beginning of the project. I found this a big challenge and im very happy with the end result. The hardest challenge I overcame was the stabbing effect at the bottom of the screen, it was very difficult to figure out the variables and the positioning of this. I was very happy with the outcome of this section of the visual because I thought this idea would be out of my depths but I achieved it with research and time. The next thing im most proud of is the stars, this was a joint effort between me and another member of the team, neil, the reason we curated this aspect of the visual was to create a sense of unity between our visuals, and in the end i was very impressed with the outcome. 
 (sources, what u learened tutorials yt web , )
+
 ## Jason
 In this assignment I am most proud of my creative thinking to come up with an interesting visual. This creative thinking continued throughout the whole project , leading to the visual constantly evolving and changing over time. I was able to constantly think of new ideas which I am very proud of. 
 
@@ -96,50 +215,17 @@ This project also helped to enhance my group working skills and communication as
 The part of the assignment I found the most challenging was trying to coordinate each part of the visual to not interfere with each other and trying to get the visuals to move around and pulsate smoothly. Trying to ensure that the visuals were not jumpy proved to be quite challenging, and unfortunately the jumpiness of the inner circles could not be fully fixed. 
 
 ## Chris
+I'm most proud of a lot of things. I took the initiative with this project and designed and implemented a lot of fundamental elements of the software such as the menu, main file structures, branches and was in charge of solving merge conflicts and fixing any common bugs amongst other members of the team. I also ensured all members of the group made contributions, tracking them by looking at commits.
 
-# Markdown Tutorial
+I wouldn't call myself a creative person but I enjoyed making my simple visual. I enjoyed managing a team more and maintaining good code standards, structure and organising meet ups with my group. Working with a team gave me great experience as well as collaborating on an industry used platform (Github). I'm proud that everything fell into place because of good organisation and teamwork. 
 
-This is *emphasis*
+I'm proud of the menu structure, creating interactivity with the user. I think that makes this project stand out a bit because most projects probably ran through all the visuals with no menu. Our menu structure creates interesting opportunities for unpredictability since users can swap between visuals at any time during the song.
 
-This is a bulleted list
+For my visual, I wanted to make something that would grow and make new shapes and I thought interlocking triangles would do that beautifully to the beat of a techno song. The triangles form other incredible shapes. Every visual in the project follows that techno theme we were going for.
 
-- Item
-- Item
+I'm also proud of how familiar I became with git. Helped others in the group with any queries or issues with using git, especiallg during the merging process when we all merged the individual developer branches. 
 
-This is a numbered list
-
-1. Item
-1. Item
-
-This is a [hyperlink]
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
-
-```Java
-```
-
-This is an image using a relative URL:
-
-![An image]
-
-This is an image using an absolute URL:
-
-![A different image]
-
-This is a youtube video:
+# Youtube video
 
 ![YouTube]
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
 
