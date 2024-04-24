@@ -46,7 +46,6 @@ public class MainVisual extends Visual
         chris = new ChrisVisual(this);
         
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
-        
     }
 
     // Method to draw visuals
