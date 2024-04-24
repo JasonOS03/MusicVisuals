@@ -1,7 +1,5 @@
 # Music Visualiser Project
-
 Names: Aimee Mcgrane, Neil Fitzgerald, Jade Thornton, Jason O Sullivan, Chris Noblett 
-
 Student Numbers: C22393606, C22405604, C22394466, C22400796, C22454222
 
 ## Instructions
@@ -24,7 +22,6 @@ Additionally, my code responds to audio input, i did this by adjusting the branc
 Over the course of this project i made sure to commit every change I made to doccument my codes development and evolvement throughout the creating process.
 
 ## Neil
-
 Constructor:
 The NeilVisual class has a constructor that takes a MainVisual object mv as a parameter. This constructor initializes the mv field, which allows NeilVisual to interact with the main visual component of the system.
 Fields:
@@ -81,7 +78,6 @@ Once you have ran the program, a separate menu window opens with the following o
 3. You can then click on other name's to see their visuals.
 4. You can click back on previously seen visuals that are running in the background.
 
-
 # How it works
 
 ## Aimee
@@ -93,7 +89,6 @@ Once you have ran the program, a separate menu window opens with the following o
 ## Jason
 
 ## Chris
-
 This is the code for the basic logic of changing shape colours.
 ```Java
     float[] currentColours = new float[]{random(0,255),random(0,255),random(0,255)}; // Array to store current colors
@@ -109,6 +104,22 @@ This is the code for the basic logic of changing shape colours.
         }
         return currentColours; // Returning the updated colors
     }
+```
+This is the code for the basic logic of resetting the size of the triangles and circle as well as changing colours.
+```Java
+        // Resetting values if radius exceeds half of the screen width
+        if (radius > (float)mv.width / 2)
+        {
+            // Storing current colors as previous colors
+            for (int i = 0; i < 3; i++)
+            {
+                previousColours[i] = currentColours[i];
+            }
+            // Generating and replacing new colors
+            replacingColours(currentColours);
+            kickCounter = 0; // Resetting kick counter
+            radius = 20; // Resetting radius
+        }
 ```
 This is the code for drawing the centre circle and for increasing the size of it.
 ```Java
@@ -177,15 +188,13 @@ I am happy about how my viusal turned out,As my code produces visually appealing
 For this project to gain ideas I used online resources such as youtube to gain ideas for my code. here is a youtbe video i used to get ideas off https://youtu.be/l7PetueD1_c?si=fWYtMLATU_C666GU. I am proud how i was able to take ideas from online sources but implement my own creative version.
 Overall, I'm really proud of what I've created. It's a blend of art and technology, showing how coding can be both creative and interesting to implement.
 
-
-
 ## Neil
 Personally my favourite thing i made was the stars as i love space and i think it fits the theme very well as well as adding some layers to the visual while being relativly simple to implement. The spiral however is what i am most proud of as it was hard to figure out. It was hard in general to come up with what to put in the center but after messing about and using AI for ideas it created a center line that rotated around like a radar. I then messed around with the code and while in class sin and cos was mentioned and so i got an idea to create a visual with that. This was challanging to get working but eventually i figured it out after messing around with the code. The maths aspect was definatly the hardest aspect getting the rotating working. I used some tutorials online (https://www.youtube.com/watch?v=OqQE3Z87uuU) and searched some websites (such as https://stackoverflow.com/questions/17596003/something-like-collections-rotate-for-map) to try learn the bascis on how to rotate. While I didnt completly copy their code i did use github copilot which was recomended in class to help assist on this which i found very useful. For the circle and square I got the idea from the labs as we had used these functions before. Another suprisingly hard part was starting the code as I had to spend a bit of time looking over the main visual and the funciton to understand them. However once i had momemtum I found myself enjoying the project alot and being proud of the visual i made as it may not be the most flashy or impressive but i personally think it turned out very well.
-
 
 ## Jade
 I was most proud of how far I had came from the beginning of the project. I found this a big challenge and im very happy with the end result. The hardest challenge I overcame was the stabbing effect at the bottom of the screen, it was very difficult to figure out the variables and the positioning of this. I was very happy with the outcome of this section of the visual because I thought this idea would be out of my depths but I achieved it with research and time. The next thing im most proud of is the stars, this was a joint effort between me and another member of the team, neil, the reason we curated this aspect of the visual was to create a sense of unity between our visuals, and in the end i was very impressed with the outcome. 
 (sources, what u learened tutorials yt web , )
+
 ## Jason
 In this assignment I am most proud of my creative thinking to come up with an interesting visual. This creative thinking continued throughout the whole project , leading to the visual constantly evolving and changing over time. I was able to constantly think of new ideas which I am very proud of. 
 
@@ -196,17 +205,15 @@ This project also helped to enhance my group working skills and communication as
 The part of the assignment I found the most challenging was trying to coordinate each part of the visual to not interfere with each other and trying to get the visuals to move around and pulsate smoothly. Trying to ensure that the visuals were not jumpy proved to be quite challenging, and unfortunately the jumpiness of the inner circles could not be fully fixed. 
 
 ## Chris
+I'm most proud of a lot of things. I took the initiative with this project and designed and implemented a lot of fundamental elements of the software such as the menu, main file structures, branches and was in charge of solving merge conflicts and fixing any common bugs amongst other members of the team.
 
+I wouldn't call myself a creative person but I enjoyed making my simple visual. I enjoyed managing a team more and maintaining good code standards, structure and organising meet ups with my group. Working with a team gave me great experience as well as collaborating on an industry used platform (Github). I'm proud that everything fell into place because of good organisation and teamwork. 
 
-This is a youtube video:
+I'm proud of the menu structure, creating interactivity with the user. I think that makes this project stand out a bit because most projects probably ran through all the visuals with no menu. Our menu structure creates interesting opportunities for unpredictability since users can swap between visuals at any time during the song.
+
+For my visual, I wanted to make something that would grow and make new shapes and I thought interlocking triangles would do that beautifully to the beat of a techno song. Every visual in the project follows that techno theme we were going for.
+
+# Youtube video
 
 ![YouTube]
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
 
