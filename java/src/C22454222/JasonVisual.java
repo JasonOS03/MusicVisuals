@@ -37,8 +37,8 @@ public class JasonVisual extends Visual
         }
         float average = sum / (float) ab.size(); // Calculate the average buffer value 
         float amplitude = average * 800; // Amplitude is average times a certain number, in this case it's 800   
-        float smoothrotation = mv.lerp(0, mv.radians(amplitude), 0.1f); // Interpolate from 0 to the amplitude in radians at an amount of 0.05
-        float circlerotation = mv.lerp(0, mv.radians(360), 0.1f); // Interpolates from 0 to 360 degrees in radians, allowing the circles to move around in a circle 
+        float smoothrotation = lerp(0, radians(amplitude), 0.1f); // Interpolate from 0 to the amplitude in radians at an amount of 0.05
+        float circlerotation = lerp(0, radians(360), 0.1f); // Interpolates from 0 to 360 degrees in radians, allowing the circles to move around in a circle 
         float CenterY = mv.height / 2; // Center of screen Y value
         float CenterX = mv.width / 2; // Center of screen X value
         float CircleX = 200; // Circle x axis position
@@ -47,13 +47,13 @@ public class JasonVisual extends Visual
 
         mv.translate(CenterX, CenterY); // Move (0,0) to the center
 
-        int num_lines = (int) mv.map(amplitude, 0, 1, 0, 4); // Ensures that if the amplitude is 1, there are 4 lines
-        int num_circles = (int) mv.map(amplitude, 0, 1, 0, 3); // If the amplitude is 1, there will be 3 circles
+        int num_lines = (int) map(amplitude, 0, 1, 0, 4); // Ensures that if the amplitude is 1, there are 4 lines
+        int num_circles = (int) map(amplitude, 0, 1, 0, 3); // If the amplitude is 1, there will be 3 circles
 
         for (int i = 0; i < num_lines; i++) {
-            float hue = mv.map(i, 0, num_lines - 1, 0, 255); // Map the lines to the color spectrum for the hue
+            float hue = map(i, 0, num_lines - 1, 0, 255); // Map the lines to the color spectrum for the hue
 
-            float y_axis = mv.map(i, 0, num_lines, -CenterY/2, CenterY/2);// y_axis variable mapped from 0 to the number of lines to - height/4 to the height/4 
+            float y_axis = map(i, 0, num_lines, -CenterY/2, CenterY/2);// y_axis variable mapped from 0 to the number of lines to - height/4 to the height/4 
             mv.rotate(smoothrotation); // Rotate the lines 
 
             mv.stroke(hue, 100, 100); // Set the color of the stroke
@@ -63,7 +63,7 @@ public class JasonVisual extends Visual
         }
 
         for (int i = 0; i < num_circles; i++) {
-            float hue = mv.map(i, 0, num_lines - 1, 150, 255); // map the circles to the color spectrum
+            float hue = map(i, 0, num_lines - 1, 150, 255); // map the circles to the color spectrum
             mv.stroke(hue, 255, 255);
             mv.noFill();
             mv.rotate(smoothrotation); // rotate the circles
