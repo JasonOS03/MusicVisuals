@@ -223,6 +223,8 @@ I'm proud of the menu structure, creating interactivity with the user. I think t
 
 For my visual, I wanted to make something that would grow and make new shapes and I thought interlocking triangles would do that beautifully to the beat of a techno song. The triangles form other incredible shapes. Every visual in the project follows that techno theme we were going for.
 
+I'm also proud of how familiar I became with git. Helped others in the group with any queries or issues with using git, especiallg during the merging process when we all merged the individual developer branches. 
+
 # Youtube video
 
 ![YouTube]
