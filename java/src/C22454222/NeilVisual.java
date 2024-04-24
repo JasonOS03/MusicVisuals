@@ -12,13 +12,12 @@ public class NeilVisual extends Visual {
     public NeilVisual(MainVisual mv) {
         // Initialize the MainVisual object
         this.mv = mv;
-        // Generate the positions of the stars only once
         for (int i = 0; i < NUM_STARS; i++) {
             starX[i] = random(-mv.width / 2, mv.width);
             starY[i] = random(-mv.height, mv.height);
         }
+        // Generate the positions of the stars only once
     }
-
     // Number of stars
     final int NUM_STARS = 100;
 
@@ -71,8 +70,17 @@ public class NeilVisual extends Visual {
         mv.ellipse(0,0,radius,radius);
         mv.rect(-(mv.width/2), -mv.height/2, mv.width-1, mv.height-1);
 
+                 // Loop through the array of stars
+        for (int i = 0; i < NUM_STARS; i++) {
+            // Set the size of the stars based on music's amplitude
+            float starSize = random(5, 20) * space; 
+            // Set star color to white as default 
+            mv.fill(255); 
+            // Draw the star
+            mv.ellipse(starX[i], starY[i], starSize, starSize);
+        }
         // Rotate and fill shapes with previous colors
-        mv.rotate(MainVisual.map(mv.fCounter % 360, 0, 360, 0, MainVisual.PI * 2));
+        mv.rotate(map(mv.fCounter % 360, 0, 180, 0, 360));
         mv.fill(prevColours[0], prevColours[1], prevColours[2], 25);
         mv.rect(-radius / 2, -radius / 2, radius, radius);
 
@@ -96,16 +104,6 @@ public class NeilVisual extends Visual {
             float x = (PApplet.cos(i) * space * i); // Using PApplet's cos function to modulate the x-coordinate of points based on the music amplitude
             float y = (PApplet.sin(i) * space * i); // Using PApplet's sin function to modulate the y-coordinate of points based on the music amplitude
             mv.point(x, y); // draw point at x and y 
-        }
-
-         // Loop through the array of stars
-        for (int i = 0; i < NUM_STARS; i++) {
-            // Set the size of the stars based on music's amplitude
-            float starSize = random(5, 20) * space; 
-            // Set star color to white as default 
-            mv.fill(255); 
-            // Draw the star
-            mv.ellipse(starX[i], starY[i], starSize, starSize);
         }
     }
 }
