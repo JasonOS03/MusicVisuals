@@ -1,6 +1,6 @@
 # Music Visualiser Project
-Names: Aimee Mcgrane, Neil Fitzgerald, Jade Thornton, Jason O Sullivan, Chris Noblett 
-Student Numbers: C22393606, C22405604, C22394466, C22400796, C22454222
+- Names: Aimee Mcgrane, Neil Fitzgerald, Jade Thornton, Jason O Sullivan, Chris Noblett 
+- Student Numbers: C22393606, C22405604, C22394466, C22400796, C22454222
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
@@ -78,6 +78,7 @@ Once you have ran the program, a separate menu window opens with the following o
 3. You can then click on other name's to see their visuals.
 4. You can click back on previously seen visuals that are running in the background.
 5. Click the play tune button again at any time. Don't worry, the visuals will all stay in sync.
+6. You can also hit the space bar once the song is playing to sift through all the visuals in the order set.
 
 # How it works
 

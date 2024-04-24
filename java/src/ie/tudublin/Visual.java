@@ -35,8 +35,6 @@ public abstract class Visual extends PApplet
 		line(50,100,50,100);
 
 	}
-
-	
 	
 	public void startMinim() 
 	{
