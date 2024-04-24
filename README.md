@@ -56,7 +56,7 @@ In my own visual ChrisVisual.java, I brainstormed many ideas such as an idea for
 
 The java class responds dynamically to audio input, implementing beat detection and manipulating shapes and colors based on amplitude and beat presence. Through the utilization of spiral patterns (using simple cos and sin Papplet functions) and various shapes like triangles and ellipses, the visualization generates captivating visual effects that synchronize seamlessly with the audio. The code emphasizes creativity, technical proficiency, and user experience, requiring a cohesive and well-structured implementation with a focus on responsiveness and aesthetic appeal.
 
-The end result of my visual shows growing triangles facing each other and growing in a loop that resets once the triangles hit the border of the screen. I used mirrored triangles to form other shapes over time such as diamonds and abstract looking hour glasses. This same logic is used for a drawn circle in the centre of the screen. I also run for loops that create interesting sin and cos spirals that grow and shrink with the beat.
+The end result of my visual shows growing triangles facing each other and growing in a loop that resets once the triangles hit the border of the screen. I used mirrored triangles to form other shapes over time such as diamonds, prisms and abstract looking hour glasses. This same logic is used for a drawn circle in the centre of the screen. I also run for loops that create interesting sin and cos spirals that grow and shrink with the beat.
 
 In terms of resources, I used Github Copilot for any minor syntax errors, formatting and some formal commenting on code. I initially used this video as inspiration for a start on my visual https://www.youtube.com/watch?v=283rmgvFDE0. Used processing for learning how to utilize cos and sin functions, growing shapes based on amplitude and beats and colour shifting based on time. https://processing.org/.
 
@@ -77,6 +77,7 @@ Once you have ran the program, a separate menu window opens with the following o
 2. Neil's visual will start, synchronized with the song.
 3. You can then click on other name's to see their visuals.
 4. You can click back on previously seen visuals that are running in the background.
+5. Click the play tune button again at any time. Don't worry, the visuals will all stay in sync.
 
 # How it works
 
@@ -211,7 +212,7 @@ I wouldn't call myself a creative person but I enjoyed making my simple visual. 
 
 I'm proud of the menu structure, creating interactivity with the user. I think that makes this project stand out a bit because most projects probably ran through all the visuals with no menu. Our menu structure creates interesting opportunities for unpredictability since users can swap between visuals at any time during the song.
 
-For my visual, I wanted to make something that would grow and make new shapes and I thought interlocking triangles would do that beautifully to the beat of a techno song. Every visual in the project follows that techno theme we were going for.
+For my visual, I wanted to make something that would grow and make new shapes and I thought interlocking triangles would do that beautifully to the beat of a techno song. The triangles form other incredible shapes. Every visual in the project follows that techno theme we were going for.
 
 # Youtube video
 
