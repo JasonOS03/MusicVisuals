@@ -11,8 +11,8 @@ public class MainVisual extends Visual
     int playTune = 0; // Variable to control playing tune
     int stopPlay = 0; // Variable to control stopping playback
     
-    AimeeVisual aimee;
     NeilVisual neil;
+    AimeeVisual aimee;
     JadeVisual jade;
     JasonVisual jason;
     ChrisVisual chris;
@@ -39,24 +39,14 @@ public class MainVisual extends Visual
         BeatDetect(); // Initializing beat detection
         colorMode(HSB); // Setting color mode
         
-        aimee = new AimeeVisual(this);
         neil = new NeilVisual(this);
+        aimee = new AimeeVisual(this);
         jade = new JadeVisual(this);
         jason = new JasonVisual(this);
         chris = new ChrisVisual(this);
         
         audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
         
-    }
-
-    // Method to handle key pressed events
-    public void keyPressed() 
-    {
-        if (key == ' ') 
-        { // If space bar is pressed
-            as.stop();
-            as.trigger();
-        }
     }
 
     // Method to draw visuals
@@ -101,7 +91,7 @@ public class MainVisual extends Visual
                 chris.render();
                 break;
             case 5:
-                audioBandsVisual.render(); // Render AudioBandsVisual
+                audioBandsVisual.render(); 
                 break;
             default:
                 background(0); // Set background color to black by default
