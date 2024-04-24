@@ -90,6 +90,15 @@ Once you have ran the program, a separate menu window opens with the following o
 ## Jason
 
 ## Chris
+
+This is the code for detecting beats
+```Java
+
+        if (mv.beat.isKick()) // Checking if there's a kick in the audio
+        {
+            kickCounter++; // Incrementing kick counter
+        }
+```
 This is the code for the basic logic of changing shape colours.
 ```Java
     float[] currentColours = new float[]{random(0,255),random(0,255),random(0,255)}; // Array to store current colors
