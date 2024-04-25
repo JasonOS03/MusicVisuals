@@ -71,7 +71,8 @@ public class NeilVisual extends Visual {
         mv.rect(-(mv.width/2), -mv.height/2, mv.width-1, mv.height-1);
 
                  // Loop through the array of stars
-        for (int i = 0; i < NUM_STARS; i++) {
+        for (int i = 0; i < NUM_STARS; i++) 
+        {
             // Set the size of the stars based on music's amplitude
             float starSize = random(5, 20) * space; 
             // Set star color to white as default 
