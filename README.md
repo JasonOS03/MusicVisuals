@@ -1,6 +1,6 @@
 # Music Visualiser Project
-- Names: Aimee Mcgrane, Neil Fitzgerald, Jade Thornton, Jason O Sullivan, Chris Noblett 
-- Student Numbers: C22393606, C22405604, C22394466, C22400796, C22454222
+Names: Aimee Mcgrane, Neil Fitzgerald, Jade Thornton, Jason O Sullivan, Chris Noblett 
+Student Numbers: C22393606, C22405604, C22394466, C22400796, C22454222
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
@@ -78,7 +78,6 @@ Once you have ran the program, a separate menu window opens with the following o
 3. You can then click on other name's to see their visuals.
 4. You can click back on previously seen visuals that are running in the background.
 5. Click the play tune button again at any time. Don't worry, the visuals will all stay in sync.
-6. You can also hit the space bar once the song is playing to sift through all the visuals in the order set.
 
 # How it works
 
@@ -87,7 +86,72 @@ Once you have ran the program, a separate menu window opens with the following o
 ## Neil
 
 ## Jade
+This creates the star effect
+```Java
+    for (int i = 0; i < NUM_STARS; i++) {
+        starX[i] = random(0, mv.width); //random x position within the width of the screen
+        starY[i] = random(0, mv.height); //random y position within the height of the screen
+    }
 
+    for (int i = 0; i < NUM_STARS; i++) {
+        // Set the size of the stars based on music's amplitude
+        float starSize = random(5, 20) * createSpace; // Increase the size range for bigger stars
+        mv.fill(255); // Set star color to white
+        mv.ellipse(starX[i], starY[i], starSize, starSize); // Draw the star
+    }
+```
+Creating the stabbing chord affect
+```Java
+    for(int i = 0 ; i < (mv.getBands().length) ; i++)
+    {   
+        mv.fill(120, 20);
+        float x1 = gap * i;
+        float y1 = mv.height;
+        float x2 = x1 + gap;
+        float y2 = mv.height;
+        float x3 = x1 + (gap / 2);
+        float y3 = mv.height - mv.getSmoothedBands()[i] * 0.1f; // multiplied by a float of 0.1
+
+        mv.triangle(x1, y1, x2, y2, x3, y3);
+    }
+```
+drawing my triangles and setting a amx radius
+```Java
+    //this is to make sure the triangle does not get overly big, so the max radius is 400
+    if(mainTri1 > 400)
+    {
+        mainTri1 = 400;
+    }
+    
+    //this is triangle 1, which is slighly transparent
+    mv.triangle(midX, midY - mainTri1, midX - mainTri1, midY + mainTri1, midX + mainTri1, midY + mainTri1);
+        
+    //this is to make sure the triangle does not get too big
+    if(mainTri2 > 300)
+    {
+        mainTri2 = 300;
+    }
+    
+    //this is triangle 2
+    mv.triangle(midX, midY - mainTri2, midX - mainTri2, midY + mainTri2, midX + mainTri2, midY + mainTri2);
+```
+This maps the range of colours to the amplitude of the music
+```Java
+mv.stroke(map(mv.getAmplitude(), 0, 1, 0, 255),255,255);
+```
+This is the logic for the stars
+```Java
+    //number of stars
+    final int NUM_STARS = 100;
+    //arrays to store the x and y positions of the stars
+    float[] starX = new float[NUM_STARS];
+    float[] starY = new float[NUM_STARS];
+
+    for (int i = 0; i < NUM_STARS; i++) {
+            starX[i] = random(0, mv.width); //random x position within the width of the screen
+            starY[i] = random(0, mv.height); //random y position within the height of the screen
+    } 
+```
 ## Jason
 
 ## Chris
@@ -203,7 +267,8 @@ Overall, I'm really proud of what I've created. It's a blend of art and technolo
 Personally my favourite thing i made was the stars as i love space and i think it fits the theme very well as well as adding some layers to the visual while being relativly simple to implement. The spiral however is what i am most proud of as it was hard to figure out. It was hard in general to come up with what to put in the center but after messing about and using AI for ideas it created a center line that rotated around like a radar. I then messed around with the code and while in class sin and cos was mentioned and so i got an idea to create a visual with that. This was challanging to get working but eventually i figured it out after messing around with the code. The maths aspect was definatly the hardest aspect getting the rotating working. I used some tutorials online (https://www.youtube.com/watch?v=OqQE3Z87uuU) and searched some websites (such as https://stackoverflow.com/questions/17596003/something-like-collections-rotate-for-map) to try learn the bascis on how to rotate. While I didnt completly copy their code i did use github copilot which was recomended in class to help assist on this which i found very useful. For the circle and square I got the idea from the labs as we had used these functions before. Another suprisingly hard part was starting the code as I had to spend a bit of time looking over the main visual and the funciton to understand them. However once i had momemtum I found myself enjoying the project alot and being proud of the visual i made as it may not be the most flashy or impressive but i personally think it turned out very well.
 
 ## Jade
-I was most proud of how far I had came from the beginning of the project. I found this a big challenge and im very happy with the end result. The hardest challenge I overcame was the stabbing effect at the bottom of the screen, it was very difficult to figure out the variables and the positioning of this. I was very happy with the outcome of this section of the visual because I thought this idea would be out of my depths but I achieved it with research and time. The next thing im most proud of is the stars, this was a joint effort between me and another member of the team, neil, the reason we curated this aspect of the visual was to create a sense of unity between our visuals, and in the end i was very impressed with the outcome. I took inspiration from a youtube video 'https://youtu.be/nj5XM3YQusE?si=rKFYjB1bG7ySZXfZ', I got my idea for the pulsing triangles in the centre and the idea of stars from this video. From this video I gained inspirtaion to make an almost night sky looking visual. From this experience Ive learned a lot about java as a whole throughout this project, structuring code, intialising variables and creating shapes. I gained a lot of knowledge from this video on youtube which details shapes and loops also it covers the basics again which was a huge help as i found I started to overcomplicate the code 'https://youtu.be/SQBrJEalWYo?si=ONtS0Gvw4yFxxl_w'. Overall it was a great learning experience and im happy with the outcome of the assignment, although stressful it tought me a lot.
+I was most proud of how far I had came from the beginning of the project. I found this a big challenge and im very happy with the end result. The hardest challenge I overcame was the stabbing effect at the bottom of the screen, it was very difficult to figure out the variables and the positioning of this. I was very happy with the outcome of this section of the visual because I thought this idea would be out of my depths but I achieved it with research and time. The next thing im most proud of is the stars, this was a joint effort between me and another member of the team, neil, the reason we curated this aspect of the visual was to create a sense of unity between our visuals, and in the end i was very impressed with the outcome. I took inspiration from a youtube video 'https://youtu.be/nj5XM3YQusE?si=rKFYjB1bG7ySZXfZ', I got my idea for the pulsing triangles in the centre and the idea of stars from this video. From this video I gained inspirtaion to make an almost night sky looking visual. From this experience Ive learned a lot about java as a whole throughout this project, structuring code, intialising variables and creating shapes. I gained a lot of knowledge from this video on youtube which details shapes and loops also it covers the basics again which was a huge help as i found I started to overcomplicate the code 'https://youtu.be/SQBrJEalWYo?si=ONtS0Gvw4yFxxl_w'. Overall it was a great learning experience and im happy with the outcome of the assignment, although stressful it tought me a lot. Another source i used was github co pilot to help with syntax errors, formatting and any logical errors i ran into.
+
 ## Jason
 In this assignment I am most proud of my creative thinking to come up with an interesting visual. This creative thinking continued throughout the whole project , leading to the visual constantly evolving and changing over time. I was able to constantly think of new ideas which I am very proud of. 
 

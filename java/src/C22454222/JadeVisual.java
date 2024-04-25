@@ -15,7 +15,7 @@ public class JadeVisual extends Visual {
        for (int i = 0; i < NUM_STARS; i++) {
         starX[i] = random(0, mv.width); //random x position within the width of the screen
         starY[i] = random(0, mv.height); //random y position within the height of the screen
-    }
+    } 
    }
    //number of stars
    final int NUM_STARS = 100;
@@ -75,8 +75,7 @@ public class JadeVisual extends Visual {
 
         //fill to make the bigger triangle transparent
         mv.fill(10, (float) 0.5);
-        mv.stroke(map(mv.getAmplitude(), 0, 1, 0, 255),255,255);//unsure why this line works but it was the only way i could make the middle triangles blue
-        //without this line there is an extra floating triangle
+        mv.stroke(map(mv.getAmplitude(), 0, 1, 0, 255),255,255);//This maps the range of colours to the amplitude of the music
             
         //this is to make sure the triangle does not get overly big, so the max radius is 400
         if(mainTri1 > 400)
