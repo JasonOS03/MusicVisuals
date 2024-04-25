@@ -15,7 +15,7 @@ public class JadeVisual extends Visual {
        for (int i = 0; i < NUM_STARS; i++) {
         starX[i] = random(0, mv.width); //random x position within the width of the screen
         starY[i] = random(0, mv.height); //random y position within the height of the screen
-    }
+    } 
    }
    //number of stars
    final int NUM_STARS = 100;
@@ -32,8 +32,6 @@ public class JadeVisual extends Visual {
         float r = mv.getSmoothedAmplitude();//getting the amplitude
         float r2 = map(r, 0, 1 , 0, 40);
         float ba = map(sb[0], 0, 50, 0, 200);//bass frequencies
-        float lm = map(sb[1], 0, 400, 0, 400 ); //low-mid frequencies
-        float hh = sb[4]; //high high frequencies
 
        //calculations for the middle of the screen later used for the triangles
        int midX = mv.width/2;
@@ -43,12 +41,12 @@ public class JadeVisual extends Visual {
        if(ba < 300)
        {
            //pink background
-           mv.background(255,92,205); 
+           mv.background(173, 255, 47); 
        }
        else
        {   
            //this makes the background turn into different dark colours based on the low-mids, bass, and high highs of the music
-           mv.background(map(lm, 0, 2500, 0, 255), map(ba, 0, 200, 0, 50), map(hh, 0, 2500, 0, 50));
+           mv.background(0,0,0);
        }
 
        //the radius of the main triangles
@@ -77,8 +75,7 @@ public class JadeVisual extends Visual {
 
         //fill to make the bigger triangle transparent
         mv.fill(10, (float) 0.5);
-        mv.triangle(0,0,0,0,0,0);//unsure why this line works but it was the only way i could make the middle triangles blue
-        //without this line there is an extra floating triangle
+        mv.stroke(map(mv.getAmplitude(), 0, 1, 0, 255),255,255);//This maps the range of colours to the amplitude of the music
             
         //this is to make sure the triangle does not get overly big, so the max radius is 400
         if(mainTri1 > 400)
@@ -97,7 +94,6 @@ public class JadeVisual extends Visual {
         
         //this is triangle 2
         mv.triangle(midX, midY - mainTri2, midX - mainTri2, midY + mainTri2, midX + mainTri2, midY + mainTri2);
-        mv.stroke(150, 200, 255); //set the stroke color to a light blue
 
         //for loop to draw the stars
         for (int i = 0; i < NUM_STARS; i++) {

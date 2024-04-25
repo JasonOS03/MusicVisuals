@@ -19,11 +19,22 @@ public abstract class Visual extends PApplet
 	private AudioBuffer ab;
 	public BeatDetect beat;
 	private FFT fft;
-
+	
 	private float amplitude  = 0;
 	private float smoothedAmplitude = 0;
 
-	
+	public void settings()
+	{
+		size(500,500);
+		background(0);
+	}
+	public void draw()
+	{
+		stroke(125,50,124);
+		fill(20);
+		line(50,100,50,100);
+
+	}
 	
 	public void startMinim() 
 	{
@@ -142,7 +153,7 @@ public abstract class Visual extends PApplet
 	{
 		return ab;
 	}
-
+	
 	public AudioSample getAudioSample() 
 	{
 		return as;
