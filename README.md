@@ -475,50 +475,5 @@ For my visual, I wanted to make something that would grow and make new shapes an
 I'm also proud of how familiar I became with git. Helped others in the group with any queries or issues with using git, especiallg during the merging process when we all merged the individual developer branches.
 
 
-
-# Markdown Tutorial
-
-This is *emphasis*
-
-This is a bulleted list
-
-- Item
-- Item
-
-This is a numbered list
-
-1. Item
-1. Item
-
-This is a [hyperlink]
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
-
-```Java
-```
-
-This is an image using a relative URL:
-
-![An image]
-
-This is an image using an absolute URL:
-
-![A different image]
-
-This is a youtube video:
-
-![YouTube]
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-
+[!Youtube]
+https://www.youtube.com/watch?v=0G4NvvIAt9M
