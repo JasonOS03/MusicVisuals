@@ -52,6 +52,75 @@ Once you have ran the program, a separate menu window opens with the following o
 - Chris
 
 # How it works
+## Aimee 
+class Branch{
+    MainVisual mainVisual;
+    float start;
+    float amplitude =0;
+    float angle=0;
+    Branch[] branches;
+this is me creating a branch class and initialising variables that will be used throughout the code 
+
+void show() {
+    // Displays the branch 
+    mainVisual.rotate(this.angle);
+    mainVisual.line(0, 0, 0, amplitude); 
+
+This part of the code rotates the visual context  by a certain angle (this.angle) and then draws a line from the current position (0, 0) to (0, amplitude) in the rotated context. This line represents the branch of the tree.
+
+branches[0].show();
+branches[1].show();
+displays the branches. this is in the show() function.
+
+void branch (int branchAmt){//takes an int which represents thr number of subbranches to be created 
+
+if (branchAmt > 0 ){
+    branches = new Branch[2];
+
+    float angle = MainVisual.map(mainVisual.smoothedAmplitude,0,1,3.14f/10f,3.14f/2f);//Calculates the angle for the sub-branches 
+    //creates sub branch
+    branches[0]= new Branch(mainVisual,start-amplitude,amplitude/1.5f,angle,branchAmt-2 );
+    branches[1]= new Branch(mainVisual,start-amplitude,amplitude/1.5f,-angle,branchAmt-2 );
+
+}
+The branch() function generates sub-branches for a given branch based on the provided branchAmt parameter, representing the number of sub-branches to create. If branchAmt is greater than 0, it initializes an array to store the sub-branches, calculates their angles dynamically based on audio, and creates two sub-branches with positive and negative angles. These sub-branches are instantiated with parameters including visual context, starting position, branch length, angle, and a decremented branchAmt. This process continues recursively, reducing the number of sub-branches with each call until branchAmt reaches 0 or less, controlling the depth and complexity of the branching structure.
+
+ mainVisual.fCounter++;   used to count the number of frames being rendered in the visual
+
+
+float rotationSpeed = rotationDirection * rotationSpeedFactor * MainVisual.map(mainVisual.fCounter % 360, 0, 360, 0, MainVisual.PI * 2);
+
+mainVisual.rotate(rotationSpeed);
+
+mainVisual.rotate(MainVisual.map((float) i, 0f, 6f, 0f, MainVisual.PI * 2));
+
+
+This code segment calculates and applies rotation to a visual element based on a combination of factors. First, it computes the rotationSpeed by multiplying rotationDirection, rotationSpeedFactor, and a mapped value representing the current iteration (mainVisual.fCounter % 360). This mapped value ensures smooth rotation over time. Then, it rotates the visual element by the calculated rotationSpeed. 
+
+branch1 = new Branch(mainVisual, 0f, MainVisual.map(amplitude, 0, .4f, -mainVisual.height / 10f, -mainVisual.height / 4f), 0, 6);
+branch2 = new Branch(mainVisual, 0f, MainVisual.map(amplitude, 0, .4f, -mainVisual.height / 50f, -mainVisual.height / 4f), 0, 5);
+
+These lines of code initiate two branches. The Branch constructor takes several parameters: the visual context , the starting position (0f for both branches, indicating they originate from the same point), the length of the branch, the angle of the branch , and a parameter that may control the number of sub-branches (set to 6 for branch1 and 5 for branch2). The length of each branch is dynamically mapped based on the amplitude variable. The mapped values shows that branch1 is longer and covers a wider range of the visual space compared to branch2, which creates a hierarchical structure. 
+
+
+float hue1 = (mainVisual.fCounter / 10) % 255;
+float hue2 = (mainVisual.fCounter / 2) % 255;
+
+mainVisual.fill(hue1, 255, 255); // Calculating hue for branch 1
+mainVisual.stroke(hue1, 255, 255);
+branch1.show(); // Displays branch 1
+
+mainVisual.fill(hue2, 255, 255);
+mainVisual.stroke(hue2, 255, 255); 
+branch2.show(); // Displays branch 2
+
+This code segment aims to add visual variety by assigning different colors to the branches. It achieves this by dynamically calculating hues based on the mainVisual.fCounter variable.
+
+
+
+
+
+
 
 # What I am most proud of in the assignment
 
