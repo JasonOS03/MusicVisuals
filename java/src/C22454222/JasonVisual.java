@@ -30,7 +30,7 @@ public class JasonVisual extends Visual
         mv.background(0); // Black background
 
         float sum = 0;
-        float smooth = getSmoothedAmplitude();// function to make the amplitude smoother
+        float smooth = mv.getSmoothedAmplitude();// function to make the amplitude smoother
 
         // Iterate until the audio buffer size is reached
         for (int i = 0; i < ab.size(); i++) {
@@ -70,7 +70,7 @@ public class JasonVisual extends Visual
             mv.rotate(smooth + smoothrotation); // rotate the circles
 
             mv.strokeWeight(4);
-            mv.ellipse(0, 0, CenterX/2, smooth + smoothrotation); // Create circles starting at the origin, with a diameter of CenterX and the height being the amplitude 
+            mv.ellipse(0, 0, CenterX/2, smooth + smoothrotation); // Create circles starting at the origin, with a diameter of CenterX and the height being the smoothedAmplitude + the lerp function to smoothen the visuals 
 
             mv.stroke(hue, 255, 255);
             mv.noFill();

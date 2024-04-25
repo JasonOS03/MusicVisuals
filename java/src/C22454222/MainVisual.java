@@ -16,8 +16,6 @@ public class MainVisual extends Visual
     JadeVisual jade;
     JasonVisual jason;
     ChrisVisual chris;
-     
-    AudioBandsVisual audioBandsVisual; // Instance of AudioBandsVisual class
 
     public float fCounter = 0; // Variable to store a floating-point counter value
     public int branchCounter=0;
@@ -44,8 +42,6 @@ public class MainVisual extends Visual
         jade = new JadeVisual(this);
         jason = new JasonVisual(this);
         chris = new ChrisVisual(this);
-        
-        audioBandsVisual = new AudioBandsVisual(this); // Initializing AudioBandsVisual instance
     }
 
     // Method to draw visuals
@@ -88,9 +84,6 @@ public class MainVisual extends Visual
                 break;
             case 4:
                 chris.render();
-                break;
-            case 5:
-                audioBandsVisual.render(); 
                 break;
             default:
                 background(0); // Set background color to black by default
