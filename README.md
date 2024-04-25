@@ -475,5 +475,4 @@ For my visual, I wanted to make something that would grow and make new shapes an
 I'm also proud of how familiar I became with git. Helped others in the group with any queries or issues with using git, especiallg during the merging process when we all merged the individual developer branches.
 
 
-[!Youtube]
-https://www.youtube.com/watch?v=0G4NvvIAt9M
+[!Youtube https://www.youtube.com/watch?v=0G4NvvIAt9M]
