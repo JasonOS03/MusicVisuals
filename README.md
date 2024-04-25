@@ -476,6 +476,5 @@ I'm also proud of how familiar I became with git. Helped others in the group wit
 
 # Youtube Video
 
-![YouTube]
-(https://i9.ytimg.com/vi_webp/0G4NvvIAt9M/mqdefault.webp?v=662a3cd7&sqp=CIz7qLEG&rs=AOn4CLAM2HMjm1tXLt0LR3klHB6n8lOTow)
+[![YouTube](https://i9.ytimg.com/vi_webp/0G4NvvIAt9M/mqdefault.webp?v=662a3cd7&sqp=CIz7qLEG&rs=AOn4CLAM2HMjm1tXLt0LR3klHB6n8lOTow)]
 (https://www.youtube.com/watch?v=0G4NvvIAt9M)
