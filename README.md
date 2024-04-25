@@ -41,6 +41,15 @@ The visual I created was what I would describe as a vortex. The first part of th
 
 The next part of the visual I created was the inner rings , which are a bright pink color. these circles rotates by the amplitude value in radians and also pulsate by the amplitude amount.The inner rings are supposed to represent the center of the vortex. The color also changes sporadically as the beat tempo / amplitude increases. The final part of the visual I created was a ring of circles rotating around the inner circle. These circles are also a bright pink color , and the colors also change at peak amplitude. This ring of circles is essentially pulled around the inside of the vortex.
 ## Chris
+So I was in charge of designing the software first and foremost. I setup all the necessary main files and dictated how many branches we'd need. I also made the visual menu and was responsible for the UI and UX. I wanted to make the visuals interactive. I was also just a glorified project manager.
+
+In my own visual ChrisVisual.java, I brainstormed many ideas such as an idea for a visual that resembled a black hole with atoms surrounding it. I implemented this and then decided to take my visual another direction.
+
+The java class responds dynamically to audio input, implementing beat detection and manipulating shapes and colors based on amplitude and beat presence. Through the utilization of spiral patterns (using simple cos and sin Papplet functions) and various shapes like triangles and ellipses, the visualization generates captivating visual effects that synchronize seamlessly with the audio. The code emphasizes creativity, technical proficiency, and user experience, requiring a cohesive and well-structured implementation with a focus on responsiveness and aesthetic appeal.
+
+The end result of my visual shows growing triangles facing each other and growing in a loop that resets once the triangles hit the border of the screen. I used mirrored triangles to form other shapes over time such as diamonds, prisms and abstract looking hour glasses. This same logic is used for a drawn circle in the centre of the screen. I also run for loops that create interesting sin and cos spirals that grow and shrink with the beat.
+
+In terms of resources, I used Github Copilot for any minor syntax errors, formatting and some formal commenting on code. I initially used this video as inspiration for a start on my visual https://www.youtube.com/watch?v=283rmgvFDE0. Used processing for learning how to utilize cos and sin functions, growing shapes based on amplitude and beats and colour shifting based on time. https://processing.org/.
 
 # Instructions
 
@@ -143,16 +152,117 @@ branch2.show(); // Displays branch 2
 This code segment aims to add visual variety by assigning different colors to the branches. It achieves this by dynamically calculating hues based on the mainVisual.fCounter variable.
 
 
-
-
-
-
-
-## Aimee
-
 ## Neil
+```java
+       radius = 5 * beatCount;
+        mv.ellipse(0,0,radius,radius);
+        mv.rect(-(mv.width/2), -mv.height/2, mv.width-1, mv.height-1);
+```
+takes the radius and multiples it by beat count so it pulses to the music, leaves the center the same so it remains centered. the rect then coveres the edge of the screen by inverting the forst x and y and then minusing the other by 1 so it remains on the screen
+```java
+        for (int i = 0; i < NUM_STARS; i++) {
+            // Set the size of the stars based on music's amplitude
+            float starSize = random(5, 20) * space; 
+            // Set star color to white as default 
+            mv.fill(255); 
+            // Draw the star
+            mv.ellipse(starX[i], starY[i], starSize, starSize);
+        }
+```
+uses for loop to itterate through 100 stars that are all between 5-20 in size and then get multipled by space (which is the getSmoothedAmplitude funciton) which allows the stars to pulse to the beat of the music
+They are filled in white just for testing so i could see them to begin with.
+The elipse then uses the random x and y variable to get its random location and the size to get bigger and smaller from the music.
+
+```java
+        mv.rotate(map(mv.fCounter % 360, 0, 180, 0, 360));
+        mv.fill(prevColours[0], prevColours[1], prevColours[2], 25);
+        mv.rect(-radius / 2, -radius / 2, radius, radius);
+
+        // Set stroke color based on amplitude
+        mv.stroke(map(mv.getAmplitude(), 0, 1, 0, 255), 255, 255);
+```
+this rotates the square by using f.counter%360 to ensure range stays between 0-359 with 0-180 being the original and 0-360 being target range (i messed around with this alot to make the visual)
+the fill uyses the colour array to fill the shapes with colour and make it transparent so yuou can still see the stars behind it  while the rect is the rectange that also uses radius so the circle will remain in the center of the square fitting perfectly 
+The stroke then uses getAmplitude so the colours will change with the music ranging from 0-255 and an amplituide of 0-1 
+```java
+         // Loop through the width of the canvas with a step of 0.1
+        for (float i = 0; i < mv.width; i += 0.1) {
+            // Calculate the x and y coordinates based on cosine and sine functions
+            float x = (PApplet.cos(i) * space * i); // Using PApplet's cos function to modulate the x-coordinate of points based on the music amplitude
+            float y = (PApplet.sin(i) * space * i); // Using PApplet's sin function to modulate the y-coordinate of points based on the music amplitude
+            mv.point(x, y); // draw point at x and y 
+        }
+```
+
+uses for loop that goes the entire width of the screen by 0.1 (the smaller the denser)
+it uses cos to find the horizontal and sin to find the vertical point and places a single point. it then is multiplied by space so it will pulse in size to the music and i so it will change position to create the spiral look.
 
 ## Jade
+his creates the star effect
+```java
+    for (int i = 0; i < NUM_STARS; i++) {
+        starX[i] = random(0, mv.width); //random x position within the width of the screen
+        starY[i] = random(0, mv.height); //random y position within the height of the screen
+    }
+
+    for (int i = 0; i < NUM_STARS; i++) {
+        // Set the size of the stars based on music's amplitude
+        float starSize = random(5, 20) * createSpace; // Increase the size range for bigger stars
+        mv.fill(255); // Set star color to white
+        mv.ellipse(starX[i], starY[i], starSize, starSize); // Draw the star
+    }
+```
+Creating the stabbing chord affect
+```java
+    for(int i = 0 ; i < (mv.getBands().length) ; i++)
+    {   
+        mv.fill(120, 20);
+        float x1 = gap * i;
+        float y1 = mv.height;
+        float x2 = x1 + gap;
+        float y2 = mv.height;
+        float x3 = x1 + (gap / 2);
+        float y3 = mv.height - mv.getSmoothedBands()[i] * 0.1f; // multiplied by a float of 0.1
+
+        mv.triangle(x1, y1, x2, y2, x3, y3);
+    }
+```
+drawing my triangles and setting a amx radius
+```java
+    //this is to make sure the triangle does not get overly big, so the max radius is 400
+    if(mainTri1 > 400)
+    {
+        mainTri1 = 400;
+    }
+    
+    //this is triangle 1, which is slighly transparent
+    mv.triangle(midX, midY - mainTri1, midX - mainTri1, midY + mainTri1, midX + mainTri1, midY + mainTri1);
+        
+    //this is to make sure the triangle does not get too big
+    if(mainTri2 > 300)
+    {
+        mainTri2 = 300;
+    }
+    
+    //this is triangle 2
+    mv.triangle(midX, midY - mainTri2, midX - mainTri2, midY + mainTri2, midX + mainTri2, midY + mainTri2);
+```
+This maps the range of colours to the amplitude of the music
+```java
+mv.stroke(map(mv.getAmplitude(), 0, 1, 0, 255),255,255);
+This is the logic for the stars
+
+    //number of stars
+    final int NUM_STARS = 100;
+    //arrays to store the x and y positions of the stars
+    float[] starX = new float[NUM_STARS];
+    float[] starY = new float[NUM_STARS];
+
+    for (int i = 0; i < NUM_STARS; i++) {
+            starX[i] = random(0, mv.width); //random x position within the width of the screen
+            starY[i] = random(0, mv.height); //random y position within the height of the screen
+    } 
+```
 
 ## Jason
 This is the code for the initialisation of the relevant variables , for creating the circles , ensuring a smooth rotation etc
@@ -354,6 +464,17 @@ This project also helped to enhance my group working skills and communication as
 The part of the assignment I found the most challenging was trying to coordinate each part of the visual to not interfere with each other and trying to get the visuals to move around and pulsate smoothly. Trying to ensure that the visuals were not jumpy proved to be quite challenging, and unfortunately the jumpiness of the inner circles could not be fully fixed. 
 
 ## Chris
+I'm most proud of a lot of things. I took the initiative with this project and designed and implemented a lot of fundamental elements of the software such as the menu, main file structures, branches and was in charge of solving merge conflicts and fixing any common bugs amongst other members of the team. I also ensured all members of the group made contributions, tracking them by looking at commits.
+
+I wouldn't call myself a creative person but I enjoyed making my simple visual. I enjoyed managing a team more and maintaining good code standards, structure and organising meet ups with my group. Working with a team gave me great experience as well as collaborating on an industry used platform (Github). I'm proud that everything fell into place because of good organisation and teamwork.
+
+I'm proud of the menu structure, creating interactivity with the user. I think that makes this project stand out a bit because most projects probably ran through all the visuals with no menu. Our menu structure creates interesting opportunities for unpredictability since users can swap between visuals at any time during the song.
+
+For my visual, I wanted to make something that would grow and make new shapes and I thought interlocking triangles would do that beautifully to the beat of a techno song. The triangles form other incredible shapes. Every visual in the project follows that techno theme we were going for.
+
+I'm also proud of how familiar I became with git. Helped others in the group with any queries or issues with using git, especiallg during the merging process when we all merged the individual developer branches.
+
+
 
 # Markdown Tutorial
 
