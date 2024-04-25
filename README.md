@@ -1,8 +1,6 @@
 # Music Visualiser Project
-
-Names: Aimee Mcgrane, Neil Fitzgerald, Jade Thornton, Jason O Sullivan, Chris Noblett 
-
-Student Numbers: C22393606, C22405604, C22394466, C22400796, C22454222
+- Names: Aimee Mcgrane, Neil Fitzgerald, Jade Thornton, Jason O Sullivan, Chris Noblett 
+- Student Numbers: C22393606, C22405604, C22394466, C22400796, C22454222
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
@@ -55,52 +53,280 @@ Once you have ran the program, a separate menu window opens with the following o
 - Jade
 - Jason
 - Chris
+- AudioBands
+
+1. To start the visual, press the Play Tune button.
+2. Neil's visual will start, synchronized with the song.
+3. You can then click on other name's to see their visuals.
+4. You can click back on previously seen visuals that are running in the background.
+5. Click the play tune button again at any time. Don't worry, the visuals will all stay in sync.
+6. You can also hit the space bar once the song is playing to sift through all the visuals in the order set.
 
 # How it works
-
-```java
-       radius = 5 * beatCount;
-        mv.ellipse(0,0,radius,radius);
-        mv.rect(-(mv.width/2), -mv.height/2, mv.width-1, mv.height-1);
+## Aimee 
+```Java
+class Branch{
+    MainVisual mainVisual;
+    float start;
+    float amplitude =0;
+    float angle=0;
+    Branch[] branches;
 ```
-takes the radius and multiples it by beat count so it pulses to the music, leaves the center the same so it remains centered. the rect then coveres the edge of the screen by inverting the forst x and y and then minusing the other by 1 so it remains on the screen
-```java
-        for (int i = 0; i < NUM_STARS; i++) {
-            // Set the size of the stars based on music's amplitude
-            float starSize = random(5, 20) * space; 
-            // Set star color to white as default 
-            mv.fill(255); 
-            // Draw the star
-            mv.ellipse(starX[i], starY[i], starSize, starSize);
+this is me creating a branch class and initialising variables that will be used throughout the code 
+
+```Java
+void show() {
+    // Displays the branch 
+    mainVisual.rotate(this.angle);
+    mainVisual.line(0, 0, 0, amplitude); 
+ ```
+
+This part of the code rotates the visual context  by a certain angle (this.angle) and then draws a line from the current position (0, 0) to (0, amplitude) in the rotated context. This line represents the branch of the tree.
+
+```Java
+branches[0].show();
+branches[1].show();
+```
+
+displays the branches.
+this is in the show() function.
+
+```Java
+void branch (int branchAmt){//takes an int which represents thr number of subbranches to be created 
+
+if (branchAmt > 0 ){
+    branches = new Branch[2];
+
+    float angle = MainVisual.map(mainVisual.smoothedAmplitude,0,1,3.14f/10f,3.14f/2f);//Calculates the angle for the sub-branches 
+    //creates sub branch
+    branches[0]= new Branch(mainVisual,start-amplitude,amplitude/1.5f,angle,branchAmt-2 );
+    branches[1]= new Branch(mainVisual,start-amplitude,amplitude/1.5f,-angle,branchAmt-2 );
+
+}
+```
+
+The branch() function generates sub-branches for a given branch based on the provided branchAmt parameter, representing the number of sub-branches to create. If branchAmt is greater than 0, it initializes an array to store the sub-branches, calculates their angles dynamically based on audio, and creates two sub-branches with positive and negative angles. These sub-branches are instantiated with parameters including visual context, starting position, branch length, angle, and a decremented branchAmt. This process continues recursively, reducing the number of sub-branches with each call until branchAmt reaches 0 or less, controlling the depth and complexity of the branching structure.
+
+```Java
+ mainVisual.fCounter++;   used to count the number of frames being rendered in the visual
+```
+```Java
+float rotationSpeed = rotationDirection * rotationSpeedFactor * MainVisual.map(mainVisual.fCounter % 360, 0, 360, 0, MainVisual.PI * 2);
+
+mainVisual.rotate(rotationSpeed);
+
+mainVisual.rotate(MainVisual.map((float) i, 0f, 6f, 0f, MainVisual.PI * 2));
+```
+
+This code segment calculates and applies rotation to a visual element based on a combination of factors. First, it computes the rotationSpeed by multiplying rotationDirection, rotationSpeedFactor, and a mapped value representing the current iteration (mainVisual.fCounter % 360). This mapped value ensures smooth rotation over time. Then, it rotates the visual element by the calculated rotationSpeed. 
+
+```Java
+branch1 = new Branch(mainVisual, 0f, MainVisual.map(amplitude, 0, .4f, -mainVisual.height / 10f, -mainVisual.height / 4f), 0, 6);
+branch2 = new Branch(mainVisual, 0f, MainVisual.map(amplitude, 0, .4f, -mainVisual.height / 50f, -mainVisual.height / 4f), 0, 5);
+```
+
+These lines of code initiate two branches. The Branch constructor takes several parameters: the visual context , the starting position (0f for both branches, indicating they originate from the same point), the length of the branch, the angle of the branch , and a parameter that may control the number of sub-branches (set to 6 for branch1 and 5 for branch2). The length of each branch is dynamically mapped based on the amplitude variable. The mapped values shows that branch1 is longer and covers a wider range of the visual space compared to branch2, which creates a hierarchical structure. 
+
+```Java
+float hue1 = (mainVisual.fCounter / 10) % 255;
+float hue2 = (mainVisual.fCounter / 2) % 255;
+
+mainVisual.fill(hue1, 255, 255); // Calculating hue for branch 1
+mainVisual.stroke(hue1, 255, 255);
+branch1.show(); // Displays branch 1
+
+mainVisual.fill(hue2, 255, 255);
+mainVisual.stroke(hue2, 255, 255); 
+branch2.show(); // Displays branch 2
+```
+
+This code segment aims to add visual variety by assigning different colors to the branches. It achieves this by dynamically calculating hues based on the mainVisual.fCounter variable.
+
+
+
+
+
+
+
+## Aimee
+
+## Neil
+
+## Jade
+
+## Jason
+This is the code for the initialisation of the relevant variables , for creating the circles , ensuring a smooth rotation etc
+```Java
+mv.background(0); // Black background
+
+        float sum = 0;
+        float smooth = getSmoothedAmplitude();// function to make the amplitude smoother
+
+        // Iterate until the audio buffer size is reached
+        for (int i = 0; i < ab.size(); i++) {
+            sum += abs(ab.get(i)); // Get the values in the buffer and add the values to the sum
+        }
+        float average = sum / (float) ab.size(); // Calculate the average buffer value 
+        float amplitude = average * 800; // Amplitude is average times a certain number, in this case it's 800   
+        float smoothrotation = lerp(0, radians(amplitude), 0.05f); // Interpolate from 0 to the amplitude in radians at an amount of 0.05
+        float circlerotation = lerp(0, radians(360), 0.05f); // Interpolates from 0 to 360 degrees in radians, allowing the circles to move around in a circle 
+        float CenterY = mv.height / 2; // Center of screen Y value
+        float CenterX = mv.width / 2; // Center of screen X value
+        float CircleX = 200; // Circle x axis position
+        float CircleY = 200;
+         // Circle y axis position
+
+        mv.translate(CenterX, CenterY); // Move (0,0) to the center
+
+        int num_lines = (int) map(amplitude, 0, 1, 0, 4); // Ensures that if the amplitude is 1, there are 4 lines
+        int num_circles = (int) map(amplitude, 0, 1, 0, 3); // If the amplitude is 1, there will be 3 circles
+
+
+
+```
+this is my code to create the lines rotating round the circles
+```Java
+
+for (int i = 0; i < num_lines; i++) {
+            float hue = map(i, 0, num_lines - 1, 0, 255); // Map the lines to the color spectrum for the hue
+
+            float y_axis = map(i, 0, num_lines, -CenterY/2, CenterY/2);// y_axis variable mapped from 0 to the number of lines to - height/4 to the height/4 
+            mv.rotate(smooth + smoothrotation); // Rotate the lines 
+
+            mv.stroke(hue, 100, 100); // Set the color of the stroke
+            mv.strokeWeight(4); // Thickness of the lines
+            mv.noFill();
+            mv.line(-CenterX, y_axis, CenterX, -y_axis); // Create the lines starting from -CenterX on the X axis and the Y axis value, spanning to CenterX on the X axis and -y_axis on the y axis
+        }
+
+
+```
+this is my code to create the rotating outer circles as well as the inner circles
+
+``` Java
+
+for (int i = 0; i < num_circles; i++) {
+            float hue = map(i, 0, num_lines - 1, 150, 255); // map the circles to the color spectrum
+            mv.stroke(hue, 255, 255);
+            mv.noFill();
+            mv.rotate(smooth + smoothrotation); // rotate the circles
+
+            mv.strokeWeight(4);
+            mv.ellipse(0, 0, CenterX/2, smooth + smoothrotation); // Create circles starting at the origin, with a diameter of CenterX and the height being the smoothedAmplitude + the lerp function to smoothen the visuals 
+
+            mv.stroke(hue, 255, 255);
+            mv.noFill();
+            mv.rotate(smooth + circlerotation); // Rotate in a circular motion
+
+            mv.strokeWeight(4);
+            mv.ellipse(CircleX - CenterX/2, CircleY - CenterY/2, CenterX/2, CenterY/2); // create smaller  circles rotating around the center
+        }
+
+```
+
+
+
+
+
+## Chris
+
+This is the code for detecting beats
+```Java
+
+        if (mv.beat.isKick()) // Checking if there's a kick in the audio
+        {
+            kickCounter++; // Incrementing kick counter
         }
 ```
-uses for loop to itterate through 100 stars that are all between 5-20 in size and then get multipled by space (which is the getSmoothedAmplitude funciton) which allows the stars to pulse to the beat of the music
-They are filled in white just for testing so i could see them to begin with.
-The elipse then uses the random x and y variable to get its random location and the size to get bigger and smaller from the music.
+This is the code for the basic logic of changing shape colours.
+```Java
+    float[] currentColours = new float[]{random(0,255),random(0,255),random(0,255)}; // Array to store current colors
+    float[] previousColours = new float[]{0,0,0}; // Array to store previous colors
 
-```java
-        mv.rotate(map(mv.fCounter % 360, 0, 180, 0, 360));
-        mv.fill(prevColours[0], prevColours[1], prevColours[2], 25);
-        mv.rect(-radius / 2, -radius / 2, radius, radius);
-
-        // Set stroke color based on amplitude
-        mv.stroke(map(mv.getAmplitude(), 0, 1, 0, 255), 255, 255);
+    // Method to generate random colors and replace current colors
+    public float[] replacingColours(float[] currentColours)
+    {
+        float[] colours = new float[]{random(0,255),random(0,255),random(0,255)}; // Generating random colors
+        for(int i = 0; i < 3; i++) // Looping through color channels
+        {
+            currentColours[i] = colours[i]; // Replacing current colors with new random colors
+        }
+        return currentColours; // Returning the updated colors
+    }
 ```
-this rotates the square by using f.counter%360 to ensure range stays between 0-359 with 0-180 being the original and 0-360 being target range (i messed around with this alot to make the visual)
-the fill uyses the colour array to fill the shapes with colour and make it transparent so yuou can still see the stars behind it  while the rect is the rectange that also uses radius so the circle will remain in the center of the square fitting perfectly 
-The stroke then uses getAmplitude so the colours will change with the music ranging from 0-255 and an amplituide of 0-1 
-```java
-         // Loop through the width of the canvas with a step of 0.1
-        for (float i = 0; i < mv.width; i += 0.1) {
-            // Calculate the x and y coordinates based on cosine and sine functions
-            float x = (PApplet.cos(i) * space * i); // Using PApplet's cos function to modulate the x-coordinate of points based on the music amplitude
-            float y = (PApplet.sin(i) * space * i); // Using PApplet's sin function to modulate the y-coordinate of points based on the music amplitude
-            mv.point(x, y); // draw point at x and y 
+This is the code for the basic logic of resetting the size of the triangles and circle as well as changing colours.
+```Java
+        // Resetting values if radius exceeds half of the screen width
+        if (radius > (float)mv.width / 2)
+        {
+            // Storing current colors as previous colors
+            for (int i = 0; i < 3; i++)
+            {
+                previousColours[i] = currentColours[i];
+            }
+            // Generating and replacing new colors
+            replacingColours(currentColours);
+            kickCounter = 0; // Resetting kick counter
+            radius = 20; // Resetting radius
         }
 ```
+This is the code for drawing the centre circle and for increasing the size of it.
+```Java
+        radius = 40*kickCounter; // Adjusting radius based on kick counter
+        mv.ellipse(0,0,radius,radius); // Drawing ellipse at the center
+```
 
-uses for loop that goes the entire width of the screen by 0.1 (the smaller the denser)
-it uses cos to find the horizontal and sin to find the vertical point and places a single point. it then is multiplied by space so it will pulse in size to the music and i so it will change position to create the spiral look.
+This is the code for drawing the sets of mirrored triangles and for increasing the size of them.
+```Java
+        radius = 15*kickCounter; // Adjusting radius based on kick counter
+        // Drawing triangles
+        radius = 15*kickCounter; // Adjusting radius based on kick counter
+        mv.triangle(-200, -100, -140+(float)0.6*radius, radius, (-260-(float)0.6*radius), radius); 
+        mv.triangle(200, -100, 260+(float)0.6*radius, radius, (140-(float)0.6*radius), radius);
+        mv.triangle(-400, -100, -340+(float)0.6*radius, radius, (-460-(float)0.6*radius), radius); 
+        mv.triangle(400, -100, 460+(float)0.6*radius, radius, (340-(float)0.6*radius), radius);
+        mv.triangle(-600, -100, -540+(float)0.6*radius, radius, (-660-(float)0.6*radius), radius); 
+        mv.triangle(600, -100, 660+(float)0.6*radius, radius, (540-(float)0.6*radius), radius);
+        
+        // Drawing mirrored triangles
+        mv.triangle(-200, 100, -140+(float)0.6*radius, -radius, (-260-(float)0.6*radius), -radius); 
+        mv.triangle(200, 100, 260+(float)0.6*radius, -radius, (140-(float)0.6*radius), -radius);
+        mv.triangle(-400, 100, -340+(float)0.6*radius, -radius, (-460-(float)0.6*radius), -radius); 
+        mv.triangle(400, 100, 460+(float)0.6*radius, -radius, (340-(float)0.6*radius), -radius);
+        mv.triangle(-600, 100, -540+(float)0.6*radius, -radius, (-660-(float)0.6*radius), -radius); 
+        mv.triangle(600, 100, 660+(float)0.6*radius, -radius, (540-(float)0.6*radius), -radius);
+```
+
+This is the code for drawing the spirals.
+```Java
+        // Drawing points in a spiral pattern
+        for (float i = 0; i < mv.width; i += 0.3)
+        {
+            float x1 = (PApplet.cos(i) * smooth * i);
+            float y1 = (PApplet.sin(i) * smooth * i);
+            mv.point(x1, y1);
+        }
+
+        // Drawing points in a spiral pattern with center at (-400, 0)
+        for (float i = 0; i < mv.width; i += 0.3)
+        {
+            float centerX2 = -400; 
+            float centerY2 = 0; 
+            float x2 = centerX2 + (PApplet.cos(i) * smooth * i);
+            float y2 = centerY2 + (PApplet.sin(i) * smooth * i);
+            mv.point(x2, y2);
+        }
+
+        // Drawing points in a spiral pattern with center at (400, 0)
+        for (float i = 0; i < mv.width; i += 0.3)
+        {
+            float centerX3 = +400; 
+            float centerY3 = 0; 
+            float x3 = centerX3 + (PApplet.cos(i) * smooth * i);
+            float y3 = centerY3 + (PApplet.sin(i) * smooth * i);
+            mv.point(x3, y3);
+        }
+```
 
 # What I am most proud of in the assignment
 
@@ -117,8 +343,7 @@ Overall, I'm really proud of what I've created. It's a blend of art and technolo
 Personally my favourite thing i made was the stars as i love space and i think it fits the theme very well as well as adding some layers to the visual while being relativly simple to implement. The spiral however is what i am most proud of as it was hard to figure out. It was hard in general to come up with what to put in the center but after messing about and using AI for ideas it created a center line that rotated around like a radar. I then messed around with the code and while in class sin and cos was mentioned and so i got an idea to create a visual with that. This was challanging to get working but eventually i figured it out after messing around with the code. The maths aspect was definatly the hardest aspect getting the rotating working. I used some tutorials online (https://www.youtube.com/watch?v=OqQE3Z87uuU) and searched some websites (such as https://stackoverflow.com/questions/17596003/something-like-collections-rotate-for-map) to try learn the bascis on how to rotate. While I didnt completly copy their code i did use github copilot which was recomended in class to help assist on this which i found very useful. For the circle and square I got the idea from the labs as we had used these functions before. Another suprisingly hard part was starting the code as I had to spend a bit of time looking over the main visual and the funciton to understand them. However once i had momemtum I found myself enjoying the project alot and being proud of the visual i made as it may not be the most flashy or impressive but i personally think it turned out very well.
 
 ## Jade
-I was most proud of how far I had came from the beginning of the project. I found this a big challenge and im very happy with the end result. The hardest challenge I overcame was the stabbing effect at the bottom of the screen, it was very difficult to figure out the variables and the positioning of this. I was very happy with the outcome of this section of the visual because I thought this idea would be out of my depths but I achieved it with research and time. The next thing im most proud of is the stars, this was a joint effort between me and another member of the team, neil, the reason we curated this aspect of the visual was to create a sense of unity between our visuals, and in the end i was very impressed with the outcome. 
-(sources, what u learened tutorials yt web , )
+I was most proud of how far I had came from the beginning of the project. I found this a big challenge and im very happy with the end result. The hardest challenge I overcame was the stabbing effect at the bottom of the screen, it was very difficult to figure out the variables and the positioning of this. I was very happy with the outcome of this section of the visual because I thought this idea would be out of my depths but I achieved it with research and time. The next thing im most proud of is the stars, this was a joint effort between me and another member of the team, neil, the reason we curated this aspect of the visual was to create a sense of unity between our visuals, and in the end i was very impressed with the outcome. I took inspiration from a youtube video 'https://youtu.be/nj5XM3YQusE?si=rKFYjB1bG7ySZXfZ', I got my idea for the pulsing triangles in the centre and the idea of stars from this video. From this video I gained inspirtaion to make an almost night sky looking visual. From this experience Ive learned a lot about java as a whole throughout this project, structuring code, intialising variables and creating shapes. I gained a lot of knowledge from this video on youtube which details shapes and loops also it covers the basics again which was a huge help as i found I started to overcomplicate the code 'https://youtu.be/SQBrJEalWYo?si=ONtS0Gvw4yFxxl_w'. Overall it was a great learning experience and im happy with the outcome of the assignment, although stressful it tought me a lot.
 ## Jason
 In this assignment I am most proud of my creative thinking to come up with an interesting visual. This creative thinking continued throughout the whole project , leading to the visual constantly evolving and changing over time. I was able to constantly think of new ideas which I am very proud of. 
 
